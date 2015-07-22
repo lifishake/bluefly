@@ -10,9 +10,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
 Tags: fluid-layout, responsive-layout, custom-colors, custom-background, custom-menu, custom-header, featured-images, sticky-post, theme-options, threaded-comments
 
-欢迎所有人修改这款主题并向他人分享你的修改经验
+欢迎所有人修改这款主题并向他人分享你的修改经验。再次发布请遵循GPL。
 
-基于Oblique修改。原主题地址http://flyfreemedia.com/themes/oblique。
+基于Oblique修改。
+URL： http://flyfreemedia.com/themes/oblique。
+License： GPL
+
+15.7.22 追加无限滚动效果。
+URL： https://github.com/infinite-scroll/infinite-scroll。 
+License： MIT
+与图片lazyload有冲突.
 
 
 #DD4C39 橙色
@@ -35,7 +42,6 @@ fortunato双背景
 ColorMag主menu
 Kindergarten会动的星星
 Parchment底部透明渐变
-Encounters Lite扫描线
 PR Pin grid效果,无限加载
 Eighties 两侧图标
 Fukasawa menu-close效果
@@ -60,6 +66,29 @@ body {
 	line-height: 1.55;
 	word-wrap: break-word;
 }
+body.not-touch-device:after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 150px;
+  background: -moz-linear-gradient(top, rgba(245, 245, 245, 0) 0%, #F5F5F5 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(245, 245, 245, 0)), color-stop(100%, #F5F5F5));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(245, 245, 245, 0) 0%, #F5F5F5 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(245, 245, 245, 0) 0%, #F5F5F5 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(245, 245, 245, 0) 0%, #F5F5F5 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, rgba(245, 245, 245, 0) 0%, #F5F5F5 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F5F5F5', endColorstr='#F5F5F5',GradientType=0 );
+  /* IE6-9 */
+}
+
 h1,
 h2,
 h3,

@@ -274,9 +274,9 @@ function bluefly_customize_register( $wp_customize ) {
     $wp_customize->add_section(
         'bluefly_fonts',
         array(
-            'title' => __('Fonts', 'bluefly'),
+            'title' => __('字体', 'bluefly'),
             'priority' => 15,
-            'description' => __('You can use any Google Fonts you want for the heading and/or body. See the fonts here: google.com/fonts. See the documentation if you need help with this: flyfreemedia.com/documentation/bluefly', 'bluefly'),
+            'description' => __('设置字体大小', 'bluefly'),
         )
     );
     //Body fonts title

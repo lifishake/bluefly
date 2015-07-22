@@ -31,9 +31,10 @@ get_header(); ?>
 				?>
 
 			<?php endwhile; ?>
+			<?php the_posts_navigation(); ?>
 			</div>
 
-			<?php the_posts_navigation(); ?>
+			
 
 		<?php else : ?>
 
