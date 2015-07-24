@@ -110,8 +110,6 @@ function bluefly_scripts() {
 
 	wp_enqueue_script( 'bluefly-slicknav', get_template_directory_uri() . '/js/jquery.slicknav.min.js', array('jquery'), true );	
 
-	wp_enqueue_script( 'bluefly-parallax', get_template_directory_uri() . '/js/parallax.min.js', array('jquery'), true );			
-
 	wp_enqueue_script( 'bluefly-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), true );	
 
 	//wp_enqueue_script( 'bluefly-imagesloaded', get_template_directory_uri() . '/js/imagesloaded.pkgd.min.js', array(), true );		
@@ -194,16 +192,6 @@ require get_template_directory() . '/inc/extras.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-require get_template_directory() . '/inc/jetpack.php';
-
-/**
- * SVGs
- */
-require get_template_directory() . '/inc/svg.php';
 
 /**
  * Styles

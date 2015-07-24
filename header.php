@@ -29,9 +29,6 @@
 		</nav>
 	<?php endif; ?>	
 
-	<div class="svg-container nav-svg svg-block">
-		<?php bluefly_svg_3(); ?>
-	</div>
 	<header id="masthead" class="site-header" role="banner">
 		<div class="overlay"></div>
 		<div class="container">
@@ -48,9 +45,7 @@
 	        <?php endif; ?>
 			</div><!-- .site-branding -->
 		</div>
-		<div class="svg-container header-svg svg-block">
-			<?php bluefly_svg_1(); ?>
-		</div>		
+
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

@@ -4,9 +4,6 @@
  */
 ?>
 	
-<div class="svg-container single-post-svg svg-block">
-	<?php bluefly_svg_1(); ?>
-</div>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="entry-header">
@@ -31,6 +28,3 @@
 		<?php bluefly_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
-<div class="svg-container single-post-svg single-svg-bottom svg-block">
-	<?php bluefly_svg_4(); ?>
-</div>

@@ -12,18 +12,12 @@ get_header(); ?>
 
 		<?php if ( have_posts() ) : ?>
 
-			<div class="svg-container svg-block page-header-svg">
-				<?php bluefly_svg_1(); ?>
-			</div>
 			<header class="page-header">			
 				<?php
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
 					the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
-			<div class="svg-container svg-block page-header-svg">
-				<?php echo bluefly_svg_3(); ?>
-			</div>				
 
 			<div id="ob-grid" class="grid-layout">
 			<?php while ( have_posts() ) : the_post(); ?>

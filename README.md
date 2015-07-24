@@ -1,2 +1,0 @@
-# bluefly
-A wordpress theme

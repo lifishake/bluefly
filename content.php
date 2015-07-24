@@ -4,43 +4,20 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="svg-container post-svg svg-block">
-		<?php echo bluefly_svg_3(); ?>
-	</div>	
+<article id="post-<?php the_ID(); ?>" <?php post_class("view view-fifth"); ?>>
 
+ 
 	<?php if ( has_post_thumbnail() && ( get_theme_mod( 'index_feat_image' ) != 1 ) ) : ?>
-		<div class="entry-thumb">
 			<?php the_post_thumbnail('bluefly-entry-thumb'); ?>
-			<a class="thumb-link" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" ><i class="fa fa-link"></i></a>		
-		</div>	
+	<?php else: ?>
+			<img src="<?php echo get_template_directory_uri() . '/images/default_thumb.png'; ?>" alt="nopic"></img>
 	<?php endif; ?>	
-
-	<?php if ( has_post_thumbnail() && ( get_theme_mod( 'index_feat_image' ) != 1 ) ) : ?>
-	<div class="post-inner">
-	<?php else : ?>
-	<div class="post-inner no-thumb">
-	<?php endif; ?>		
-		<header class="entry-header">
-			<?php the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
-
-			<?php if ( 'post' == get_post_type() && !get_theme_mod('meta_index') ) : ?>
-			<div class="entry-meta">
-				<?php bluefly_posted_on(); ?>
-			</div><!-- .entry-meta -->
-			<?php endif; ?>
-		</header><!-- .entry-header -->
-
-		<div class="entry-content">
+	<div class="mask">
+			<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+	
+		<p class="entry-content">
 			<?php the_excerpt(); ?>
-		</div><!-- .entry-content -->
-	</div>
-	<?php if (!get_theme_mod('read_more')) : ?>
-	<div class="read-more">
+		</p><!-- .entry-content -->
 		<a href="<?php the_permalink(); ?>"><?php echo __('继续阅读 &hellip;','bluefly'); ?></a>
-	</div>		
-	<?php endif; ?>
-	<div class="svg-container post-bottom-svg svg-block">
-		<?php echo bluefly_svg_1(); ?>
-	</div>	
+	</div><!-- .mask -->
 </article><!-- #post-## -->

@@ -1,22 +1,22 @@
 /*
 Theme Name: bluefly
-Theme URI: http://pewae.com
+Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 1.04
+Version: 0.03
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
-Tags: fluid-layout, responsive-layout, custom-colors, custom-background, custom-menu, custom-header, featured-images, sticky-post, theme-options, threaded-comments
+Tags: 动态部局, 响应式部局, 自定义颜色, 自定义背景, 自定义菜单, 自定义标题, 特色图像, 置顶文章, 主题选项, ajax评论
 
-欢迎所有人修改这款主题并向他人分享你的修改经验。再次发布请遵循GPL。
+欢迎所有人修改这款主题并向他人分享你的修改经验。
+再次发布请遵循GPL。
+
 
 基于Oblique修改。
-URL： http://flyfreemedia.com/themes/oblique。
-License： GPL
-
-15.7.22 追加无限滚动效果。
+[http://flyfreemedia.com/themes/oblique][GPL]
+无限滚动效果。
 URL： https://github.com/infinite-scroll/infinite-scroll。 
 License： MIT
 与图片lazyload有冲突.
@@ -33,15 +33,19 @@ License： MIT
 #1E90FF 道奇蓝
 http://iconfont.cn/
 http://fatesinger.com/59
-http://fatesinger.com/689
-http://fatesinger.com/712
+masonry.desandro.com
+http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
+http://codepen.io/chrisgrabinski/details/gpqtc/
+http://codepen.io/davidleininger/details/FuitG
+http://tympanus.net/codrops/2013/05/22/examples-of-pseudo-elements-animations-and-transitions/
+http://thecodeplayer.com/walkthrough/simple-yet-amazing-css3-border-transition-effects
+
 Panaroma的图片背景和缩略图摆放
 annia的缩略图效果
 multiloquent价值很大
 fortunato双背景
 ColorMag主menu
 Kindergarten会动的星星
-Parchment底部透明渐变
 PR Pin grid效果,无限加载
 Eighties 两侧图标
 Fukasawa menu-close效果
@@ -870,79 +874,6 @@ Social Menu
 }
 
 /*--------------------------------------------------------------
-SVG
---------------------------------------------------------------*/
-.svg-container {
-    width: 100%;
-    height: 0;
-    padding-top: 7.93650794%;
-    position: absolute;
-    bottom: 0;
-}
-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.nav-svg {
-	position: relative;
-	z-index: 11;
-	margin-bottom: -7.81%;
-}
-.meta-svg {
-    width: 100%;
-    height: 0;
-    padding-top: 69.44444444%;
-    position: relative;
-    top: -1px;
-}
-.header-svg {
-	margin-bottom: -2px;
-}
-.svg-block {
-	fill: #1c1c1c;
-	stroke: none;
-}
-
-
-.footer-svg {
-	position: relative;
-	margin-bottom: -2px;
-}
-.footer-svg.svg-block {
-	fill: #17191B;
-}
-.hentry .svg-container {
-	position: relative;
-	z-index: 11;
-}
-
-.hentry .post-svg {
-	margin-bottom: -7.74%;
-}
-.hentry .post-bottom-svg {
-	margin-top: -7.78%;
-}
-.single-post-svg {
-	fill: #fff !important;
-	position: relative;
-}
-.single-svg-bottom {
-	margin-top: -2px;
-	margin-bottom: 60px;
-}
-.svg-container.page-header-svg {
-	position: relative;
-	fill: #17191B;
-}
-.grid-layout .hentry:nth-of-type(2) .post-svg {
-	margin-top: -7.98%;
-}
-.grid-layout .hentry:nth-of-type(3) .post-svg {
-	margin-top: -15.98%;
-}
-
-/*--------------------------------------------------------------
 Structure 
 --------------------------------------------------------------*/
 .site-content {
@@ -1093,6 +1024,16 @@ Menu
 	height:44px;
 }
 
+/*
+无限加载
+*/
+#infscr-loading img{
+	position: absolute !important;
+	bottom: 0.2em;
+	left: 5%;
+}
+
+
 /*--------------------------------------------------------------
 Responsive
 --------------------------------------------------------------*/
@@ -1100,8 +1041,8 @@ Responsive
 	.grid-layout .hentry {
 		width: 283px;
 	}
-	.single-post-svg {
-		margin-bottom: -1px;
+	.grid-sizer{
+		width: 283px;
 	}
 }
 @media only screen and (max-width: 1024px) {
@@ -1114,11 +1055,8 @@ Responsive
 	.grid-layout .hentry {
 		width: 330px;
 	}
-	.grid-layout .hentry:nth-of-type(3) .post-svg {
-		margin-top: 0;
-	}	
-	.hentry .post-svg {
-		margin-left: -3px;
+	.grid-sizer{
+		width: 330px;
 	}
 	.site-title {
 		font-size: 60px !important;
@@ -1129,9 +1067,10 @@ Responsive
 		width: 100%;
 		margin: 0 0 30px;
 	}
-	.grid-layout .hentry:nth-of-type(2) .post-svg {
-		margin-top: 0;
-	}	
+	.grid-sizer{
+		width: 100%;
+		margin: 0 0 30px;
+	}
 	.site-title {
 		font-size: 42px !important;
 	}
@@ -1157,9 +1096,6 @@ Responsive
 	body {
 		font-size: 14px;
 	}
-	.nav-svg {
-		top: -1px;
-	}
 	.widget-area-visible {
 		width: 100%;
 	}
@@ -1178,3 +1114,89 @@ Responsive
 		padding: 0;
 	}
 }
+
+.view {
+    margin: 10px;
+    float: left;
+    border: 10px solid #fff;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    box-shadow: 1px 1px 2px #e6e6e6;
+    cursor: default;
+    background: #fff url(../images/bgimg.jpg) no-repeat center center
+}
+.view .mask, .view .content {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0
+}
+.view img {
+    display: block;
+    position: relative;
+}
+.view h2 {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 17px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 20px 0 0 0
+}
+.view p {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 12px;
+    position: relative;
+    color: #fff;
+    padding: 10px 20px 20px;
+    text-align: center
+}
+.view a.info {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 1px #000
+}
+.view a.info:hover {
+    box-shadow: 0 0 5px #000
+}
+
+.view-fifth img {
+	transition: all 0.3s ease-in-out; 
+}
+.view-fifth .mask { 
+	background-color: rgba(146,96,91,0.3);
+	transform: translateX(-300px);
+	opacity: 1;
+	transition: all 0.4s ease-in-out; 
+}
+.view-fifth h2{
+    background: rgba(255, 255, 255, 0.5);
+    color: #000;
+    box-shadow: 0px 1px 3px rgba(159, 141, 140, 0.5);
+}
+.view-fifth p{
+    opacity: 0;
+    color: #333;
+    transition: all 0.2s linear;
+}
+
+.view-fifth:hover .mask { 
+	transform: translateX(0px);
+}						
+.view-fifth:hover img { 
+	transform: translateX(300px);
+	transition-delay: 0.1s;
+}
+.view-fifth:hover p{
+    opacity: 1;
+    transition-delay: 0.4s;
+}
+

@@ -1,8 +1,3 @@
-//Parallax
-jQuery(function($) {
-	$(".site-header").parallax("50%", 0.3);
-});
-
 //Open social links in a new tab
 jQuery(function($) {
      $( '.social-navigation li a' ).attr( 'target','_blank' );
@@ -32,11 +27,12 @@ jQuery(function($) {
 	});
 });
 
-jQuery(document).ready(function($) { 
-
+jQuery(function($) {
 	/**
 	* Infinite scroll
 	*/
+	var $js_path = get_js_URL() ;
+	var $img_load = $js_path + '/../images/loading.gif' ;
 	var $container = $('#ob-grid');
 	$container.infinitescroll({
 	  navSelector  : '.posts-navigation',    // selector for the paged navigation 
@@ -44,15 +40,21 @@ jQuery(document).ready(function($) {
 	  itemSelector : '.post',     // selector for all items you'll retrieve
 	  loading: {
 		  finishedMsg: 'No more pages to load.',
-		  img: '../images/ajax-loader.gif'
+		  img: $img_load
 		}
 	  },
-	  // trigger Masonry as a callback
+	  //Masonry的回调函数
 	  function( newElements ) {
 		var $newElems = $( newElements );
 		$container.masonry( 'appended', $newElems );
+		//下面这段是延时加载(lazyload)的代码。我不会优化只能全粘上来。不使用unveil-ui.min.js的完全应该注释掉!!
+		(function(e){e.fn.unveil=function(t,n){function f(){var t=u.filter(function(){var t=e(this),n=r.scrollTop(),s=n+r.height(),o=t.offset().top,u=o+t.height();return u>=n-i&&o<=s+i});a=t.trigger("unveil");u=u.not(a)}var r=e(window),i=t||0,s=window.devicePixelRatio>1,o=s?"data-src-retina":"data-src",u=this,a;this.one("unveil",function(){var e=this.getAttribute(o);e=e||this.getAttribute("data-src");if(e){this.setAttribute("src",e);if(typeof n==="function")n.call(this)}});r.scroll(f);r.resize(f);f();return this}})(window.jQuery||window.Zepto);jQuery(document).ready(function(e){if(typeof t==="undefined"){var t=0}e('img[data-unveil="true"]').unveil(t,function(){e(this).load(function(){this.style.opacity=1})})})
 	  }
 	);
+});
+	
+jQuery(document).ready(function($) { 
+
 	/**
 	* Detect touch device
 	*/
@@ -121,3 +123,37 @@ function is_touch_device() {
 	return 'ontouchstart' in window // works on most browsers 
 		|| 'onmsgesturechange' in window; // works on ie10
 };
+
+function get_js_URL() {
+	var result = "",m;
+	try{
+		a.b.c();
+	}catch(e){
+		if(e.fileName){//firefox
+			result = e.fileName;
+		}else if(e.sourceURL){//safari
+			result = e.sourceURL;
+		}else if(e.stacktrace){//opera9
+			m = e.stacktrace.match(/\(\) in\s+(.*?\:\/\/\S+)/m);
+			if (m && m[1])
+				result =  m[1]
+		}else if(e.stack){//chrome 4+
+			m= e.stack.match(/\(([^)]+)\)/)
+			if (m && m[1])
+				result = m[1]
+		}
+	}
+	if(!result){//IE与chrome4- opera10+
+		var scripts = document.getElementsByTagName("script");
+		var reg = /dom([.-]\d)*\.js(\W|$)/i,src
+		for(var i=0, el; el = scripts[i++];){
+			src = !!document.querySelector ? el.src:
+			el.getAttribute("src",4);
+			if(src && reg.test(src)){
+				result = src
+				break;
+			}
+		}
+	}
+	return result.substr( 0, result.lastIndexOf('/'));
+	};
