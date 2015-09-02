@@ -38,7 +38,7 @@ License： MIT
 License URI: http://opensource.org/licenses/MIT
 
 g) 缩略图
-缩略图中以及可见的标题突破可以在images目录下找到。
+缩略图中以及可见的标题图片可以在images目录下找到。
 
 Copyright: OpenClipartVectors
 Resource URI: https://pixabay.com/en/paper-note-memo-document-message-576550/
@@ -50,11 +50,18 @@ Resource URI: https://pixabay.com/en/legs-window-car-dirt-road-relax-434918/
 License: CC0 1.0
 License URI: http://creativecommons.org/publicdomain/zero/1.0/deed.en
 
+h)ajax-comment
+Resource URI: https://fatesinger.com/59
+License: Unknown
+
 III. 注意事项和使用说明
 
 
 
 IV. 版本历史
+2015/9/2 0.04
+--------------------------------------
+-追加ajax-comment效果
 
 2015/7/23 0.03
 --------------------------------------

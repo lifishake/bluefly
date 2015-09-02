@@ -33,7 +33,6 @@ License： MIT
 #1E90FF 道奇蓝
 http://iconfont.cn/
 http://fatesinger.com/59
-masonry.desandro.com
 http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
 http://codepen.io/chrisgrabinski/details/gpqtc/
 http://codepen.io/davidleininger/details/FuitG
@@ -1200,3 +1199,27 @@ Responsive
     transition-delay: 0.4s;
 }
 
+/*ajax-comment*/
+.butterBar{
+	margin-left:36%;
+	max-width:640px;
+	position:fixed;
+	text-align:center;
+	top:0;
+	width:58%;
+	z-index:800
+}
+.butterBar--center{
+	left:50%;
+	margin-left:-320px
+}
+.butterBar-message{
+	background:rgba(255,255,255,0.97);
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	box-shadow:0 1px 1px rgba(0,0,0,0.25),0 0 1px rgba(0,0,0,0.35);
+	display:inline-block;
+	font-size:14px;
+	margin-bottom:0;
+	padding:12px 25px
+}
