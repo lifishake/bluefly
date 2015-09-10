@@ -134,29 +134,6 @@ function bluefly_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'bluefly_scripts' );
 
-
-/**
- * Change the excerpt length
- */
-function bluefly_excerpt_length( $length ) {
-	$excerpt = get_theme_mod('exc_lenght', '35');
-	return esc_attr($excerpt);
-}
-add_filter( 'excerpt_length', 'bluefly_excerpt_length', 999 );
-
-/**
- * Hide the excerpt more if the excerpt is set to 0 words
- */
-function bluefly_excerpt_more( $more ) {
-	$excerpt = get_theme_mod('exc_lenght', '35');
-	if ($excerpt == '0') {
-    	return '';
-	} else {
-		return '[...]';
-	}
-}   
-add_filter('excerpt_more', 'bluefly_excerpt_more');
-
 /**
  * Footer credits
  */

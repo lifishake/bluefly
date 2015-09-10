@@ -4,8 +4,8 @@ Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 0.04
-License: GNU General Public License v2 or later
+Version: 0.05
+License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
 Tags: 动态部局, 响应式部局, 自定义颜色, 自定义背景, 自定义菜单, 自定义标题, 特色图像, 置顶文章, 主题选项, ajax评论
@@ -19,8 +19,6 @@ Tags: 动态部局, 响应式部局, 自定义颜色, 自定义背景, 自定义
 无限滚动效果。
 URL： https://github.com/infinite-scroll/infinite-scroll。 
 License： MIT
-与图片lazyload有冲突.
-
 
 #DD4C39 橙色
 #F2F2F2 灰
@@ -32,7 +30,6 @@ License： MIT
 #007FFF 天蓝色
 #1E90FF 道奇蓝
 http://iconfont.cn/
-http://fatesinger.com/59
 http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
 http://codepen.io/chrisgrabinski/details/gpqtc/
 http://codepen.io/davidleininger/details/FuitG
@@ -1223,3 +1220,33 @@ Responsive
 	margin-bottom:0;
 	padding:12px 25px
 }
+
+/*################################
+### 为wordpress 添加一个“一键签到”快捷回复按钮
+### Ac 整理发布
+### 2013年11月5日 13:21:42
+### http://ikx.me/2429.html
+##################################*/
+
+.comment-editor,#smileys {
+height:26px;
+line-height:26px;
+border-bottom:#d8d8d8 1px solid;
+border-radius:2px 2px 0 0;
+background-color:#fdfdfd;
+box-shadow:0 2px 10px #eee,inset 0 -2px 10px #eee;
+overflow:hidden
+}
+.comment-editor a {
+font-family:microsoft yahei;
+color:#777;
+display:inline-block;
+padding:0 8px;
+height:26px;
+border-right:1px solid #ddd
+}
+.comment-editor a:hover {
+color:#333;
+background-color:#FFF
+}
+/*签到结束*/

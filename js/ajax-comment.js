@@ -41,6 +41,7 @@ jQuery(document).ready(function(jQuery) {
 		});
 		return false;
 	});
+	
 	addComment = {
 		moveForm: function(commId, parentId, respondId) {
 			var t = this,
@@ -100,3 +101,15 @@ jQuery(document).ready(function(jQuery) {
 	};
 });
 	
+/*
+	自动作成敷衍的回复
+*/
+function senseless() {
+	var a = document.getElementById('comment') || 0;
+	var myDate = new Date();
+	var mytime=myDate.toLocaleTimeString();
+	//后面加个时间,以免被认为是相同的回复.
+	a.value = '私は異議を唱えるできません。 '+ mytime;
+	a.focus();
+	submit.click();
+};

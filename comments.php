@@ -66,11 +66,8 @@ if ( post_password_required() ) {
 		<p class="no-comments"><?php _e( '评论已关闭', 'bluefly' ); ?></p>
 	<?php endif; ?>
 
-	<?php 
-		$args = array(
-			'comment_notes_after'  => '',
-		);
-		comment_form($args);
+	<?php
+		comment_form(array('comment_notes_after'=>'不知该说什么就点【已阅】吧！'));
 	?>
 	
 </div><!-- #comments -->

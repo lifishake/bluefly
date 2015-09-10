@@ -1,8 +1,11 @@
 <?php 
-
-
 add_action('wp_ajax_nopriv_ajax_comment', 'ajax_comment_callback');
 add_action('wp_ajax_ajax_comment', 'ajax_comment_callback');
+/**
+ * 作用: 评论提交后的回调函数，
+ * 来源: 大发（bigfa）
+ * URI: https://fatesinger.com/59
+ */
 function ajax_comment_callback(){
     global $wpdb;
     $comment_post_ID = isset($_POST['comment_post_ID']) ? (int) $_POST['comment_post_ID'] : 0;
@@ -74,6 +77,7 @@ function ajax_comment_callback(){
             ajax_comment_err('You are posting comments too quickly.  Slow down.');
         }
     }
+
     $comment_parent = isset($_POST['comment_parent']) ? absint($_POST['comment_parent']) : 0;
     $commentdata = compact('comment_post_ID', 'comment_author', 'comment_author_email', 'comment_author_url', 'comment_content', 'comment_type', 'comment_parent', 'user_ID');
 
@@ -118,4 +122,30 @@ function ajax_comment_err($a) {
     header('Content-Type: text/plain;charset=UTF-8');
     echo $a;
     exit;
+}
+
+add_filter('comment_form_defaults' , 'add_senseless_btn', 40);
+/**
+ * 作用: 追加【已阅】按钮
+ * 来源: 破袜子原创
+ * URL: http://pewae.com
+ */
+function add_senseless_btn( $defaults )
+{
+	if ( is_page() )
+		return $defaults;
+	$notice = '<div id="yiyue" class="comment-editor"><a href="javascript:senseless();">已阅</a></div>';	
+	$defaults['submit_button'] = $defaults['submit_button'].$notice ;
+	return $defaults;
+}
+
+add_filter('preprocess_comment', 'add_senseless_comment',2);
+function add_senseless_comment ( $comment ) {
+	$comment_content = $comment['comment_content'];
+	$senseless = "私は異議を唱えるできません";
+	if ( FALSE === strpos($comment_content,$senseless) )
+		return $comment;
+	$comment['comment_type'] = 'senseless';
+	$comment['comment_content'] = $comment_content.' 【'.$comment['comment_author'].'】';
+	return $comment;
 }

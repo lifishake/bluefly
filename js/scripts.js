@@ -175,3 +175,4 @@ function get_js_URL() {
 	}
 	return result.substr( 0, result.lastIndexOf('/'));
 	};
+	
