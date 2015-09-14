@@ -17,10 +17,7 @@ if ( post_password_required() ) {
 
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
-			<?php
-				printf( '%s条评论',
-					number_format_i18n( get_comments_number() ) );
-			?>
+			<?php echo "评论列表"; ?>
 		</h2>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
@@ -34,14 +31,24 @@ if ( post_password_required() ) {
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-above -->
 		<?php endif; // check for comment navigation ?>
-
+		<?php if( function_exists('bluefly_get_grasp_list') ) 
+			bluefly_get_grasp_list(); ?>
 		<ol class="comment-list">
 			<?php
-				wp_list_comments( array(
+				//$arg_list = array();
+				$arg_list = array(
 					'style'      => 'ol',
 					'short_ping' => true,
 					'avatar_size'=> 60,
-				) );
+					'type'=>'comment',
+					'callback'=>'mytheme_comment',
+				);
+				if ( is_page() ){
+					$arg_list['reverse_top_level']=true;
+					$arg['max_depth'] = 2 ;
+					$arg['per_page'] = 999 ;
+				}
+				wp_list_comments( $arg_list );
 			?>
 		</ol><!-- .comment-list -->
 
@@ -56,7 +63,7 @@ if ( post_password_required() ) {
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-below -->
 		<?php endif; // check for comment navigation ?>
-
+		
 	<?php endif; // have_comments() ?>
 
 	<?php
@@ -67,7 +74,7 @@ if ( post_password_required() ) {
 	<?php endif; ?>
 
 	<?php
-		comment_form(array('comment_notes_after'=>'不知该说什么就点【已阅】吧！'));
+		comment_form(array('comment_notes_after'=>'不知该说什么就点【无言以对】吧！'));
 	?>
 	
 </div><!-- #comments -->

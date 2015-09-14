@@ -11,6 +11,7 @@
 
 		<div class="entry-meta">
 			<?php bluefly_posted_on(); ?>
+			<?php echo bluefly_breadcrumb(); ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 

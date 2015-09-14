@@ -27,7 +27,11 @@ jQuery(document).ready(function(jQuery) {
 				if (parent != '0') {
 					jQuery('#respond').before('<ul class="children">' + data + '</ul>');
 				} else {
-					jQuery('.comment-list').append(data);// your comments wrapper
+					if (jQuery('.comment-list').length == 0)
+						jQuery('#respond').before('<ul>' + data + '</ul>');
+					else
+						jQuery('.comment-list').append(data);// your comments wrapper
+						
 				}
 				t.createButterbar("提交成功");
 				cancel.style.display = 'none';
@@ -37,6 +41,35 @@ jQuery(document).ready(function(jQuery) {
 					temp.parentNode.insertBefore(respond, temp);
 					temp.parentNode.removeChild(temp)
 				}
+			}
+		});
+		return false;
+	});
+	jQuery(document).on("click", "#grasp",
+	function() {
+		jQuery.ajax({
+			url: ajaxcomment.ajax_url,
+			data: jQuery('#commentform').serialize() + "&action=ajax_comment&grasp=1",
+			type: jQuery('#commentform').attr('method'),
+			beforeSend:addComment.createButterbar("提交中...."),
+			error: function(request) {
+				var t = addComment;
+				t.createButterbar(request.responseText);
+			},
+			success: function(data) {
+				jQuery('textarea').each(function() {
+					this.value = ''
+				});
+				var t = addComment,
+				temp = t.I('wp-temp-form-div'),
+				respond = t.I(t.respondId),
+				parent = t.I('comment_parent').value;
+				if ( jQuery('.grasp-list').length == 0 )
+					jQuery('#respond').before('<ul>' + data + '</ul>');
+				else
+					jQuery('.grasp-list').append(data);// your comments wrapper
+				t.createButterbar("提交成功");
+
 			}
 		});
 		return false;
@@ -100,16 +133,3 @@ jQuery(document).ready(function(jQuery) {
 		}
 	};
 });
-	
-/*
-	自动作成敷衍的回复
-*/
-function senseless() {
-	var a = document.getElementById('comment') || 0;
-	var myDate = new Date();
-	var mytime=myDate.toLocaleTimeString();
-	//后面加个时间,以免被认为是相同的回复.
-	a.value = '私は異議を唱えるできません。 '+ mytime;
-	a.focus();
-	submit.click();
-};
