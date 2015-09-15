@@ -10,16 +10,10 @@
  */
 function bluefly_posted_on() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-	}
 
 	$time_string = sprintf( $time_string,
 		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
-	);
+		bluefly_rel_post_date());
 
 	$posted_on = sprintf(
 		_x( '%s', '日期', 'bluefly' ),
@@ -83,4 +77,70 @@ function bluefly_breadcrumb() {
     return $return;
 }
 
+function bluefly_timediff( $from, $to, $before, $after) {
+	if ( empty($from) || empty($to) )
+		return '';
+	if( empty($before) )
+		$before = '于';
+	if( empty($after) )
+		$after = '以前';
+	$from_int = strtotime($from) ;
+	$to_int = strtotime($to) ;
+	$diff_time = abs($to_int - $from_int) ;
+	if ( $diff_time > 60 * 60 * 24 * 365 ){//年
+		$num = round($diff_time / (60 * 60 * 24 * 30* 365));
+		$uni = '年';
+	}
+	else if ( $diff_time > 60 * 60 * 24 * 31 ) {//月
+		$num = round($diff_time / (60 * 60 * 24 * 30));
+		$uni = '月';
+	}
+	else if ( $diff_time > 60 * 60 * 24 ) {//天
+		$num = round($diff_time / (60 * 60 * 24));
+		$uni = '天';
+	}
+	else if ( $diff_time > 60 * 60 ) { //小时
+		$num = round($diff_time / 3600);
+		$uni = '小时';
+	}
+	else { //分钟
+		$num = round($diff_time / 60);
+		$uni = '分';
+	}
+	$return = $before.$num.$uni.$after ;
+	return $return;
+}
 
+function bluefly_rel_post_date() {
+	global $post;
+	$post_date_time = mysql2date('j-n-Y H:i:s', $post->post_date, false);
+	$current_time = current_time('timestamp');
+	$date_today_time = gmdate('j-n-Y H:i:s', $current_time);
+	return bluefly_timediff( $post_date_time,$date_today_time  ,'于','以前' ) ;
+}
+
+function bluefly_rel_comment_date() {
+	global $post , $comment;
+	$post_date_time = mysql2date('j-n-Y H:i:s', $post->post_date, false);
+	$comment_date_time = mysql2date('j-n-Y H:i:s', $comment->comment_date, false);
+	return bluefly_timediff( $post_date_time, $comment_date_time ,'于博文发表','以后' ) ;
+}
+
+function bluefly_time_ago( $desc ) {
+	global $prime_date;
+	global $post;
+	if (!isset($prime_date)) {
+		$posts = get_posts(array('order'=>'ASC', 'posts_per_page'=>1));
+		$prime_date = $posts[0]->post_date_gmt;
+	}
+	$start_time = mysql2date('j-n-Y H:i:s', $prime_date, false);
+	$current_time = current_time('timestamp');
+	$today_time = gmdate('j-n-Y H:i:s', $current_time);
+	$from_int = strtotime($start_time) ;
+	$to_int = strtotime($today_time) ;
+	
+    $diff = (int) abs( $from_int - $to_int );
+	$days = round(diff/(60*60*24));
+	return $days.$desc;
+  
+}

@@ -233,7 +233,7 @@ function mytheme_comment($comment, $args, $depth) {
 		<div class="comment-metadata">
 			<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID, $args ) ); ?>">
 				<time datetime="<?php comment_time( 'c' ); ?>">
-					<?php printf( _x( '%1$s at %2$s', '1: date, 2: time' ), get_comment_date(), get_comment_time() ); ?>
+					<?php  echo bluefly_rel_comment_date(); ?>
 				</time>
 			</a>
 			<?php edit_comment_link( __( '编辑' ), '<span class="edit-link">', '</span>' ); ?>
