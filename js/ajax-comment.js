@@ -133,3 +133,6 @@ jQuery(document).ready(function(jQuery) {
 		}
 	};
 });
+function setStyleDisplay(id, status){
+	document.getElementById(id).style.display = status;
+}

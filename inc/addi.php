@@ -32,7 +32,7 @@ function bluefly_posted_on() {
 
 	if ( !is_singular()) {
 		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span><span class="cat-link">' . $cat . '</span>';
-	} elseif (!get_theme_mod('meta_singles')) {
+	} else{
 		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>';
 		if ( 'post' == get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
@@ -47,7 +47,7 @@ function bluefly_posted_on() {
 
 function bluefly_entry_footer() {
 	// Hide category and tag text for pages.
-	if ( 'post' == get_post_type() && !get_theme_mod('meta_singles') ) {
+	if ( 'post' == get_post_type() ) {
 
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', __( ', ', 'bluefly' ) );

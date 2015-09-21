@@ -15,7 +15,7 @@
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
-	<?php if ( has_post_thumbnail() && ( get_theme_mod( 'post_feat_image' ) != 1 ) ) : ?>
+	<?php if ( has_post_thumbnail() ) : ?>
 		<div class="single-thumb">
 			<?php the_post_thumbnail('bluefly-single-thumb'); ?>
 		</div>	

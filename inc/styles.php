@@ -4,17 +4,94 @@
  */
 
 //Converts hex colors to rgba for the menu background color
-function bluefly_hex2rgba($color, $opacity = false) {
+function bluefly_hex2rgba_str($color, $opacity = 1.0) {
 
         if ($color[0] == '#' ) {
         	$color = substr( $color, 1 );
         }
         $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
         $rgb =  array_map('hexdec', $hex);
-        $opacity = 0.4;
         $output = 'rgba('.implode(",",$rgb).','.$opacity.')';
 
         return $output;
+}
+
+function hex2rgb($color) {
+	if ($color[0] == '#' ) {
+		$color = substr( $color, 1 );
+	}
+	$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+    $rgb =  array_map('hexdec', $hex);
+	return $rgb;
+}
+
+//http://stackoverflow.com/questions/1773698/rgb-to-hsv-in-php
+function rgb2hsv(array $rgb)    // RGB values:    0-255, 0-255, 0-255
+{                                // HSV values:    0-360, 0-100, 0-100
+	list($R,$G,$B) = $rgb;
+    $R = ($R / 255);
+    $G = ($G / 255);
+    $B = ($B / 255);
+
+    $maxRGB = max($R, $G, $B);
+    $minRGB = min($R, $G, $B);
+    $chroma = $maxRGB - $minRGB;
+
+    $computedV = 100 * $maxRGB;
+
+    if ($chroma == 0)
+        return array(0, 0, $computedV);
+
+    $computedS = 100 * ($chroma / $maxRGB);
+
+    if ($R == $minRGB)
+        $h = 3 - (($G - $B) / $chroma);
+    elseif ($B == $minRGB)
+        $h = 1 - (($R - $G) / $chroma);
+    else // $G == $minRGB
+        $h = 5 - (($B - $R) / $chroma);
+
+    $computedH = 60 * $h;
+
+    return array($computedH, $computedS, $computedV);
+}
+
+function hsv2rgb(array $hsv) {
+	list($H,$S,$V) = $hsv;
+	//1
+	$H /= 60;
+	//2
+	$I = floor($H);
+	$F = $H - $I;
+	$S /= 100;
+	$V /= 100;
+	//3
+	$M = round( $V * (1 - $S) * 255);
+	$N = round( $V * (1 - $S * $F) * 255 );
+	$K = round( $V * (1 - $S * (1 - $F)) * 255 );
+	//4
+	switch ($I) {
+		case 0:
+			list($R,$G,$B) = array($V,$K,$M);
+			break;
+		case 1:
+			list($R,$G,$B) = array($N,$V,$M);
+			break;
+		case 2:
+			list($R,$G,$B) = array($M,$V,$K);
+			break;
+		case 3:
+			list($R,$G,$B) = array($M,$N,$V);
+			break;
+		case 4:
+			list($R,$G,$B) = array($K,$M,$V);
+			break;
+		case 5:
+		case 6: //for when $H=1 is given
+			list($R,$G,$B) = array($V,$M,$N);
+			break;
+	}
+	return array($R, $G, $B);
 }
 
 //Dynamic styles
@@ -52,21 +129,7 @@ function bluefly_custom_styles($custom) {
     if ( get_theme_mod( 'h3_size' )) {
         $custom .= "h3 { font-size:" . intval($h3_size) . "px; }"."\n";
     }
-    //H4 size
-    $h4_size = get_theme_mod( 'h4_size' );
-    if ( get_theme_mod( 'h4_size' )) {
-        $custom .= "h4 { font-size:" . intval($h4_size) . "px; }"."\n";
-    }
-    //H5 size
-    $h5_size = get_theme_mod( 'h5_size' );
-    if ( get_theme_mod( 'h5_size' )) {
-        $custom .= "h5 { font-size:" . intval($h5_size) . "px; }"."\n";
-    }
-    //H6 size
-    $h6_size = get_theme_mod( 'h6_size' );
-    if ( get_theme_mod( 'h6_size' )) {
-        $custom .= "h6 { font-size:" . intval($h6_size) . "px; }"."\n";
-    }
+
     //Body size
     $body_size = get_theme_mod( 'body_size' );
     if ( get_theme_mod( 'body_size' )) {
@@ -89,19 +152,18 @@ function bluefly_custom_styles($custom) {
 	if ( $primary_color != '#23B6B6' ) {
 	$custom .= ".entry-meta a:hover, .entry-title a:hover, .widget-area a:hover, .social-navigation li a:hover, a { color:" . esc_attr($primary_color) . "}"."\n";
 	$custom .= ".read-more, .nav-previous:hover, .nav-next:hover, button, .button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] { background-color:" . esc_attr($primary_color) . "}"."\n";
-	$rgba 	= bluefly_hex2rgba($primary_color, 0.3);
-	$custom .= ".entry-thumb:after { background-color:" . esc_attr($rgba) . ";}" . "\n";
+	$rgba 	= bluefly_hex2rgba_str($primary_color, 0.3);
+	$custom .= ".bluefly-entry-thumb:after { background-color:" . esc_attr($rgba) . ";}" . "\n";
 	}
-	//SVGs
-	$background_color = get_background_color();
-	$custom .= ".svg-block { fill:#" . esc_attr($background_color) . ";}"."\n";
+	
 	//Footer background
 	$footer_background = get_theme_mod( 'footer_background', '#17191B' );
-	$custom .= ".footer-svg.svg-block { fill:" . esc_attr($footer_background) . "!important;}"."\n";
 	$custom .= ".site-footer { background-color:" . esc_attr($footer_background) . ";}"."\n";
 	//Body
 	$body_text = get_theme_mod( 'body_text_color', '#50545C' );
 	$custom .= "body { color:" . esc_attr($body_text) . "}"."\n";
+	$background_color = get_background_color();
+	$custom .= "body{background-color:". esc_attr($background_color). "\n";
 	//Site title
 	$site_title = get_theme_mod( 'site_title_color', '#f9f9f9' );
 	$custom .= ".site-title a, .site-title a:hover { color:" . esc_attr($site_title) . "}"."\n";

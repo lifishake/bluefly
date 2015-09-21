@@ -1,7 +1,6 @@
 <?php
 /**
- * comments.
- *
+ * 留言模板
  * @package bluefly
  */
 
@@ -13,29 +12,16 @@ if ( post_password_required() ) {
 
 <div id="comments" class="comments-area">
 
-	<?php // You can start editing here -- including this comment! ?>
-
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php echo "评论列表"; ?>
 		</h2>
-
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php _e( '评论导航', 'bluefly' ); ?></h2>
-			<div class="nav-links">
-
-				<div class="nav-previous"><?php previous_comments_link( __( '旧评论', 'bluefly' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( '新评论', 'bluefly' ) ); ?></div>
-
-			</div><!-- .nav-links -->
-		</nav><!-- #comment-nav-above -->
-		<?php endif; // check for comment navigation ?>
-		<?php if( function_exists('bluefly_get_grasp_list') ) 
-			bluefly_get_grasp_list(); ?>
+		
+		<?php if( function_exists('bluefly_get_grasp_list') ) {
+			//显示不想留言排行榜
+			bluefly_get_grasp_list(); }?>
 		<ol class="comment-list">
 			<?php
-				//$arg_list = array();
 				$arg_list = array(
 					'style'      => 'ol',
 					'short_ping' => true,
@@ -43,22 +29,23 @@ if ( post_password_required() ) {
 					'type'=>'comment',
 					'callback'=>'mytheme_comment',
 				);
+				//页面留言改为倒序
 				if ( is_page() ){
 					$arg_list['reverse_top_level']=true;
-					$arg['max_depth'] = 2 ;
-					$arg['per_page'] = 999 ;
+					$arg_list['max_depth'] = 2 ;
+					$arg_list['per_page'] = 999 ;
 				}
 				wp_list_comments( $arg_list );
 			?>
 		</ol><!-- .comment-list -->
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :  ?>
 		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php _e( '评论导航', 'bluefly' ); ?></h2>
+			<h2 class="screen-reader-text"><?php echo( '评论导航' ); ?></h2>
 			<div class="nav-links">
 
-				<div class="nav-previous"><?php previous_comments_link( __( '旧评论', 'bluefly' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( '新评论', 'bluefly' ) ); ?></div>
+				<div class="nav-previous"><?php previous_comments_link( '旧评论' ); ?></div>
+				<div class="nav-next"><?php next_comments_link( '新评论' ); ?></div>
 
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-below -->
@@ -67,14 +54,81 @@ if ( post_password_required() ) {
 	<?php endif; // have_comments() ?>
 
 	<?php
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
-	?>
-		<p class="no-comments"><?php _e( '评论已关闭', 'bluefly' ); ?></p>
-	<?php endif; ?>
+		//评论关闭时的显示
+		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
+			echo '<p class="no-comments">"评论已关闭"</p>';
+		}
+		//通过修改comment_form的默认参数，来实现隐藏已知cookie。
+		//参考资料：https://codex.wordpress.org/Function_Reference/comment_form
+		$comment_form_args = array();
+		$commenter = wp_get_current_commenter();
+		$req = get_option( 'require_name_email' );
+		$aria_req = ( $req ? " aria-required='true'" : '' );
+		$cookie = esc_attr($commenter['comment_author']);
+		//追加修改资料部分 setStyleDisplay在ajax-comment.js里定义
+		$comment_part = '<p class="comment-notes">邮箱不会公开</p>' ;
 
-	<?php
-		comment_form(array('comment_notes_after'=>'不知该说什么就点【无言以对】吧！'));
+		if ( $cookie != "" ) {
+			$comment_part.= '<div class="form_row small">' ;
+			$comment_part.= sprintf('欢迎回来 <strong>%s</strong> ', $cookie) ;
+			$comment_part.= '<span id="show_author_info"><a href="javascript:setStyleDisplay(\'author_info\',\'\');setStyleDisplay(\'show_author_info\',\'none\');setStyleDisplay(\'hide_author_info\',\'\');">'.'修改信息 &raquo;'.'</a></span>';
+			$comment_part.= '<span id="hide_author_info"><a href="javascript:setStyleDisplay(\'author_info\',\'none\');setStyleDisplay(\'show_author_info\',\'\');setStyleDisplay(\'hide_author_info\',\'none\');">'.'关闭 &raquo;'.'</a></span>';
+			$comment_part.= '</div>' ;
+		}
+		//另一半div标签放在前面的 $comment_field里
+		$comment_part.= '<div id="author_info">';
+		$fields =  array(
+			  'author' =>
+				'<p class="comment-form-author"><label for="author">昵称</label> ' .
+				( $req ? '<span class="required">（必填）</span>' : '' ) .
+				'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+				'" size="30"' . $aria_req . ' /></p>',
+
+			  'email' =>
+				'<p class="comment-form-email"><label for="email">邮箱</label> ' .
+				( $req ? '<span class="required">（必填，不会泄漏）</span>' : '' ) .
+				'<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+				'" size="30"' . $aria_req . ' /></p>',
+
+			  'url' =>
+				'<p class="comment-form-url"><label for="url">网址</label>' .
+				'<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
+				'" size="30" /></p>',
+			);//fields
+		$args = array(
+			  'title_reply'       => '',
+			  'title_reply_to'    => '%s',
+			  'cancel_reply_link' => '取消',
+			  'label_submit'      => '发表留言',
+
+			  'comment_field' =>  '</div><p class="comment-form-comment"><label for="comment">' . '留言' .
+				'</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true">' .
+				'</textarea></p>',
+
+			  'must_log_in' => '<p class="must-log-in">' .
+				sprintf('留言前请先<a href="%s">登录</a>',
+				  wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
+				) . '</p>',
+
+			  'logged_in_as' => '<p class="logged-in-as">' .
+				sprintf(
+				  '登录用户<a href="%1$s">%2$s</a>。 <a href="%3$s" title="Log out of this account">注销?</a>',
+				  admin_url( 'profile.php' ),
+				  $user_identity,
+				  wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) )
+				) . '</p>',
+				
+			  'comment_notes_before' => $comment_part ,				
+
+			  'comment_notes_after' => '<p class="form-allowed-tags">不知该说什么就点【无言以对】吧！</p>',
+
+			  'fields' => apply_filters( 'comment_form_default_fields', $fields ),
+			);
+		comment_form($args);
+		//先调用,后隐藏
+		if ( $cookie != "" ) { ?>
+			<script type="text/javascript">setStyleDisplay('hide_author_info','none');setStyleDisplay('author_info','none');</script>
+		<?php }
 	?>
 	
 </div><!-- #comments -->

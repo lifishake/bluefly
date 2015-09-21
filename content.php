@@ -7,7 +7,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class("view view-fifth"); ?>>
 
  
-	<?php if ( has_post_thumbnail() && ( get_theme_mod( 'index_feat_image' ) != 1 ) ) : ?>
+	<?php if ( has_post_thumbnail() && ( get_theme_mod( 'hide_index_feat_image' ) != 1 ) ) : ?>
 			<?php the_post_thumbnail('bluefly-entry-thumb'); ?>
 	<?php else: ?>
 			<img src="<?php echo get_template_directory_uri() . '/images/default_thumb.png'; ?>" alt="nopic"></img>

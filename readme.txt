@@ -7,60 +7,67 @@ WP4.3标准版测试通过。未经过中文版测试。
 II. 资源
 
 a) Oblique
-Resource URI: http://flyfreemedia.com/themes/oblique
-License: GPLv2
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+来源: http://flyfreemedia.com/themes/oblique
+协议: GPLv2
+协议源: http://www.gnu.org/licenses/gpl-2.0.html
 
 b) FontAwesome
-Resource URI: http://fontawesome.io
-License: SIL Open Font License, Version 1.1
-License URI: https://scripts.sil.org/OFL?
+来源: http://fontawesome.io
+协议: SIL Open Font License, Version 1.1
+协议源: https://scripts.sil.org/OFL?
 
 c) html5shiv
-Resource URI: https://code.google.com/p/html5shiv/
-License: MIT/GPLv2
-License URI: http://opensource.org/licenses/MIT
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+来源: https://code.google.com/p/html5shiv/
+协议: MIT/GPLv2
+协议源: http://opensource.org/licenses/MIT
+协议源: http://www.gnu.org/licenses/gpl-2.0.html
 
 d) imagesLoaded
 Copyright: 2014 David DeSandro
-Resource URI: http://imagesloaded.desandro.com/
-License: MIT
-License URI: http://opensource.org/licenses/MIT
+来源: http://imagesloaded.desandro.com/
+协议: MIT
+协议源: http://opensource.org/licenses/MIT
 
 e) Slicknav
-Resource URI: https://github.com/ComputerWolf/SlickNav
-License: MIT
-License URI: http://opensource.org/licenses/MIT
+来源: https://github.com/ComputerWolf/SlickNav
+协议: MIT
+协议源: http://opensource.org/licenses/MIT
 
 f) Infinite scroll
-Resource URI: https://github.com/infinite-scroll/infinite-scroll
+来源: https://github.com/infinite-scroll/infinite-scroll
 License： MIT
-License URI: http://opensource.org/licenses/MIT
+协议源: http://opensource.org/licenses/MIT
 
-g) 缩略图
+g) 使用的图片
 缩略图中以及可见的标题图片可以在images目录下找到。
 
 Copyright: OpenClipartVectors
-Resource URI: https://pixabay.com/en/paper-note-memo-document-message-576550/
-License: CC0 1.0
-License URI: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+来源: https://pixabay.com/en/paper-note-memo-document-message-576550/
+协议: CC0 1.0
+协议源: http://creativecommons.org/publicdomain/zero/1.0/deed.en
 
 Copyright: Greyerbaby
-Resource URI: https://pixabay.com/en/legs-window-car-dirt-road-relax-434918/
-License: CC0 1.0
-License URI: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+来源: https://pixabay.com/en/legs-window-car-dirt-road-relax-434918/
+协议: CC0 1.0
+协议源: http://creativecommons.org/publicdomain/zero/1.0/deed.en
 
 h)ajax-comment
-Resource URI: https://fatesinger.com/59
-License: Unknown
+来源: https://fatesinger.com/59
+协议: 未知
 
 III. 注意事项和使用说明
-1. 无限加载效果与lazyload有冲突。我解决了使用unveil-ui.min.js时的冲突，如果有其它实现方法的需要自行解决。
+0.  如果不是以为GPL的要求，本人其实根本不想把这个主题公开。为了省事，所有的注释以及可配置的字符串都设成了中文UTF8编码。所有的歪果仁朋友，对不起了。
+    Sorry for non-Chinese developers, the author had never supposed to support any foreign languages.
+    非中国の開発者のため申し訳ありませんが、著者は、任意の外国語をサポートする予定はありませんでした。
+1. 	无限加载效果与lazyload有冲突。我解决了使用unveil-ui.min.js时的冲突，如果有其它实现方法的需要自行解决。
 
 
 
 IV. 版本历史
+2015/9/21 0.08
+--------------------------------------
+-对已知cookie隐藏信息
+
 2015/9/15 0.07
 --------------------------------------
 -变为相对日期

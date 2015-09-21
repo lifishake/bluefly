@@ -170,16 +170,20 @@ function ajax_comment_err($a) {
     exit;
 }
 
-add_filter('comment_form_defaults' , 'add_senseless_btn', 40);
 /**
  * 作用: 追加【已阅】按钮
  * 来源: 破袜子原创
  * URL: http://pewae.com
  */
+ 
+ //把按钮通过WP自带的钩子追加到默认的留言模板上。
+ //【comment_form_defaults】是“提交留言”按钮，类型是submit。默认加到它的后面。
+ add_filter('comment_form_defaults' , 'add_senseless_btn', 40);
 function add_senseless_btn( $defaults )
 {
 	if ( is_page() )
 		return $defaults;
+	//type定义成button，因为不提倡有两个submit。通过CSS使两个按钮看起来一致。
 	$notice = '<input id="grasp" class="submit" type="button" value="无言以对" name="grasp">';
 	$defaults['submit_button'] = $defaults['submit_button'].$notice;
 	return $defaults;
