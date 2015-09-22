@@ -1,5 +1,6 @@
 <?php
 /**
+ * 带缩略图的内容
  * @package bluefly
  */
 ?>
@@ -18,6 +19,5 @@
 		<p class="entry-content">
 			<?php the_excerpt(); ?>
 		</p><!-- .entry-content -->
-		<a href="<?php the_permalink(); ?>"><?php echo __('继续阅读 &hellip;','bluefly'); ?></a>
 	</div><!-- .mask -->
 </article><!-- #post-## -->

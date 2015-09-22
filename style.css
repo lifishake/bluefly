@@ -61,7 +61,7 @@ Bunny 背景动画
 body {
 	font-family: Avenir, 'Lucida Grande', Calibri, Helvetica, Arial,'Microsoft JhengHei', 'Microsoft YaHei', 'Hiragino Sans GB', SimHei, STHeiti, sans-serif;
 	font-size: 15px;
-	background-color: #1c1c1c;
+	background-color: #E5E5E5;
 	color: #50545C;
 	line-height: 1.55;
 	word-wrap: break-word;
@@ -363,7 +363,7 @@ Posts nav
 	left: 0;
 }
 .sidebar-toggle {
-	color: #fff;
+	/*color: #fff;	*//*secondray*/
 	font-size: 28px;
 	position: fixed;
 	left: 75px;
@@ -389,7 +389,14 @@ Posts nav
 }
 .widget ul {
 	padding: 0 0 0 20px;
+	list-style: none;
 }
+
+.widget li::before {
+	font-family: Fontawesome;
+	font-size: 15px;
+}
+
 .widget .children {
 	padding-left: 30px;
 }
@@ -405,24 +412,14 @@ Posts nav
 .widget_search .search-submit {
 	display: none;
 }
-/* Default widgets */
-.widget_recent_entries ul,
-.widget_archive ul,
-.widget_pages ul,
-.widget_recent_comments ul,
-.widget_categories ul {
-	list-style: none;
-	padding: 0;
+
+.widget li::before {
+	content: '\f02e';
+	margin-right: 5px;
 }
+
 .widget_recent_entries li::before,
-.widget_archive li::before,
-.widget_pages li::before,
-.widget_recent_comments li::before,
-.widget_categories li::before {
-	font-family: Fontawesome;
-	font-size: 15px;
-}
-.widget_recent_entries li::before {
+.RecentModifyed li::before {
 	content: '\f040';
 }
 .widget_archive li::before {
@@ -449,12 +446,26 @@ Posts nav
 --------------------------------------------------------------*/
 .sticky {
 	display: block;
+	opacity:0.7;
+	z-index: 9;
+}
+
+.sticky::before {
+  font-family: FontAwesome;
+  font-size: 64px;
+  position: absolute;
+  z-index: 11;
+  right: 1px ;
+  top: 1px ;
+  content: "\f0c6";
+  opacity:1;
+  color:#000;
 }
 
 .hentry {
 	margin: 0;
 	padding: 60px;
-	background-color: #fff;
+	/*background-color: #fff;*/	/*entry-bg*/
 }
 
 .updated:not(.published) {
@@ -522,20 +533,7 @@ Posts nav
 	content: '/';
 	margin-left: 8px;
 }
-.read-more {
-	background-color: #23B6B6;
-	padding: 15px 30px 30px;
-	-webkit-transition: background-color 0.3s;
-	transition: background-color 0.3s;
-}
-.read-more:hover {
-	background-color: #17191B;
-}
-.read-more a {
-	color: #fff;
-	position: relative;
-	z-index: 99;
-}
+
 .single-thumb {
 	margin-bottom: 30px;
 	text-align: center;
@@ -875,7 +873,9 @@ Social Menu
 .social-navigation li a[href*="tumblr.com"]::before {
 	content: '\f173';
 }
-
+.social-navigation li a[href*="feed"]::before {
+	content: '\f09e';
+}
 /*--------------------------------------------------------------
 Structure 
 --------------------------------------------------------------*/
@@ -1118,20 +1118,23 @@ Responsive
 	}
 }
 
+/*index画面缩略图表示*/
 .view {
     margin: 10px;
     float: left;
-    border: 10px solid #fff;
+    /*border: 10px solid #fff;*/ /*entry_bg*/
     overflow: hidden;
     position: relative;
     text-align: center;
-    box-shadow: 1px 1px 2px #e6e6e6;
+    /*box-shadow: 1px 1px 2px #e6e6e6;*//*background*/
     cursor: default;
     background: #fff url(../images/bgimg.jpg) no-repeat center center
 }
 .view .mask, .view .content {
     position: absolute;
     overflow: hidden;
+	width:100%;
+	height:100%;
     top: 0;
     left: 0
 }
@@ -1140,7 +1143,6 @@ Responsive
     position: relative;
 }
 .view h2 {
-    text-transform: uppercase;
     color: #fff;
     text-align: center;
     position: relative;
@@ -1150,7 +1152,6 @@ Responsive
     margin: 20px 0 0 0
 }
 .view p {
-    font-family: Georgia, serif;
     font-style: italic;
     font-size: 12px;
     position: relative;
@@ -1176,9 +1177,9 @@ Responsive
 }
 .view-fifth .mask { 
 	background-color: rgba(146,96,91,0.3);
-	transform: translateX(-300px);
+	transform: translateX(-99%); /*350-8*2，剩4px的小缝*/
 	opacity: 1;
-	transition: all 0.4s ease-in-out; 
+	transition: all 0.5s ease-in-out; 
 }
 .view-fifth h2{
     background: rgba(255, 255, 255, 0.5);
@@ -1195,7 +1196,7 @@ Responsive
 	transform: translateX(0px);
 }						
 .view-fifth:hover img { 
-	transform: translateX(300px);
+	transform: translateX(100%);
 	transition-delay: 0.1s;
 }
 .view-fifth:hover p{
@@ -1219,8 +1220,6 @@ Responsive
 }
 .butterBar-message{
 	background:rgba(255,255,255,0.97);
-	border-bottom-left-radius:4px;
-	border-bottom-right-radius:4px;
 	box-shadow:0 1px 1px rgba(0,0,0,0.25),0 0 1px rgba(0,0,0,0.35);
 	display:inline-block;
 	font-size:14px;
@@ -1228,3 +1227,28 @@ Responsive
 	padding:12px 25px
 }
 
+/*tooltip*/
+.show-form  {
+    cursor: pointer;
+}
+
+/*FontAwesome*/
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+.fa-navicon:before,
+.fa-reorder:before,
+.fa-bars:before {
+  content: "\f0c9";
+}
+.fa-remove:before,
+.fa-close:before,
+.fa-times:before {
+  content: "\f00d";
+}

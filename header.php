@@ -21,7 +21,7 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( '跳至内容', 'bluefly' ); ?></a>
 
 
-	<div class="sidebar-toggle"><i class="fa fa-bars"></i></div>
+	<div class="sidebar-toggle secondary_color"><i class="fa fa-bars"></i></div>
 
 	<?php if ( has_nav_menu( 'social' ) ) : ?>
 		<nav class="social-navigation container clearfix">

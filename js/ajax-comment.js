@@ -133,6 +133,12 @@ jQuery(document).ready(function(jQuery) {
 		}
 	};
 });
-function setStyleDisplay(id, status){
-	document.getElementById(id).style.display = status;
+
+jQuery(document).on('click', '.show-form', 
+function() {
+	jQuery('#author_info').toggle(300);
+});
+
+function ToggleCommentForm(){
+	jQuery('#author_info').toggle(10);
 }

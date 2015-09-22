@@ -65,15 +65,15 @@ if ( post_password_required() ) {
 		$req = get_option( 'require_name_email' );
 		$aria_req = ( $req ? " aria-required='true'" : '' );
 		$cookie = esc_attr($commenter['comment_author']);
+		$email = esc_attr($commenter['comment_author_email']);
 		//追加修改资料部分 setStyleDisplay在ajax-comment.js里定义
-		$comment_part = '<p class="comment-notes">邮箱不会公开</p>' ;
+		$comment_part = '' ;
 
 		if ( $cookie != "" ) {
-			$comment_part.= '<div class="form_row small">' ;
-			$comment_part.= sprintf('欢迎回来 <strong>%s</strong> ', $cookie) ;
-			$comment_part.= '<span id="show_author_info"><a href="javascript:setStyleDisplay(\'author_info\',\'\');setStyleDisplay(\'show_author_info\',\'none\');setStyleDisplay(\'hide_author_info\',\'\');">'.'修改信息 &raquo;'.'</a></span>';
-			$comment_part.= '<span id="hide_author_info"><a href="javascript:setStyleDisplay(\'author_info\',\'none\');setStyleDisplay(\'show_author_info\',\'\');setStyleDisplay(\'hide_author_info\',\'none\');">'.'关闭 &raquo;'.'</a></span>';
-			$comment_part.= '</div>' ;
+			$comment_part.= '<div class="form_row">' ;
+			$comment_part.= sprintf('<p> <span class="show-form secondary_color" >%s</span>， 欢迎回来 </p>', $cookie) ;	
+			$comment_part.= get_avatar( $email, $size = '32') ;
+			$comment_part.= '</div>' ;			
 		}
 		//另一半div标签放在前面的 $comment_field里
 		$comment_part.= '<div id="author_info">';
@@ -112,9 +112,7 @@ if ( post_password_required() ) {
 
 			  'logged_in_as' => '<p class="logged-in-as">' .
 				sprintf(
-				  '登录用户<a href="%1$s">%2$s</a>。 <a href="%3$s" title="Log out of this account">注销?</a>',
-				  admin_url( 'profile.php' ),
-				  $user_identity,
+				  '已登录用户。 <a href="%s" title="Log out of this account">注销?</a>',
 				  wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) )
 				) . '</p>',
 				
@@ -127,7 +125,7 @@ if ( post_password_required() ) {
 		comment_form($args);
 		//先调用,后隐藏
 		if ( $cookie != "" ) { ?>
-			<script type="text/javascript">setStyleDisplay('hide_author_info','none');setStyleDisplay('author_info','none');</script>
+			<script type="text/javascript">ToggleCommentForm();</script>
 		<?php }
 	?>
 	

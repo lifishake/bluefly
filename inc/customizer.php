@@ -5,6 +5,7 @@
  * @package bluefly
  */
 
+//PRIMARY #23B6B6
 //SECOND #B524B5
 //THIRD #B2B223
 //优先级稍微比默认调用晚一点儿，这样就能替换掉原来的英文标题和描述了。
@@ -426,7 +427,7 @@ function bluefly_customize_register( $wp_customize ) {
     $wp_customize->add_setting(
         'background_color',
         array(
-            'default'           => '#1c1c1c',
+            'default'           => '#E5E5E5',
             'sanitize_callback' => 'sanitize_hex_color',
             'transport'         => 'postMessage'
         )
@@ -683,6 +684,48 @@ function bluefly_customize_register( $wp_customize ) {
                 'label' => '网站副标题',
                 'section' => 'colors',
                 'priority' => 24
+            )
+        )
+    );	
+	
+	//第二颜色
+    $wp_customize->add_setting(
+        'secondary_color',
+        array(
+            'default'           => '#AF23AF',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'secondary_color',
+            array(
+                'label' => '第二颜色',
+                'section' => 'colors',
+                'priority' => 25
+            )
+        )
+    );	
+	
+	//第三颜色
+    $wp_customize->add_setting(
+        'thirdly_color',
+        array(
+            'default'           => '#B2B223',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'thirdly_color',
+            array(
+                'label' => '第三颜色',
+                'section' => 'colors',
+                'priority' => 26
             )
         )
     );	

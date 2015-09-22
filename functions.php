@@ -106,8 +106,6 @@ function bluefly_scripts() {
 
 	wp_enqueue_style( 'bluefly-style', get_stylesheet_uri() );
 
-	wp_enqueue_style( 'bluefly-font-awesome', get_template_directory_uri() . '/fonts/font-awesome.min.css' );	
-
 	wp_enqueue_script( 'bluefly-slicknav', get_template_directory_uri() . '/js/jquery.slicknav.min.js', array('jquery'), true );	
 
 	wp_enqueue_script( 'bluefly-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), true );	
@@ -138,11 +136,7 @@ add_action( 'wp_enqueue_scripts', 'bluefly_scripts' );
  * Footer credits
  */
 function bluefly_footer_credits() {
-	echo '<a href="' . esc_url( __( 'http://wordpress.org/', 'bluefly' ) ) . '">';
-		printf( __( 'Proudly powered by %s', 'bluefly' ), 'WordPress' );
-	echo '</a>';
-	echo '<span class="sep"> | </span>';
-	printf( __( 'Theme: %2$s by %1$s.', 'bluefly' ), 'FlyFreeMedia', '<a href="http://flyfreemedia.com/themes/bluefly" rel="designer">bluefly</a>' );
+	echo 'Theme: <span class="thirdly_color"><a href="https://github.com/lifishake/bluefly" target="_blank" rel="nofollow">bluefly</a></span> &copy'.date('Y').' 破襪子';
 }
 add_action( 'bluefly_footer', 'bluefly_footer_credits' );
 
