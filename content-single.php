@@ -1,5 +1,6 @@
 <?php
 /**
+ * 单页文章的显示
  * @package bluefly
  */
 ?>
@@ -11,7 +12,7 @@
 
 		<div class="entry-meta">
 			<?php bluefly_posted_on(); ?>
-			<?php echo bluefly_breadcrumb(); ?>
+			<?php echo bluefly_breadcrumb(); /*自定义面包屑*/ ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 

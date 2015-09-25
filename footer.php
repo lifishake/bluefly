@@ -7,7 +7,7 @@
 		</div>
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	<footer id="colophon" class="site-footer sec-bg" role="contentinfo">
 		<div class="site-info container">
 			<?php do_action('bluefly_footer'); ?>
 		</div><!-- .site-info -->

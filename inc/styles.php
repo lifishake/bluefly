@@ -4,7 +4,10 @@
  * @package bluefly
  */
 
-//Converts hex colors to rgba for the menu background color
+/**
+ * 作用: HEX描述的颜色值转成RGBA描述(A作为另外的参数)
+ * 来源: Oblique原版
+ */
 function bluefly_hex2rgba_str($color, $opacity = 1.0) {
 
         if ($color[0] == '#' ) {
@@ -17,6 +20,10 @@ function bluefly_hex2rgba_str($color, $opacity = 1.0) {
         return $output;
 }
 
+/**
+ * 作用: HEX描述的颜色值转成RGB
+ * 来源: Oblique原版
+ */
 function hex2rgb($color) {
 	if ($color[0] == '#' ) {
 		$color = substr( $color, 1 );
@@ -26,9 +33,13 @@ function hex2rgb($color) {
 	return $rgb;
 }
 
-//http://stackoverflow.com/questions/1773698/rgb-to-hsv-in-php
-function rgb2hsv(array $rgb)    // RGB values:    0-255, 0-255, 0-255
-{                                // HSV values:    0-360, 0-100, 0-100
+/**
+ * 作用: RGB颜色值转成HSV描述
+ * 来源: http://stackoverflow.com/questions/1773698/rgb-to-hsv-in-php
+ * 输出的范围0-360, 0-100, 0-100!!
+ */
+function rgb2hsv(array $rgb)   
+{                             
 	list($R,$G,$B) = $rgb;
     $R = ($R / 255);
     $G = ($G / 255);
@@ -57,6 +68,11 @@ function rgb2hsv(array $rgb)    // RGB values:    0-255, 0-255, 0-255
     return array($computedH, $computedS, $computedV);
 }
 
+/**
+ * 作用: RGB颜色值转成HSV描述
+ * 来源: 破袜子由C代码修改
+ * 输入的范围0-360, 0-100, 0-100!!
+ */
 function hsv2rgb(array $hsv) {
 	list($H,$S,$V) = $hsv;
 	//1
@@ -96,6 +112,11 @@ function hsv2rgb(array $hsv) {
 	return array($R, $G, $B);
 }
 
+/**
+ * 作用: 根据HSV取相位角度差为$degree度的颜色
+ * 来源: 破袜子原创
+ * $degree的范围-360~360
+ */
 function get_semi_color( $hsv, $degree) {
 	$temp = $hsv ;
 	$temp[0] = $temp[0] + $degree + 360;
@@ -105,6 +126,11 @@ function get_semi_color( $hsv, $degree) {
 	return $str;
 }
 
+/**
+ * 作用: 取角度差为$degree度的颜色
+ * 来源: 破袜子原创
+ * $degree的范围 0~359
+ */
 function get_assistant_color( $primary, $degree ) {
 	 $rgb = hex2rgb($primary) ;
 	 $hsv = rgb2hsv($rgb) ;
@@ -114,53 +140,55 @@ function get_assistant_color( $primary, $degree ) {
 	 return $ret;
  }
 
-//Dynamic styles
+/**
+ * 作用: 追加临时CSS，所有方案由自定义得到
+ * 来源: Oblique原版，破袜子修改
+ */
 function bluefly_custom_styles($custom) {
 
 	$custom = '';
 
-    //Site title
+    //主标题
     $site_title_size = get_theme_mod( 'site_title_size', '82' );
     if ( get_theme_mod( 'site_title_size' )) {
         $custom .= ".site-title { font-size:" . intval($site_title_size) . "px; }"."\n";
     }
-    //Site description
+    //副标题
     $site_desc_size = get_theme_mod( 'site_desc_size', '18' );
     if ( get_theme_mod( 'site_desc_size' )) {
         $custom .= ".site-description { font-size:" . intval($site_desc_size) . "px; }"."\n";
     }
-    //Menu
+    //菜单
     $menu_size = get_theme_mod( 'menu_size', '16' );
     if ( get_theme_mod( 'menu_size' )) {
         $custom .= ".main-navigation li { font-size:" . intval($menu_size) . "px; }"."\n";
     }    	    	
-	//H1 size
+	//H1
 	$h1_size = get_theme_mod( 'h1_size' );
 	if ( get_theme_mod( 'h1_size' )) {
 		$custom .= "h1 { font-size:" . intval($h1_size) . "px; }"."\n";
 	}
-    //H2 size
+    //H2
     $h2_size = get_theme_mod( 'h2_size' );
     if ( get_theme_mod( 'h2_size' )) {
         $custom .= "h2 { font-size:" . intval($h2_size) . "px; }"."\n";
     }
-    //H3 size
+    //H3
     $h3_size = get_theme_mod( 'h3_size' );
     if ( get_theme_mod( 'h3_size' )) {
         $custom .= "h3 { font-size:" . intval($h3_size) . "px; }"."\n";
     }
 
-    //Body size
+    //正文字体大小
     $body_size = get_theme_mod( 'body_size' );
     if ( get_theme_mod( 'body_size' )) {
         $custom .= "body { font-size:" . intval($body_size) . "px; }"."\n";
     }
 
-
-	//Header padding
+	//头部图片高度
 	$branding_padding = get_theme_mod( 'branding_padding', '150' );
 	$custom .= ".site-branding { padding:" . intval($branding_padding) . "px 0; }"."\n";
-	//Header padding 1024
+	//头部图片高度1024
 	$branding_padding_1024 = get_theme_mod( 'branding_padding_1024', '100' );
 	$custom .= "@media only screen and (max-width: 1024px) { .site-branding { padding:" . intval($branding_padding_1024) . "px 0; } }"."\n";	
 	//Logo size
@@ -175,10 +203,6 @@ function bluefly_custom_styles($custom) {
 	$rgba 	= bluefly_hex2rgba_str($primary_color, 0.3);
 	$custom .= ".bluefly-entry-thumb:after { background-color:" . esc_attr($rgba) . ";}" . "\n";
 	}
-	
-	//Footer background
-	$footer_background = get_theme_mod( 'footer_background', '#17191B' );
-	$custom .= ".site-footer { background-color:" . esc_attr($footer_background) . ";}"."\n";
 	
 	//Body
 	$body_text = get_theme_mod( 'body_text_color', '#50545C' );
@@ -197,15 +221,30 @@ function bluefly_custom_styles($custom) {
 	//Entry meta
 	$entry_meta = get_theme_mod( 'entry_meta', '#9d9d9d' );
 	$custom .= ".entry-meta, .entry-meta a, .entry-footer, .entry-footer a { color:" . esc_attr($entry_meta) . ";}"."\n";	
-	//Entry background
-	$entry_bg = get_theme_mod( 'entry_background_color', '#FFFFFF' );
-	$custom .= ".hentry { background-color:" . esc_attr($entry_bg) . ";}"."\n";
-	$custom .= ".view { border: 8px solid " . esc_attr($entry_bg) . ";"."\n";
+	//文章背景色
+	$hentry_bg = get_theme_mod( 'hentry_bg', '#FFFFFF' );
+	$custom .= ".hentry { background-color:" . esc_attr($hentry_bg) . ";}"."\n";
+	$custom .= ".view { border: 8px solid " . esc_attr($hentry_bg) . ";"."\n";
 	$custom .= "box-shadow: 1px 1px 2px ". esc_attr($background_color). ";}\n";
+	$custom .= ".hentry-bg { background-color:" . esc_attr($hentry_bg) . ";}"."\n";
+	////这个用固定模板的,加不上自定义风格
+	$custom .= ".comment-reply-link { background-color:" . esc_attr($hentry_bg) . ";}"."\n";
+	//反选文字的颜色,与文章背景色相同.
+	$opp_text = $hentry_bg;
+	$custom .= ".opp-text { color:" . esc_attr($opp_text) . ";}"."\n";
+	//带a带hover的直接加不上,只能单写
+	$custom .= ".post-meta, post-meta a { color:" . esc_attr($opp_text) . ";}"."\n";
+	$custom .= ".wp-caption-text { color:" . esc_attr($opp_text) . ";}"."\n";
+	$custom .= ".slicknav_nav { color:" . esc_attr($opp_text) . ";}"."\n";
+	$custom .= ".slicknav_brand { color:" . esc_attr($opp_text) . ";}"."\n";
+	$custom .= ".view h2, .view p, .view a.info { color:" . esc_attr($opp_text) . ";}"."\n";
+	$custom .= ".comment-respond .comment-reply-title { color:" . esc_attr($opp_text) . ";}"."\n";
 	
-	//Sidebar
-	$sidebar_bg = get_theme_mod( 'sidebar_bg', '#17191B' );
-	$custom .= ".widget-area { background-color:" . esc_attr($sidebar_bg) . ";}"."\n";
+	//第二背景色
+	$second_bg = get_theme_mod( 'second_bg', '#17191B' );
+	$custom .= ".sec-bg { background-color:" . esc_attr($second_bg) . ";}"."\n";
+	$custom .= 'button:hover,.button:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,input[type="grasp"]:hover { background-color: '. esc_attr($second_bg) . ";}"."\n";
+	
 	$sidebar_color = get_theme_mod( 'sidebar_color', '#f9f9f9' );
 	$custom .= ".widget-area, .widget-area a { color:" . esc_attr($sidebar_color) . ";}"."\n";
 	
@@ -224,7 +263,7 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".secondary_color { color:". $secondary_color. ";}"."\n" ;
 	$custom .= ".thirdly_color, .thirdly_color a { color:". $thirdly_color. ";}"."\n" ;
 	$custom .= ".sticky { box-shadow: 1px 1px 2px ". esc_attr($thirdly_color). ";}\n";
-
+	$custom .= ".view:hover {border: 8px solid ".$second_bg.";\n box-shadow: 1px 1px 2px ". esc_attr($secondary_color). ";}\n";
 	//Output all the styles
 	wp_add_inline_style( 'bluefly-style', $custom );	
 }

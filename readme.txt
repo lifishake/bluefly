@@ -60,6 +60,8 @@ III. 注意事项和使用说明
     Sorry for non-Chinese developers, the author had never supposed to support any foreign languages.
     非中国の開発者のため申し訳ありませんが、著者は、任意の外国語をサポートする予定はありませんでした。
 1. 	无限加载效果与lazyload有冲突。我解决了使用unveil-ui.min.js时的冲突，如果有其它实现方法的需要自行解决。
+2.  不支持文章内翻页。
+3.  不支持原生的gallery风格（media.h）
 
 
 

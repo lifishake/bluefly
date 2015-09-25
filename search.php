@@ -10,8 +10,8 @@ get_header(); ?>
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( '【%s】的搜索结果', 'bluefly' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+			<header class="page-header sec-bg">
+				<h1 class="page-title opp-text"><?php printf( '【%s】的搜索结果', '<span>' . get_search_query() . '</span>' ); ?></h1>
 			</header><!-- .page-header -->
 
 			<?php /* Start the Loop */ ?>

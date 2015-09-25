@@ -107,7 +107,7 @@ function bluefly_newcomment( $is_grasp ) {
 function bluefly_additional_grasp_show($email) {
 	?>
     <li class= "grasp-list">
-	<article class="comment-body">
+	<article class="comment-body hentry-bg">
 	<footer class="comment-meta">
 		<div class="comment-author vcard">
 			<?php echo get_avatar( $email, $size = '32');?>
@@ -121,7 +121,7 @@ function bluefly_additional_grasp_show($email) {
 function bluefly_additional_comment_show($email) {
 	?>
     <li <?php comment_class(); ?>>
-        <article class="comment-body">
+        <article class="comment-body hentry-bg">
             <footer class="comment-meta">
                 <div class="comment-author vcard">
                     <?php echo get_avatar( $email, $size = '60')?>
@@ -213,7 +213,7 @@ function grasp_lists($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment;
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( 'grasp' ); ?>>
-	<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+	<article id="div-comment-<?php comment_ID(); ?>" class="comment-body hentry-bg">
 	<footer class="comment-meta">
 	<div class="comment-author vcard">
 			<?php echo '<a href="'.get_comment_author_link().'" alt="'.get_comment_author().'" >'. get_avatar( get_comment_author_email(), $args['avatar_size']).'</a>' ; ?>
@@ -227,7 +227,7 @@ function mytheme_comment($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment;
 ?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( 0==$comment->comment_parent ? 'parent' : '' ); ?>>
-	<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+	<article id="div-comment-<?php comment_ID(); ?>" class="comment-body hentry-bg">
 	<footer class="comment-meta">
 		<div class="comment-author vcard">
 			<?php echo get_avatar( $comment, $args['avatar_size'] ); ?>

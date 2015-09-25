@@ -1,7 +1,6 @@
 <?php
 /**
  * 一些功能函数
- *
  * @package bluefly
  */
 
@@ -30,15 +29,15 @@ function bluefly_posted_on() {
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
+	/*个人用户,把作者隐藏掉*/
 	if ( !is_singular()) {
-		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span><span class="cat-link">' . $cat . '</span>';
+		echo '<span class="posted-on">' . $posted_on . '</span><span class="hidden"> ' . $byline . '</span><span class="cat-link">' . $cat . '</span>';
 	} else{
-		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>';
+		echo '<span class="posted-on">' . $posted_on . '</span><span class="hidden"> ' . $byline . '</span>';
 		if ( 'post' == get_post_type() ) {
-			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( __( ', ', 'bluefly' ) );
+			$categories_list = get_the_category_list( ', ' );
 			if ( $categories_list ) {
-				printf( '<span class="cat-links">' . __( '%1$s', 'bluefly' ) . '</span>', $categories_list );
+				printf( '<span class="cat-links">%s</span>', $categories_list );
 			}
 		}		
 	}
@@ -50,9 +49,9 @@ function bluefly_entry_footer() {
 	if ( 'post' == get_post_type() ) {
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', __( ', ', 'bluefly' ) );
+		$tags_list = get_the_tag_list( '', ', ' );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . __( '标签 %1$s', 'bluefly' ) . '</span>', $tags_list );
+			printf( '<span class="tags-links">标签 %s</span>', $tags_list );
 		}
 	}
 }

@@ -136,8 +136,8 @@ function bluefly_customize_register( $wp_customize ) {
         'type'        => 'number',
         'priority'    => 14,
         'section'     => 'bluefly_header',
-        'label'       => '留白',
-        'description' => '上下留白高度。 默认: 150px',
+        'label'       => '标题图片高度',
+        'description' => '高度。 默认: 150px',
         'input_attrs' => array(
             'min'   => 20,
             'max'   => 350,
@@ -157,8 +157,8 @@ function bluefly_customize_register( $wp_customize ) {
         'type'        => 'number',
         'priority'    => 15,
         'section'     => 'bluefly_header',
-        'label'       => '留出空白的大小（小于1024px的设备）',
-        'description' => '上下留白高度。 默认: 100px',
+        'label'       => '标题图片的大小（小于1024px的设备）',
+        'description' => '高度。 默认: 80px',
         'input_attrs' => array(
             'min'   => 20,
             'max'   => 350,
@@ -446,7 +446,7 @@ function bluefly_customize_register( $wp_customize ) {
 	
 	//文章背景色
     $wp_customize->add_setting(
-        'entry_background_color',
+        'entry_bg',
         array(
             'default'           => '#ffffff',
             'sanitize_callback' => 'sanitize_hex_color',
@@ -456,7 +456,7 @@ function bluefly_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         new WP_Customize_Color_Control(
             $wp_customize,
-            'entry_background_color',
+            'entry_bg',
             array(
                 'label' => '文章背景',
                 'section' => 'colors',
@@ -608,7 +608,7 @@ function bluefly_customize_register( $wp_customize ) {
 	
     //侧栏背景
     $wp_customize->add_setting(
-        'sidebar_bg',
+        'second_bg',
         array(
             'default'           => '#17191B',
             'sanitize_callback' => 'sanitize_hex_color',
@@ -618,9 +618,9 @@ function bluefly_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         new WP_Customize_Color_Control(
             $wp_customize,
-            'sidebar_bg',
+            'second_bg',
             array(
-                'label' => '侧栏背景',
+                'label' => '第二背景色',
                 'section' => 'colors',
                 'priority' => 21
             )
@@ -643,26 +643,6 @@ function bluefly_customize_register( $wp_customize ) {
                 'label' => '侧栏文字',
                 'section' => 'colors',
                 'priority' => 22
-            )
-        )
-    );
-
-    //底部
-    $wp_customize->add_setting(
-        'footer_background',
-        array(
-            'default'           => '#17191B',
-            'sanitize_callback' => 'sanitize_hex_color',
-        )
-    );
-    $wp_customize->add_control(
-        new WP_Customize_Color_Control(
-            $wp_customize,
-            'footer_background',
-            array(
-                'label' => '页脚背景',
-                'section' => 'colors',
-                'priority' => 23
             )
         )
     );

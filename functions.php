@@ -52,8 +52,8 @@ function bluefly_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'bluefly' ),
-		'social'  => __( 'Social', 'bluefly' ),
+		'primary' => 'Primary Menu',
+		'social'  => 'Social',
 	) );
 
 	/*
@@ -87,7 +87,7 @@ add_action( 'after_setup_theme', 'bluefly_setup' );
  */
 function bluefly_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( '侧边栏', 'bluefly' ),
+		'name'          => '侧边栏',
 		'id'            => 'sidebar-bluefly',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',

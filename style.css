@@ -8,17 +8,14 @@ Version: 0.08
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
-Tags: 动态部局, 响应式部局, 自定义颜色, 自定义背景, 自定义菜单, 自定义标题, 特色图像, 置顶文章, 主题选项, ajax评论
+Tags: 动态部局, 响应式部局, 自定义颜色, 自定义菜单, 自定义标题, 特色图像, 置顶文章, 主题选项, ajax评论, 无限加载, 中文化
 
 欢迎所有人修改这款主题并向他人分享你的修改经验。
 再次发布请遵循GPL。
 
-
 基于Oblique修改。
 [http://flyfreemedia.com/themes/oblique][GPL]
-无限滚动效果。
-URL： https://github.com/infinite-scroll/infinite-scroll。 
-License： MIT
+
 
 #DD4C39 橙色
 #F2F2F2 灰
@@ -50,6 +47,7 @@ ceskalipa search bar
 Bunny 背景动画
 */
 
+/*使用FontAwesome字体。该字体存放在本地*/
  @font-face {
   font-family: 'FontAwesome';
   src: url('./fonts/fontawesome-webfont.eot?v=4.3.0');
@@ -58,6 +56,10 @@ Bunny 背景动画
   font-style: normal;
 }
 
+/*-----------------
+  主体
+-----------------*/
+/*定义字体。先英文后中文*/
 body {
 	font-family: Avenir, 'Lucida Grande', Calibri, Helvetica, Arial,'Microsoft JhengHei', 'Microsoft YaHei', 'Hiragino Sans GB', SimHei, STHeiti, sans-serif;
 	font-size: 15px;
@@ -109,16 +111,16 @@ a {
 a:hover {
 	color: #333;
 }
-/*--------------------------------------------------------------
-Forms
---------------------------------------------------------------*/
+/*-----------------
+  表格类
+-----------------*/
 button,
 input,
 select,
 textarea {
-	font-size: 100%; /* Corrects font size not being inherited in all browsers */
-	margin: 0; /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
-	vertical-align: baseline; /* Improves appearance and consistency in all browsers */
+	font-size: 100%; 	/* 不继承浏览器设定 */
+	margin: 0; 			/* 统一上古浏览器 IE6/7, F3/4, S5, Chrome */
+	vertical-align: baseline; /* 改进不同浏览器设定 */
 }
 
 button,
@@ -129,21 +131,19 @@ input[type="submit"],
 input[type="grasp"] {
 	padding: 15px;
 	border: 0;
-	color: #fff;
+	color: #fff; /*entry_bg*/
 	font-weight: 700;
-	background-color: #23B6B6;
+	background-color: #23B6B6; /*primary*/
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
-	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
-	-webkit-appearance: button; /* Corrects inability to style clickable 'input' types in iOS */
-
+	cursor: pointer; 
+	-webkit-appearance: button; 
 }
 input[type="submit"],
 input[type="grasp"] {
 	margin: 5px 5px 0 0;
 	text-align: center;
-	/*强制设新增的button的宽度.不知道为什么变宽*/
-    width: 6em;
+    width: 6em;/*强制设新增的button的宽度.不知道为什么变宽*/
 }
 button:hover,
 .button:hover,
@@ -151,8 +151,8 @@ input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover,
 input[type="grasp"]:hover {
-	background-color: #17191B;
-	color: #fff;
+	/*background-color: #17191B; *//*sec_bg*/
+	color: #fff; /*entry_bg*/
 	text-decoration: none;
 }
 
@@ -172,22 +172,22 @@ input[type="grasp"]:active {
 
 input[type="checkbox"],
 input[type="radio"] {
-	padding: 0; /* Addresses excess padding in IE8/9 */
+	padding: 0; /* 去掉额外的填充 IE8/9 */
 }
 
 input[type="search"] {
-	-webkit-appearance: textfield; /* Addresses appearance set to searchfield in S5, Chrome */
-	-webkit-box-sizing: content-box; /* Addresses box sizing set to border-box in S5, Chrome (include -moz to future-proof) */
+	-webkit-appearance: textfield; /* S5, Chrome */
+	-webkit-box-sizing: content-box; /* 大小 S5, Chrome */
 	-moz-box-sizing:    content-box;
 	box-sizing:         content-box;
 }
 
-input[type="search"]::-webkit-search-decoration { /* Corrects inner padding displayed oddly in S5, Chrome on OSX */
+input[type="search"]::-webkit-search-decoration { /* 内部填充 S5, Chrome on OSX */
 	-webkit-appearance: none;
 }
 
 button::-moz-focus-inner,
-input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly in FF3/4 www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ */
+input::-moz-focus-inner { 
 	border: 0;
 	padding: 0;
 }
@@ -228,9 +228,9 @@ textarea {
 	width: 100%;
 }
 
-/*--------------------------------------------------------------
-Posts nav
---------------------------------------------------------------*/
+/*-----------------
+  导航
+-----------------*/
 .site-main .comment-navigation,
 .site-main .posts-navigation,
 .site-main .post-navigation {
@@ -240,14 +240,14 @@ Posts nav
 .site-main .comment-navigation a,
 .site-main .posts-navigation a,
 .site-main .post-navigation a {
-	color: #fff;
+	color: #fff; /*entry_bg*/
 }
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
 	float: left;
 	max-width: 50%;
-	background-color: #17191B;
+	/*background-color: #17191B;*//*sec_bg*/
 	padding: 15px;
 	-webkit-transition: background-color 0.3s;
 	transition: background-color 0.3s;
@@ -258,25 +258,22 @@ Posts nav
 	float: right;
 	text-align: right;
 	max-width: 50%;
-	background-color: #17191B;
+	/*background-color: #17191B;*//*sec_bg*/
 	padding: 15px;
 	-webkit-transition: background-color 0.3s;
 	transition: background-color 0.3s;
 }
-.nav-previous:hover,
-.nav-next:hover {
-	background-color: #23B6B6;
-}
+
 .blog .nav-previous {
 	margin-left: 15px;
 }
 .blog .nav-next {
 	margin-right: 15px;
 }
-/*--------------------------------------------------------------
-# Accessibility
---------------------------------------------------------------*/
-/* Text meant only for screen readers. */
+/*-----------------
+  易用性
+-----------------*/
+/* 不知道显示在哪儿,沿用. */
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;
@@ -307,9 +304,9 @@ Posts nav
 	z-index: 100000; /* Above WP toolbar. */
 }
 
-/*--------------------------------------------------------------
-# Alignments
---------------------------------------------------------------*/
+/*-----------------
+  对齐方式
+-----------------*/
 .alignleft {
 	display: inline;
 	float: left;
@@ -329,12 +326,12 @@ Posts nav
 	margin-right: auto;
 }
 
-/*--------------------------------------------------------------
-# Widgets
---------------------------------------------------------------*/
+/*-----------------
+  小工具
+-----------------*/
 .widget-area {
 	position: fixed;
-	background-color: #17191B;
+	/*background-color: #17191B;*//*sec_bg*/
 	width: 360px;
 	height: 100%;
 	padding: 30px;
@@ -438,12 +435,12 @@ Posts nav
 	content: '\f114';
 	margin-right: 5px;
 }
-/*--------------------------------------------------------------
-# Content
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Posts and pages
---------------------------------------------------------------*/
+/*-----------------
+  #内容
+-----------------*/
+/*-----------------
+  ##文章和页面
+-----------------*/
 .sticky {
 	display: block;
 	opacity:0.7;
@@ -465,15 +462,11 @@ Posts nav
 .hentry {
 	margin: 0;
 	padding: 60px;
-	/*background-color: #fff;*/	/*entry-bg*/
+	/*background-color: #fff;*/	/*hentry-bg*/
 }
 
 .updated:not(.published) {
 	display: none;
-}
-
-.single .byline{
-	display: inline;
 }
 
 .page-content,
@@ -504,7 +497,7 @@ Posts nav
 }
 .post-meta,
 .post-meta a {
-	color: #fff;
+	/*color: #fff;*/ /*opp-text*/
 }
 .entry-meta,
 .entry-footer {
@@ -557,29 +550,15 @@ Posts nav
 .entry-thumb:hover:after {
 	height: 100%;
 }
-.thumb-link {
-	opacity: 0;
-	position: absolute;
-	top: 40%;
-	left: 45%;
-	color: #fff;
-	font-size: 38px;
-	-webkit-transition: all 0.4s 0.3s;
-	transition: all 0.4s 0.3s;
-	z-index: 99;
-}
-.entry-thumb:hover .thumb-link {
-	opacity: 1;
-}
 
 .page-header {
 	margin: 0;
-	background-color: #17191B;
+	/*background-color: #17191B; *//*sec_bg*/
 	border: 0;
 	padding: 30px;
 }
 .page-header .page-title {
-	color: #fff;
+	/*color: #fff;*//*opp-text*/
 	text-align: center;
 	margin: 0;
 }
@@ -590,23 +569,23 @@ Posts nav
 .error404 .page-content {
 	margin-top: 60px;
 	text-align: center;
-	color: #fff;
+	/*color: #fff;*//*opp-text*/
 }
 .archive.author {
 	margin: 0;
 }
 
-/*--------------------------------------------------------------
-## Asides
---------------------------------------------------------------*/
+/*-----------------
+  ##aside类型不显示标题
+-----------------*/
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
 	display: none;
 }
 
-/*--------------------------------------------------------------
-Comments
---------------------------------------------------------------*/
+/*-----------------
+  #讨论区
+-----------------*/
 .comments-area {
 	margin-bottom: 60px;
 }
@@ -615,7 +594,7 @@ Comments
 	font-size: 24px;
 	padding: 30px;
 	border-bottom: 1px solid #ebebeb;
-	background-color: #fff;
+	/*background-color: #fff;*//*hentry-bg*/
 }
 .comments-area ol {
 	list-style: none;
@@ -642,7 +621,7 @@ Comments
 .comment-body {
 	padding: 30px;
 	border-bottom: 1px solid #ebebeb;
-	background-color: #fff;
+	/*background-color: #fff;*//*hentry-bg*/
 	margin-bottom: 15px;
 }
 .reply {
@@ -650,7 +629,7 @@ Comments
 }
 .comment-reply-link {
 	padding: 5px;
-	background-color: #fff;
+	/*background-color: #fff;*//*hentry-bg*/
 	font-size: 12px;
 	-webkit-transition: all 0.4s;
 	transition: all 0.4s;	
@@ -676,7 +655,7 @@ a.comment-reply-link:hover {
 }
 .comment-form,
 .comment-respond .comment-reply-title {
-	color: #fff;
+	/*color: #fff;*//*opp-text*/
 }
 .comment-form .form-submit {
 	margin-top: 30px;
@@ -686,23 +665,23 @@ a.comment-reply-link:hover {
 
 
 
-/*--------------------------------------------------------------
-# Infinite scroll
---------------------------------------------------------------*/
-/* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .posts-navigation, /* Older / Newer Posts Navigation (always hidden) */
-.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
+/*-----------------
+  无限滚动相关
+-----------------*/
+/* 无限滚动条动作中 */
+.infinite-scroll .posts-navigation, 
+.infinite-scroll.neverending .site-footer { 
 	display: none;
 }
 
-/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+/* 无限滚动条结束*/
 .infinity-end.neverending .site-footer {
 	display: block;
 }
 
-/*--------------------------------------------------------------
-# Media
---------------------------------------------------------------*/
+/*-----------------
+  媒体
+-----------------*/
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {
@@ -712,7 +691,7 @@ a.comment-reply-link:hover {
 	padding: 0;
 }
 
-/* Make sure embeds and iframes fit their containers. */
+/* 确保嵌入的内容在容器内 */
 embed,
 iframe,
 object {
@@ -725,9 +704,21 @@ img {
 img[class*="wp-image-"] {
 	margin: 15px 0;
 }
-/*--------------------------------------------------------------
-## Captions
---------------------------------------------------------------*/
+/*标题图片的毛玻璃效果*/
+.overlay::after{
+  content: "";
+  background: url(./images/overlay.png) repeat;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+/*-----------------
+  编辑器用
+-----------------*/
 .wp-caption {
 	margin: 15px 0;
 	max-width: 100%;
@@ -747,7 +738,7 @@ img[class*="wp-image-"] {
 	padding: 10px;
 	background-color: rgba(51, 51, 51, 0.6);
 	font-size: 13px;
-	color: #fff;
+	/*color: #fff;*//*opp-text*/
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
 }
@@ -755,58 +746,9 @@ img[class*="wp-image-"] {
 	bottom: -200px;
 }
 
-/*--------------------------------------------------------------
-## Galleries
---------------------------------------------------------------*/
-.gallery {
-	margin-bottom: 1.5em;
-}
-
-.gallery-item {
-	display: inline-block;
-	text-align: center;
-	vertical-align: top;
-	width: 100%;
-}
-
-.gallery-columns-2 .gallery-item {
-	max-width: 50%;
-}
-
-.gallery-columns-3 .gallery-item {
-	max-width: 33.33%;
-}
-
-.gallery-columns-4 .gallery-item {
-	max-width: 25%;
-}
-
-.gallery-columns-5 .gallery-item {
-	max-width: 20%;
-}
-
-.gallery-columns-6 .gallery-item {
-	max-width: 16.66%;
-}
-
-.gallery-columns-7 .gallery-item {
-	max-width: 14.28%;
-}
-
-.gallery-columns-8 .gallery-item {
-	max-width: 12.5%;
-}
-
-.gallery-columns-9 .gallery-item {
-	max-width: 11.11%;
-}
-
-.gallery-caption {
-	display: block;
-}
-/*--------------------------------------------------------------
-Social Menu
---------------------------------------------------------------*/
+/*-----------------
+  社会化应用菜单
+-----------------*/
 .social-navigation ul {
 	margin: 0;
 	padding: 0;
@@ -825,7 +767,7 @@ Social Menu
 	text-decoration: none;
 	display: block;
 	padding: 20px 10px;
-	color: #fff;
+	/*color: #fff;		*//*secondary*/
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;	
 }
@@ -836,6 +778,20 @@ Social Menu
 }
 .social-navigation li a:hover {
 	color: #23B6B6;
+}
+/*未知的链接*/
+.social-navigation li a::before {
+	content: '\f0c1';
+}
+/*个性化的图标链接，看域名就知道支持哪些*/
+.social-navigation li a[href*="weibo.com"]::before {
+	content: '\f18a';
+}
+.social-navigation li a[href*="renren.com"]::before {
+	content: '\f18b';
+}
+.social-navigation li a[href*="github.com"]::before {
+	content: '\f09b';
 }
 .social-navigation li a[href*="twitter.com"]::before {
 	content: '\f099';
@@ -876,16 +832,15 @@ Social Menu
 .social-navigation li a[href*="feed"]::before {
 	content: '\f09e';
 }
-/*--------------------------------------------------------------
-Structure 
---------------------------------------------------------------*/
+/*-----------------
+  架构
+-----------------*/
 .site-content {
 	margin-bottom: 30px;
 }
 .site-header {
 	position: relative;
 	margin-bottom: 45px;
-	z-index: 10;
 }
 .site-branding {
 	padding: 150px 0;
@@ -914,11 +869,11 @@ Structure
 	width: 100%;
 	top: 0;
 	background-color: #000;
-	opacity: 0.3;
+	opacity: 0.8;
 	z-index: -1;
 }
 .site-footer {
-	background-color: #17191B;
+	/*background-color: #17191B; *//*sec_bg*/
 	padding: 30px 0;
 	font-size: 14px;
 }
@@ -933,20 +888,13 @@ Structure
 	background-color: transparent;
 }
 
-.post-inner {
-	padding: 30px;
-	background-color: #fff;
-}
-.post-inner.no-thumb {
-	padding: 60px 30px 30px;
-}
-
-/*--------------------------------------------------------------
-Menu
---------------------------------------------------------------*/
+/*-----------------
+  菜单(侧边栏)
+-----------------*/
 .main-navigation {
 	display: none;
 }
+/*slicknav有关的是移动设备上显示菜单的风格*/
 .slicknav_btn { display: none; }
 .slicknav_menu  .slicknav_menutxt { display: block; line-height: 1.188em; float: left; }
 .slicknav_menu .slicknav_icon { float: left; margin: 0.188em 0 0 0.438em; }
@@ -986,7 +934,7 @@ Menu
 	margin-left: 10px;
 }
 .slicknav_nav {
-    color:#fff;
+    /*color:#fff;*//*opp-text*/
     margin:0;
     padding:0;
     font-size:0.875em;
@@ -1020,16 +968,16 @@ Menu
     margin-left:15px;   
 }
 .slicknav_brand {
-	color:#fff;
+	/*color:#fff;*//*opp-text*/
 	font-size: 18px;
 	line-height:30px;
 	padding:7px 12px;
 	height:44px;
 }
 
-/*
-无限加载
-*/
+/*-----------------
+  无限加载相关
+-----------------*/
 #infscr-loading img{
 	position: absolute !important;
 	bottom: 0.2em;
@@ -1037,9 +985,9 @@ Menu
 }
 
 
-/*--------------------------------------------------------------
-Responsive
---------------------------------------------------------------*/
+/*-----------------
+  自适应相关
+-----------------*/
 @media only screen and (max-width: 1199px) {
 	.grid-layout .hentry {
 		width: 283px;
@@ -1118,7 +1066,29 @@ Responsive
 	}
 }
 
-/*index画面缩略图表示*/
+
+/*-----------------
+  一些单独设置的效果
+-----------------*/
+.hidden {
+	display:none;
+}
+/*第二背景色,会被自定义选项覆盖掉*/
+.sec-bg {
+	background-color: #17191B;
+}
+/*页面背景色,会被自定义选项覆盖掉*/
+.hentry-bg{
+	background-color: #FFFFFF;
+}
+/*反向文字颜色,会被自定义选项覆盖掉,与页面背景色相同,但更改的是color*/
+.opp-text{
+	color: #FFFFFF;
+}
+
+/*-----------------
+  index画面缩略图表示
+-----------------*/
 .view {
     margin: 10px;
     float: left;
@@ -1143,7 +1113,7 @@ Responsive
     position: relative;
 }
 .view h2 {
-    color: #fff;
+    /*color: #fff;*//*opp-text*/
     text-align: center;
     position: relative;
     font-size: 17px;
@@ -1155,7 +1125,7 @@ Responsive
     font-style: italic;
     font-size: 12px;
     position: relative;
-    color: #fff;
+    /*color: #fff;*//*opp-text*/
     padding: 10px 20px 20px;
     text-align: center
 }
@@ -1164,7 +1134,7 @@ Responsive
     text-decoration: none;
     padding: 7px 14px;
     background: #000;
-    color: #fff;
+    /*color: #fff;*//*opp-text*/
     text-transform: uppercase;
     box-shadow: 0 0 1px #000
 }
@@ -1204,7 +1174,9 @@ Responsive
     transition-delay: 0.4s;
 }
 
-/*ajax-comment*/
+/*-----------------
+  ajax-comment
+-----------------*/
 .butterBar{
 	margin-left:36%;
 	max-width:640px;
@@ -1227,12 +1199,18 @@ Responsive
 	padding:12px 25px
 }
 
+/*-----------------
+  自定义comment部分
+-----------------*/
 /*tooltip*/
 .show-form  {
     cursor: pointer;
 }
 
-/*FontAwesome*/
+/*-----------------
+  FontAwesome相关
+-----------------*/
+/*为了节省css,只把用到的图标挪进来*/
 .fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -1242,11 +1220,13 @@ Responsive
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
 }
+/*侧边栏菜单(汉堡符号)*/
 .fa-navicon:before,
 .fa-reorder:before,
 .fa-bars:before {
   content: "\f0c9";
 }
+/*侧边栏菜单(关闭)*/
 .fa-remove:before,
 .fa-close:before,
 .fa-times:before {

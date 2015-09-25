@@ -13,7 +13,7 @@ if ( post_password_required() ) {
 <div id="comments" class="comments-area">
 
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title">
+		<h2 class="comments-title hentry-bg">
 			<?php echo "评论列表"; ?>
 		</h2>
 		
@@ -44,8 +44,8 @@ if ( post_password_required() ) {
 			<h2 class="screen-reader-text"><?php echo( '评论导航' ); ?></h2>
 			<div class="nav-links">
 
-				<div class="nav-previous"><?php previous_comments_link( '旧评论' ); ?></div>
-				<div class="nav-next"><?php next_comments_link( '新评论' ); ?></div>
+				<div class="nav-previous sec-bg"><?php previous_comments_link( '旧评论' ); ?></div>
+				<div class="nav-next sec-bg"><?php next_comments_link( '新评论' ); ?></div>
 
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-below -->
@@ -101,7 +101,7 @@ if ( post_password_required() ) {
 			  'cancel_reply_link' => '取消',
 			  'label_submit'      => '发表留言',
 
-			  'comment_field' =>  '</div><p class="comment-form-comment"><label for="comment">' . '留言' .
+			  'comment_field' =>  '</div><p class="comment-form-comment"><label for="comment">' . '发表您的看法' .
 				'</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true">' .
 				'</textarea></p>',
 
@@ -112,7 +112,7 @@ if ( post_password_required() ) {
 
 			  'logged_in_as' => '<p class="logged-in-as">' .
 				sprintf(
-				  '已登录用户。 <a href="%s" title="Log out of this account">注销?</a>',
+				  '已登录。 <a href="%s" title="Log out of this account">注销?</a>',
 				  wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) )
 				) . '</p>',
 				

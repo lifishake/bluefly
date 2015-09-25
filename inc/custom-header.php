@@ -1,22 +1,11 @@
 <?php
 /**
- * Sample implementation of the Custom Header feature
- * http://codex.wordpress.org/Custom_Headers
- *
- * You can add an optional custom header image to header.php like so ...
-
-	<?php if ( get_header_image() ) : ?>
-	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-		<img src="<?php header_image(); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="">
-	</a>
-	<?php endif; // End header image check. ?>
-
- *
+ * 自定义header的例子
  * @package bluefly
  */
 
 /**
- * Set up the WordPress core custom header feature.
+ * 设置主题对应的参数
  *
  * @uses bluefly_header_style()
  * @uses bluefly_admin_header_style()
@@ -36,17 +25,14 @@ function bluefly_custom_header_setup() {
 }
 add_action( 'after_setup_theme', 'bluefly_custom_header_setup' );
 
-if ( ! function_exists( 'bluefly_header_style' ) ) :
 /**
- * Styles the header image and text displayed on the blog
- *
- * @see bluefly_custom_header_setup().
+ * 主题风格的回调函数
  */
 function bluefly_header_style() {
 	if ( get_header_image() ) {	
 		?>
 		<style type="text/css">
-					.site-header {
+					.overlay {
 					    background: url(<?php echo get_header_image(); ?>) no-repeat;
 					    background-position: center top;
 					    background-attachment: fixed;
@@ -56,13 +42,9 @@ function bluefly_header_style() {
 		<?php
 	}
 }
-endif; // bluefly_header_style
 
-if ( ! function_exists( 'bluefly_admin_header_style' ) ) :
 /**
- * Styles the header image displayed on the Appearance > Header admin panel.
- *
- * @see bluefly_custom_header_setup().
+ * 自定义面板上的风格
  */
 function bluefly_admin_header_style() {
 ?>
@@ -84,13 +66,9 @@ function bluefly_admin_header_style() {
 	</style>
 <?php
 }
-endif; // bluefly_admin_header_style
 
-if ( ! function_exists( 'bluefly_admin_header_image' ) ) :
 /**
- * Custom header image markup displayed on the Appearance > Header admin panel.
- *
- * @see bluefly_custom_header_setup().
+ * 自定义面板上的缩略图
  */
 function bluefly_admin_header_image() {
 	$style = sprintf( ' style="color:#%s;"', get_header_textcolor() );
@@ -104,4 +82,3 @@ function bluefly_admin_header_image() {
 	</div>
 <?php
 }
-endif; // bluefly_admin_header_image

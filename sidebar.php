@@ -4,7 +4,7 @@
  */
 ?>
 
-<div id="secondary" class="widget-area" role="complementary">
+<div id="secondary" class="widget-area sec-bg" role="complementary">
 
 
 

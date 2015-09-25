@@ -16,6 +16,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php edit_post_link( __( '编辑', 'bluefly' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php edit_post_link( '编辑', '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
