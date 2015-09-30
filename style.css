@@ -650,6 +650,19 @@ a.comment-reply-link:hover {
 }
 .bypostauthor {
 }
+.comment-grasp{
+	padding: 5px;
+}
+
+.grasp-list {
+	overflow:hidden;
+}
+
+ol.grasp-list  li {
+	display:inline;
+	float:left;
+}
+
 .comment-respond {
 	margin-top: 60px;
 }

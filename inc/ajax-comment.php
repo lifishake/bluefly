@@ -213,13 +213,10 @@ function grasp_lists($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment;
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( 'grasp' ); ?>>
-	<article id="div-comment-<?php comment_ID(); ?>" class="comment-body hentry-bg">
-	<footer class="comment-meta">
-	<div class="comment-author vcard">
+	<div class="comment-grasp vcard">
 			<?php echo '<a href="'.get_comment_author_link().'" alt="'.get_comment_author().'" >'. get_avatar( get_comment_author_email(), $args['avatar_size']).'</a>' ; ?>
 	</div>
-	</footer>
-	</article>
+
 	<?php
 }
 
