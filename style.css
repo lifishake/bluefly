@@ -4,7 +4,7 @@ Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 0.08
+Version: 0.09
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
@@ -68,6 +68,11 @@ body {
 	line-height: 1.55;
 	word-wrap: break-word;
 }
+
+/*.site-title {
+	font-family: pewae,'Microsoft JhengHei';
+}*/
+
 body.not-touch-device:after {
   content: '';
   position: fixed;
@@ -110,6 +115,9 @@ a {
 }
 a:hover {
 	color: #333;
+}
+ol {
+	list-style: none;
 }
 /*-----------------
   表格类
@@ -590,10 +598,10 @@ textarea {
 	margin-bottom: 60px;
 }
 .comments-title {
-	margin: 0;
+	margin: 0 0 10px 0;
 	font-size: 24px;
-	padding: 30px;
-	border-bottom: 1px solid #ebebeb;
+	padding: 0;
+	color:inherit;
 	/*background-color: #fff;*//*hentry-bg*/
 }
 .comments-area ol {
@@ -609,14 +617,18 @@ textarea {
 }
 .comment-author .avatar {
 	position: absolute;
+	border-radius: 100%;
+	-moz-border-radius: 100%;
+	-webkit-border-radius: 100%;
 }
+.comment-content,
 .comment-author .fn,
 .comment-metadata {
 	margin-left: 80px;
 }
 .comment-metadata {
 	font-size: 12px;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 .comment-body {
 	padding: 30px;
@@ -624,43 +636,23 @@ textarea {
 	/*background-color: #fff;*//*hentry-bg*/
 	margin-bottom: 15px;
 }
-.reply {
-	text-align: right;
+.reply{
+	text-align:right;
+	float:right;
 }
 .comment-reply-link {
-	padding: 5px;
-	/*background-color: #fff;*//*hentry-bg*/
-	font-size: 12px;
+	
 	-webkit-transition: all 0.4s;
 	transition: all 0.4s;	
 }
 a.comment-reply-link {
 	text-decoration: none;
 }
-a.comment-reply-link:hover {
-	color: #000;
-	box-shadow: 0 0 1px #505050;
-}
 .comments-area a.url {
 	text-decoration: underline;
 }
-.comment-metadata a,
-.comments-area a.url {
-	color: #444;
-}
+
 .bypostauthor {
-}
-.comment-grasp{
-	padding: 5px;
-}
-
-.grasp-list {
-	overflow:hidden;
-}
-
-ol.grasp-list  li {
-	display:inline;
-	float:left;
 }
 
 .comment-respond {
@@ -674,8 +666,106 @@ ol.grasp-list  li {
 	margin-top: 30px;
 }
 
+/*下面是评论区头像边框。原效果出处
+http://tympanus.net/codrops/2013/05/22/examples-of-pseudo-elements-animations-and-transitions/*/
+.byposter {
+	position: relative;
+	margin: 0 auto;
+	width: 60px; 
+	height: 60px;
+	overflow: hidden;
+	/*transform: translateZ(0);*/
+	box-shadow: inset 36px 0 0 rgba(255, 0, 0, 0.5), 
+	            inset 0 36px 0 rgba(252, 150, 0, 0.5), 
+	            inset -36px 0 0 rgba(0, 255, 0, 0.5),	
+	            inset 0 -36px 0 rgba(0, 150, 255, 0.5);
+	/*box-shadow: 1px 1px 2px #FF0080;*/
+}
+
+/*.byposter:before,
+.byposter:after {
+	border-radius: 100%;
+	-moz-border-radius: 100%;
+	-webkit-border-radius: 100%;
+	content:"";
+	position: absolute;
+	top: 0; 
+	left: 0;
+	width: inherit; 
+	height: inherit;			
+	box-shadow: inset 42px 0 0 rgba(30, 140, 209, 0.2), 
+	            inset 0 42px 0 rgba(30, 140, 209, 0.2), 
+	            inset -42px 0 0 rgba(30, 140, 209, 0.2), 
+	            inset 0 -42px 0 rgba(30, 140, 209, 0.2);
+	transition: box-shadow 0.75s;
+}*/
+
+/*.byposter:after{
+	transform: rotate(45deg);
+}*/
+
+/*img.byposter {
+	transition: color 0.8s ease-in-out;
+	/*-webkit-font-smoothing: antialiased;*/
+	/*user-select: none;
+}*/
+
+/* There is no problem using "pseudo-class + pseudo-element" :) */
+
+/*.byposter :hover:before,
+.byposter :hover:after  {
+	box-shadow: inset 4px 0 0 rgba(255, 0, 0, 0.5), 
+	            inset 0 4px 0 rgba(252, 150, 0, 0.5), 
+	            inset -4px 0 0 rgba(0, 255, 0, 0.5),	
+	            inset 0 -4px 0 rgba(0, 150, 255, 0.5);
+}*/
+
+/*-----------------
+	##无诚意留言列表
+-----------------*/
+.comment-grasp{
+	padding: 16px 5px;
+}
+.grasp-list {
+	overflow:hidden;
+}
+ol.grasp-list  li {
+	display:inline;
+	float:left;
+}
+
+.comment-grasp a {
+	opacity:0.3;
+	
+	-webkit-transition: 0.5s ease;
+	-moz-transition: 0.5s ease;
+	-ms-transition: 0.5s ease;
+	-o-transition: 0.5s ease;
+	transition: 0.5s ease;
+}
+
+.comment-grasp a:hover {
+	opacity:1;
+}
+
+.comment-grasp img {
+	border-radius: 100%;
+	-moz-border-radius: 100%;
+	-webkit-border-radius: 100%;
+}
 
 
+
+/*-----------------
+	##已存在信息
+-----------------*/
+.form_row{
+	position: relative;
+}
+
+.form_row img{
+	margin-left:5px;
+}
 
 
 /*-----------------
@@ -1098,7 +1188,13 @@ img[class*="wp-image-"] {
 .opp-text{
 	color: #FFFFFF;
 }
-
+.assistive-text {
+    letter-spacing: 4px;
+    margin: 0;
+    opacity: 0.5;
+    text-align: center;
+	overflow: hidden;
+}
 /*-----------------
   index画面缩略图表示
 -----------------*/
@@ -1244,4 +1340,25 @@ img[class*="wp-image-"] {
 .fa-close:before,
 .fa-times:before {
   content: "\f00d";
+}
+/*箭头*/
+.fa-arrow-left:before {
+  content: "\f060";
+}
+.fa-arrow-right:before {
+  content: "\f061";
+}
+.fa-arrow-up:before {
+  content: "\f062";
+}
+.fa-arrow-down:before {
+  content: "\f063";
+}
+/*留言*/
+.fa-comments:before {
+  content: "\f086";
+}
+/*路过*/
+.fa-eye:before {
+  content: "\f06e";
 }

@@ -153,6 +153,19 @@ function bluefly_custom_styles($custom) {
     if ( get_theme_mod( 'site_title_size' )) {
         $custom .= ".site-title { font-size:" . intval($site_title_size) . "px; }"."\n";
     }
+	$title_family = get_theme_mod( 'site_title_font_family', '' );
+	if ( '' != $title_family ) {
+		$style_path = get_template_directory_uri();
+		$custom .= "@font-face { font-family: '" . $title_family ."'; \n";
+		$custom .= "src: url('".$style_path."/fonts/" . $title_family .".eot'); \n"; /*IE 9.0*/
+		$custom .= "src: url('".$style_path."/fonts/" . $title_family .".eot?#iefix') format('embedded-opentype'), \n"; /*IE -6-8*/
+		$custom .= "url('".$style_path."/fonts/" . $title_family .".woff2') format('woff2'), \n";/*少数支持且快*/
+		$custom .= "url('".$style_path."/fonts/" . $title_family .".woff') format('woff'), \n";/*大多数*/
+		$custom .= "url('".$style_path."/fonts/" . $title_family .".ttf') format('ttf'), \n" ; /* Safari, Android, iOS */
+		$custom .= "url('".$style_path."/fonts/" . $title_family .".svg') format('svg'); \n";
+		$custom .= "font-weight: normal; \n font-style: normal; }\n";
+		$custom .= ".site-title { font-family:" . $title_family ."; }"."\n";
+	}
     //副标题
     $site_desc_size = get_theme_mod( 'site_desc_size', '18' );
     if ( get_theme_mod( 'site_desc_size' )) {
@@ -195,15 +208,6 @@ function bluefly_custom_styles($custom) {
 	$logo_size = get_theme_mod( 'logo_size', '200' );
 	$custom .= ".site-logo { max-width:" . intval($logo_size) . "px; }"."\n";
 
-	//Primary color
-	$primary_color = get_theme_mod( 'primary_color', '#23B6B6' );
-	if ( $primary_color != '#23B6B6' ) {
-	$custom .= ".entry-meta a:hover, .entry-title a:hover, .widget-area a:hover, .social-navigation li a:hover, a { color:" . esc_attr($primary_color) . "}"."\n";
-	$custom .= ".nav-previous:hover, .nav-next:hover, button, .button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] { background-color:" . esc_attr($primary_color) . "}"."\n";
-	$rgba 	= bluefly_hex2rgba_str($primary_color, 0.3);
-	$custom .= ".bluefly-entry-thumb:after { background-color:" . esc_attr($rgba) . ";}" . "\n";
-	}
-	
 	//Body
 	$body_text = get_theme_mod( 'body_text_color', '#50545C' );
 	$custom .= "body { color:" . esc_attr($body_text) . ";"."\n";
@@ -212,6 +216,7 @@ function bluefly_custom_styles($custom) {
 	//Site title
 	$site_title = get_theme_mod( 'site_title_color', '#f9f9f9' );
 	$custom .= ".site-title a, .site-title a:hover { color:" . esc_attr($site_title) . ";}"."\n";
+	$custom .= ".towhom a { color:" . esc_attr($body_text) . ";}"."\n";
 	//Site desc
 	$site_desc = get_theme_mod( 'site_desc_color', '#dddddd' );
 	$custom .= ".site-description { color:" . esc_attr($site_desc) . ";}"."\n";
@@ -227,8 +232,7 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".view { border: 8px solid " . esc_attr($hentry_bg) . ";"."\n";
 	$custom .= "box-shadow: 1px 1px 2px ". esc_attr($background_color). ";}\n";
 	$custom .= ".hentry-bg { background-color:" . esc_attr($hentry_bg) . ";}"."\n";
-	////这个用固定模板的,加不上自定义风格
-	$custom .= ".comment-reply-link { background-color:" . esc_attr($hentry_bg) . ";}"."\n";
+
 	//反选文字的颜色,与文章背景色相同.
 	$opp_text = $hentry_bg;
 	$custom .= ".opp-text { color:" . esc_attr($opp_text) . ";}"."\n";
@@ -244,9 +248,19 @@ function bluefly_custom_styles($custom) {
 	$second_bg = get_theme_mod( 'second_bg', '#17191B' );
 	$custom .= ".sec-bg { background-color:" . esc_attr($second_bg) . ";}"."\n";
 	$custom .= 'button:hover,.button:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,input[type="grasp"]:hover { background-color: '. esc_attr($second_bg) . ";}"."\n";
+	$custom .= ".comment-navigation .nav-previous,.posts-navigation .nav-previous,.post-navigation .nav-previous,.comment-navigation .nav-next,.posts-navigation .nav-next,.post-navigation .nav-next  { background-color:" . esc_attr($second_bg) . ";}"."\n";
+	$custom .= ".form_row img{ border: 1px solid " . esc_attr($second_bg) . ";}"."\n";
 	
 	$sidebar_color = get_theme_mod( 'sidebar_color', '#f9f9f9' );
 	$custom .= ".widget-area, .widget-area a { color:" . esc_attr($sidebar_color) . ";}"."\n";
+	
+	//主颜色(主要是链接和高亮)
+	$primary_color = get_theme_mod( 'primary_color', '#23B6B6' );
+	$custom .= ".entry-meta a:hover, .entry-title a:hover, .widget-area a:hover, .social-navigation li a:hover, a { color:" . esc_attr($primary_color) . "}"."\n";
+	$custom .= ".nav-previous:hover, .nav-next:hover, button, .button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] { background-color:" . esc_attr($primary_color) . "}"."\n";
+	$rgba 	= bluefly_hex2rgba_str($primary_color, 0.3);
+	$custom .= ".bluefly-entry-thumb:after { background-color:" . esc_attr($rgba) . ";}" . "\n";
+	$custom .= ".assistive-text { color:" . esc_attr($primary_color) . ";}" . "\n";
 	
 	//Secondary,thirdly
 	if ( 1 == get_theme_mod('ignore_calc_color') ) {
@@ -263,6 +277,12 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".secondary_color { color:". $secondary_color. ";}"."\n" ;
 	$custom .= ".thirdly_color, .thirdly_color a { color:". $thirdly_color. ";}"."\n" ;
 	$custom .= ".sticky { box-shadow: 1px 1px 2px ". esc_attr($thirdly_color). ";}\n";
+	$custom .= ".comments-title { border-bottom: 1px solid ". esc_attr($thirdly_color). ";}\n";
+	$custom .= ".grasp-list { border-bottom: 1px solid ". esc_attr($thirdly_color). ";}\n";
+	$custom .= ".comment-metadata { border-bottom: 1px solid ". esc_attr($thirdly_color). ";}\n";
+	//$custom .= ".comment-author .avatar { border: 2px solid ". esc_attr($background_color). ";}\n";
+	//$custom .= " box-shadow: 1px 1px 2px ". esc_attr($thirdly_color). ";}\n";
+	$custom .= "a.comment-reply-link:hover { color: ". esc_attr($secondary_color). ";}\n";
 	$custom .= ".view:hover {border: 8px solid ".$second_bg.";\n box-shadow: 1px 1px 2px ". esc_attr($secondary_color). ";}\n";
 	//Output all the styles
 	wp_add_inline_style( 'bluefly-style', $custom );	

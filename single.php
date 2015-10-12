@@ -12,7 +12,7 @@ get_header(); ?>
 
 			<?php get_template_part( 'content', 'single' ); ?>
 
-			<?php the_post_navigation(); ?>
+			<?php the_post_navigation(array('prev_text'=>'<i class="fa fa-arrow-left"></i> %title','next_text'=>'%title <i class="fa fa-arrow-right"></i>','screen_reader_text'=>'文章导航')); ?>
 
 			<?php
 				// If comments are open or we have at least one comment, load up the comment template

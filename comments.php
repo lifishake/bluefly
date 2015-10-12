@@ -13,12 +13,21 @@ if ( post_password_required() ) {
 <div id="comments" class="comments-area">
 
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title hentry-bg">
-			<?php echo "评论列表"; ?>
+		<h2 class="comments-title">
+			<?php $comment_arg=array();
+			$comment_arg['post_id']=get_the_ID();
+			$comment_arg['count']='true';
+			$comment_arg['user_id']=0;/*don't count for known users*/
+			$comment_arg['type']='comment';
+			$counta=get_comments($comment_arg);
+			$comment_arg['type']='senseless';
+			$countb=get_comments($comment_arg);
+			printf('<i class="fa fa-comments"></i> %1$s  <i class="fa fa-eye"></i> %2$s',$counta,$countb);
+			?>
 		</h2>
 		
 		<?php if( function_exists('bluefly_get_grasp_list') ) {
-			//显示不想留言排行榜
+			//显示非诚意留言墙
 			bluefly_get_grasp_list(); }?>
 		<ol class="comment-list">
 			<?php
@@ -29,7 +38,7 @@ if ( post_password_required() ) {
 					'type'=>'comment',
 					'callback'=>'mytheme_comment',
 				);
-				//页面留言改为倒序
+				//页面时留言改为倒序
 				if ( is_page() ){
 					$arg_list['reverse_top_level']=true;
 					$arg_list['max_depth'] = 2 ;
@@ -44,8 +53,8 @@ if ( post_password_required() ) {
 			<h2 class="screen-reader-text"><?php echo( '评论导航' ); ?></h2>
 			<div class="nav-links">
 
-				<div class="nav-previous sec-bg"><?php previous_comments_link( '旧评论' ); ?></div>
-				<div class="nav-next sec-bg"><?php next_comments_link( '新评论' ); ?></div>
+				<div class="nav-previous sec-bg"><?php previous_comments_link( '<i class="fa fa-arrow-left"></i> 旧评论' ); ?></div>
+				<div class="nav-next sec-bg"><?php next_comments_link( '新评论 <i class="fa fa-arrow-right"></i>' ); ?></div>
 
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-below -->
@@ -59,6 +68,7 @@ if ( post_password_required() ) {
 			echo '<p class="no-comments">"评论已关闭"</p>';
 		}
 		//通过修改comment_form的默认参数，来实现隐藏已知cookie。
+		//很多默认参数的修改其实只是为了全中文需要。
 		//参考资料：https://codex.wordpress.org/Function_Reference/comment_form
 		$comment_form_args = array();
 		$commenter = wp_get_current_commenter();
@@ -71,9 +81,9 @@ if ( post_password_required() ) {
 
 		if ( $cookie != "" ) {
 			$comment_part.= '<div class="form_row">' ;
-			$comment_part.= sprintf('<p> <span class="show-form secondary_color" >%s</span>， 欢迎回来 </p>', $cookie) ;	
-			$comment_part.= get_avatar( $email, $size = '32') ;
-			$comment_part.= '</div>' ;			
+			$comment_part.= sprintf('<p> <span class="show-form secondary_color" >%s[编辑]</span>， 欢迎回来 ', $cookie) ;	
+			$comment_part.= get_avatar( $email, $size = '24') ;
+			$comment_part.= '</p></div>' ;			
 		}
 		//另一半div标签放在前面的 $comment_field里
 		$comment_part.= '<div id="author_info">';
@@ -101,7 +111,7 @@ if ( post_password_required() ) {
 			  'cancel_reply_link' => '取消',
 			  'label_submit'      => '发表留言',
 
-			  'comment_field' =>  '</div><p class="comment-form-comment"><label for="comment">' . '发表您的看法' .
+			  'comment_field' =>  '</div><p class="comment-form-comment"><label for="comment">' . '' .
 				'</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true">' .
 				'</textarea></p>',
 
@@ -118,7 +128,7 @@ if ( post_password_required() ) {
 				
 			  'comment_notes_before' => $comment_part ,				
 
-			  'comment_notes_after' => '<p class="form-allowed-tags">不知该说什么就点【无言以对】吧！</p>',
+			  'comment_notes_after' => '<p class="form-allowed-tags">不知该说什么就点【路过】吧！</p>',
 
 			  'fields' => apply_filters( 'comment_form_default_fields', $fields ),
 			);
