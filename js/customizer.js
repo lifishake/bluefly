@@ -17,13 +17,6 @@
 		} );
 	} );
 
-
-	//Header svg
-	wp.customize('background_color',function( value ) {
-		value.bind( function( newval ) {
-			$('.svg-block').css('fill', newval );
-		} );
-	});
 	// Font sizes
 	wp.customize('site_title_size',function( value ) {
 		value.bind( function( newval ) {

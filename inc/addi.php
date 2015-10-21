@@ -5,7 +5,7 @@
  */
 
 /**
- * Prints HTML with meta information for the current post-date/time and author.
+ * 作用: 显示日期(作者隐藏)
  */
 function bluefly_posted_on() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
@@ -14,52 +14,35 @@ function bluefly_posted_on() {
 		esc_attr( get_the_date( 'c' ) ),
 		bluefly_rel_post_date());
 
-	$posted_on = sprintf(
-		_x( '%s', '日期', 'bluefly' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
+	$posted_on = '<i class="fa fa-calendar thirdly_color"></i> <a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>';
 
-	$category = get_the_category(); 
-	if($category){
-		$cat = '<a href="' . esc_url(get_category_link($category[0]->term_id )) . '">' . esc_attr($category[0]->cat_name) . '</a>';
-	}
+	$byline = '<span class="author vcard hidden"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
-	$byline = sprintf(
-		_x( '%s', '作者', 'bluefly' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-	);
 
 	/*个人用户,把作者隐藏掉*/
-	if ( !is_singular()) {
-		echo '<span class="posted-on">' . $posted_on . '</span><span class="hidden"> ' . $byline . '</span><span class="cat-link">' . $cat . '</span>';
-	} else{
-		echo '<span class="posted-on">' . $posted_on . '</span><span class="hidden"> ' . $byline . '</span>';
-		if ( 'post' == get_post_type() ) {
-			$categories_list = get_the_category_list( ', ' );
-			if ( $categories_list ) {
-				printf( '<span class="cat-links">%s</span>', $categories_list );
-			}
-		}		
-	}
+	echo '<span class="posted-on">' . $posted_on . '</span>'. $byline ;
+
 }
 
-
+/**
+ * 作用: 显示tag
+ */
 function bluefly_entry_footer() {
-	// Hide category and tag text for pages.
 	if ( 'post' == get_post_type() ) {
-
-		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', ', ' );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">标签 %s</span>', $tags_list );
+			printf( '<span class="tags-links"><i class="fa fa-tag thirdly_color"></i> %s</span>', $tags_list );
 		}
 	}
 }
 
+/**
+ * 作用: 分类面包屑
+ */
 function bluefly_breadcrumb() {
 	if ( !is_single() && !is_category() )
 		return;
-	$return = '<a href="';
+	$return = '<i class="fa fa-folder-open thirdly_color"></i><a href="';
 	$return .= home_url();
 	$return .= '">主页</a> &raquo; ';
         
@@ -115,7 +98,7 @@ function bluefly_rel_post_date() {
 	$post_date_time = mysql2date('j-n-Y H:i:s', $post->post_date, false);
 	$current_time = current_time('timestamp');
 	$date_today_time = gmdate('j-n-Y H:i:s', $current_time);
-	return bluefly_timediff( $post_date_time,$date_today_time  ,'于','以前' ) ;
+	return bluefly_timediff( $post_date_time, $date_today_time ,'于','以前' ) ;
 }
 
 function bluefly_rel_comment_date() {

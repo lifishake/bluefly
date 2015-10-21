@@ -17,8 +17,6 @@ add_action('customize_register', 'bluefly_customize_register', 11);
  * 参考资料: https://developer.wordpress.org/reference/classes/wp_customize_manager/
  */
 function bluefly_customize_register( $wp_customize ) {
-	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->remove_control( 'header_textcolor' );
     $wp_customize->remove_control( 'display_header_text' );
     $wp_customize->remove_section( 'background_image' );
@@ -55,7 +53,6 @@ function bluefly_customize_register( $wp_customize ) {
         'bluefly_header',
         array(
             'title' => '题头选项',
-            //'priority' => 10,
         )
     );
     //上传LOGO
@@ -76,7 +73,6 @@ function bluefly_customize_register( $wp_customize ) {
                'type'           => 'image',
                'section'        => 'bluefly_header',
                'settings'       => 'site_logo',
-               //'priority'       => 11,
             )
         )
     );
@@ -86,12 +82,10 @@ function bluefly_customize_register( $wp_customize ) {
         array(
             'sanitize_callback' => 'absint',
             'default'           => '200',
-            'transport'         => 'postMessage'
         )       
     );
     $wp_customize->add_control( 'logo_size', array(
         'type'        => 'number',
-        //'priority'    => 12,
         'section'     => 'bluefly_header',
         'label'       => 'LOGO大小',
         'description' => 'LOGO最大像素，默认200px',
@@ -117,7 +111,6 @@ function bluefly_customize_register( $wp_customize ) {
             'label'         => 'LOGO风格',
             'description'   => '只有设置logo时此选项才有用',
             'section'       => 'bluefly_header',
-            //'priority'      => 13,
             'choices'       => array(
                 'hide-title'  => '只有LOGO',
                 'show-title'  => 'LOGO和标题同时显示',
@@ -134,7 +127,6 @@ function bluefly_customize_register( $wp_customize ) {
     );
     $wp_customize->add_control( 'branding_padding', array(
         'type'        => 'number',
-        //'priority'    => 14,
         'section'     => 'bluefly_header',
         'label'       => '标题图片高度',
         'description' => '高度。 默认: 150px',
@@ -155,7 +147,6 @@ function bluefly_customize_register( $wp_customize ) {
     );
     $wp_customize->add_control( 'branding_padding_1024', array(
         'type'        => 'number',
-        //'priority'    => 15,
         'section'     => 'bluefly_header',
         'label'       => '标题图片的大小（小于1024px的设备）',
         'description' => '高度。 默认: 80px',
@@ -174,7 +165,6 @@ function bluefly_customize_register( $wp_customize ) {
         'blog_options',
         array(
             'title' => '内容选项',
-            //'priority' => 10,
         )
     );
  
@@ -192,7 +182,6 @@ function bluefly_customize_register( $wp_customize ) {
         'type' => 'checkbox',
         'label' => '首页自动无限加载?',
         'section' => 'blog_options',
-        //'priority' => 11,
       )
     );
 	
@@ -209,7 +198,6 @@ function bluefly_customize_register( $wp_customize ) {
         'type' => 'checkbox',
         'label' => '存档页自动无限加载?',
         'section' => 'blog_options',
-        //'priority' => 12,
       )
     );
 	
@@ -226,7 +214,6 @@ function bluefly_customize_register( $wp_customize ) {
             'type' => 'checkbox',
             'label' => '列表中隐藏特色图片？',
             'section' => 'blog_options',
-            //'priority' => 13,
         )
     );
     //Post images
@@ -242,7 +229,6 @@ function bluefly_customize_register( $wp_customize ) {
             'type' => 'checkbox',
             'label' => '使用特色图片作为背景?',
             'section' => 'blog_options',
-            //'priority' => 14,
         )
     );
 
@@ -251,9 +237,8 @@ function bluefly_customize_register( $wp_customize ) {
     $wp_customize->add_section(
         'bluefly_fonts',
         array(
-            'title' => '字体大小',
-            //'priority' => 10,
-            'description' => '设置字体大小',
+            'title' => '字体',
+            'description' => '设置字体',
         )
     );
 
@@ -263,12 +248,10 @@ function bluefly_customize_register( $wp_customize ) {
         array(
             'sanitize_callback' => 'absint',
             'default'           => '82',
-            'transport'         => 'postMessage'
         )       
     );
     $wp_customize->add_control( 'site_title_size', array(
         'type'        => 'number',
-        //'priority'    => 11,
         'section'     => 'bluefly_fonts',
         'label'       => '网站主标题',
         'input_attrs' => array(
@@ -283,7 +266,6 @@ function bluefly_customize_register( $wp_customize ) {
         array(
             'sanitize_callback' => 'bluefly_sanitize_text',
             'default'           => '',
-            'transport'         => 'postMessage'
         )       
     );
     $wp_customize->add_control( 'site_title_font_family', array(
@@ -297,12 +279,10 @@ function bluefly_customize_register( $wp_customize ) {
         array(
             'sanitize_callback' => 'absint',
             'default'           => '18',
-            'transport'         => 'postMessage'
         )       
     );
     $wp_customize->add_control( 'site_desc_size', array(
         'type'        => 'number',
-        //'priority'    => 12,
         'section'     => 'bluefly_fonts',
         'label'       => '副标题',
         'input_attrs' => array(
@@ -318,12 +298,10 @@ function bluefly_customize_register( $wp_customize ) {
         array(
             'sanitize_callback' => 'absint',
             'default'           => '36',
-            'transport'         => 'postMessage'
         )       
     );
     $wp_customize->add_control( 'h1_size', array(
         'type'        => 'number',
-        //'priority'    => 13,
         'section'     => 'bluefly_fonts',
         'label'       => 'H1',
         'input_attrs' => array(
@@ -339,12 +317,10 @@ function bluefly_customize_register( $wp_customize ) {
         array(
             'sanitize_callback' => 'absint',
             'default'           => '30',
-            'transport'         => 'postMessage'
         )       
     );
     $wp_customize->add_control( 'h2_size', array(
         'type'        => 'number',
-        //'priority'    => 14,
         'section'     => 'bluefly_fonts',
         'label'       => 'H2',
         'input_attrs' => array(
@@ -360,12 +336,10 @@ function bluefly_customize_register( $wp_customize ) {
         array(
             'sanitize_callback' => 'absint',
             'default'           => '24',
-            'transport'         => 'postMessage'
         )       
     );
     $wp_customize->add_control( 'h3_size', array(
         'type'        => 'number',
-        //'priority'    => 15,
         'section'     => 'bluefly_fonts',
         'label'       => 'H3',
         'input_attrs' => array(
@@ -382,12 +356,10 @@ function bluefly_customize_register( $wp_customize ) {
         array(
             'sanitize_callback' => 'absint',
             'default'           => '16',
-            'transport'         => 'postMessage'
         )       
     );
     $wp_customize->add_control( 'body_size', array(
         'type'        => 'number',
-        //'priority'    => 16,
         'section'     => 'bluefly_fonts',
         'label'       => '正文',
         'input_attrs' => array(
@@ -399,7 +371,7 @@ function bluefly_customize_register( $wp_customize ) {
     ) );
 
     //___Colors___//
-    //Primary color
+    //Primary color　(1)
 	
     $wp_customize->add_setting('bluefly_options[titles]', array(
             'type' => 'titles_control',
@@ -412,7 +384,6 @@ function bluefly_customize_register( $wp_customize ) {
 		'description' => '下面的颜色决定主题风格',
         'section' => 'colors',
         'settings' => 'bluefly_options[titles]',
-        //'priority' => 10
         ) )
     );    
 	
@@ -431,39 +402,35 @@ function bluefly_customize_register( $wp_customize ) {
                 'label'         => '主色调',
                 'section'       => 'colors',
                 'settings'      => 'primary_color',
-                //'priority'      => 11
             )
         )
     );
 	
-	//主背景色
-    $wp_customize->add_setting(
-        'background_color',
+	//主背景色(2)
+    /*$wp_customize->add_setting(
+        'bg_color',
         array(
             'default'           => '#E5E5E5',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
         new WP_Customize_Color_Control(
             $wp_customize,
-            'background_color',
+            'bg_color',
             array(
                 'label' => '网站背景',
                 'section' => 'colors',
-                //'priority' => 12
             )
         )
-    );
+    );*/
 	
-	//文章背景色
+	//文章背景色(3)
     $wp_customize->add_setting(
         'entry_bg',
         array(
             'default'           => '#ffffff',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -473,18 +440,16 @@ function bluefly_customize_register( $wp_customize ) {
             array(
                 'label' => '文章背景',
                 'section' => 'colors',
-                //'priority' => 13
             )
         )
     );
 	
-    //Site title
+    //Site title = (3)
     $wp_customize->add_setting(
         'site_title_color',
         array(
             'default'           => '#f9f9f9',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -495,18 +460,16 @@ function bluefly_customize_register( $wp_customize ) {
                 'label' => '网站标题',
                 'section' => 'colors',
                 'settings' => 'site_title_color',
-                //'priority' => 14
             )
         )
     );
 
-    //正文文字
+    //正文文字(4)
     $wp_customize->add_setting(
         'body_text_color',
         array(
             'default'           => '#50545C',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -517,18 +480,16 @@ function bluefly_customize_register( $wp_customize ) {
                 'label' => '正文文字',
                 'section' => 'colors',
                 'settings' => 'body_text_color',
-                //'priority' => 15
             )
         )
     );
 	
-    //条目标题
+    //条目标题 = (4)
     $wp_customize->add_setting(
         'entry_titles',
         array(
             'default'           => '#000',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -538,7 +499,6 @@ function bluefly_customize_register( $wp_customize ) {
             array(
                 'label' => '文章标题',
                 'section' => 'colors',
-                //'priority' => 16
             )
         )
     ); 
@@ -555,7 +515,6 @@ function bluefly_customize_register( $wp_customize ) {
 		'description' => '下面的颜色可以通过主要颜色计算得到',
         'section' => 'colors',
         'settings' => 'bluefly_options[titles]',
-        //'priority' => 17
         ) )
     );  
 	
@@ -574,37 +533,34 @@ function bluefly_customize_register( $wp_customize ) {
         'type' => 'checkbox',
         'label' => '不使用计算生成的颜色?',
         'section' => 'colors',
-        //'priority' => 18,
       )
     );
 	$wp_customize->add_setting(
         'color_phase_steps',
         array(
             'sanitize_callback' => 'absint',
-            'default'           => '45',
+            'default'           => '135',
         )       
     );
     $wp_customize->add_control( 'color_phase_steps', array(
         'type'        => 'number',
-        //'priority'    => 19,
         'section'     => 'colors',
         'label'       => '近似色角度差',
         'description' => '计算近似色与主色调的角度差,以15的整数倍为最佳。数值越大颜色差异越大。',
         'input_attrs' => array(
             'min'   => 15,
-            'max'   => 120,
+            'max'   => 345,
             'step'  => 15,
             'style' => 'padding: 15px;',
         ),
     ) );
 	
-    //附加信息
+    //附加信息(5)
     $wp_customize->add_setting(
         'entry_meta',
         array(
             'default'           => '#9d9d9d',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -614,18 +570,16 @@ function bluefly_customize_register( $wp_customize ) {
             array(
                 'label' => '附加信息',
                 'section' => 'colors',
-                //'priority' => 20
             )
         )
     );
 	
-    //侧栏背景
+    //侧栏背景(6)
     $wp_customize->add_setting(
         'second_bg',
         array(
             'default'           => '#17191B',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -635,17 +589,15 @@ function bluefly_customize_register( $wp_customize ) {
             array(
                 'label' => '第二背景色',
                 'section' => 'colors',
-                //'priority' => 21
             )
         )
     );
-    //侧栏文字
+    //侧栏文字=(3)
     $wp_customize->add_setting(
         'sidebar_color',
         array(
             'default'           => '#f9f9f9',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -655,18 +607,16 @@ function bluefly_customize_register( $wp_customize ) {
             array(
                 'label' => '侧栏文字',
                 'section' => 'colors',
-                //'priority' => 22
             )
         )
     );
 	
-    //网站描述
+    //网站描述=(3)
     $wp_customize->add_setting(
         'site_desc_color',
         array(
             'default'           => '#dddddd',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -676,18 +626,16 @@ function bluefly_customize_register( $wp_customize ) {
             array(
                 'label' => '网站副标题',
                 'section' => 'colors',
-                //'priority' => 24
             )
         )
     );	
 	
-	//第二颜色
+	//第二颜色(7)
     $wp_customize->add_setting(
         'secondary_color',
         array(
             'default'           => '#AF23AF',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -697,18 +645,16 @@ function bluefly_customize_register( $wp_customize ) {
             array(
                 'label' => '第二颜色',
                 'section' => 'colors',
-                //'priority' => 25
             )
         )
     );	
 	
-	//第三颜色
+	//第三颜色(8)
     $wp_customize->add_setting(
         'thirdly_color',
         array(
             'default'           => '#B2B223',
             'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -718,7 +664,6 @@ function bluefly_customize_register( $wp_customize ) {
             array(
                 'label' => '第三颜色',
                 'section' => 'colors',
-                //'priority' => 26
             )
         )
     );	
@@ -758,13 +703,4 @@ function bluefly_sanitize_checkbox( $input ) {
     } else {
         return '';
     }
-}
-add_action( 'customize_preview_init', 'bluefly_customize_preview_js' );
-
- /**
- * 作用: 绑定JS处理程序
- * 参考资料: https://developer.wordpress.org/reference/classes/wp_customize_manager/customize_preview_init/
- */
-function bluefly_customize_preview_js() {
-	wp_enqueue_script( 'bluefly_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20150918', true );
 }

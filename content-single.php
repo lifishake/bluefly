@@ -11,12 +11,13 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">
-			<?php bluefly_posted_on(); ?>
-			<?php echo bluefly_breadcrumb(); /*自定义面包屑*/ ?>
+			<?php bluefly_posted_on(); echo bluefly_breadcrumb();?>
 		</div><!-- .entry-meta -->
+		
 	</header><!-- .entry-header -->
-
+	
 	<?php if ( has_post_thumbnail() ) : ?>
+	
 		<div class="single-thumb">
 			<?php the_post_thumbnail('bluefly-single-thumb'); ?>
 		</div>	

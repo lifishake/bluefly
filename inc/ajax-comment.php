@@ -148,7 +148,7 @@ function bluefly_additional_comment_show($email) {
 					</span>
                 </div>
 				<?php if ( '0' == $comment->comment_approved ) : ?>
-					<p class="comment-awaiting-moderation"><?php _e( '评论审核中。' ); ?></p>
+					<p class="comment-awaiting-moderation"><?php echo '评论审核中。'; ?></p>
 				<?php endif; ?>
             </footer>
             <div class="comment-content">
@@ -293,7 +293,7 @@ function mytheme_comment($comment, $args, $depth) {
 		</div><!-- .comment-metadata -->
 
 		<?php if ( '0' == $comment->comment_approved ) : ?>
-		<p class="comment-awaiting-moderation"><?php _e( '评论审核中。' ); ?></p>
+		<p class="comment-awaiting-moderation"><?php echo '评论审核中。'; ?></p>
 		<?php endif; ?>
 	</footer><!-- .comment-meta -->
 

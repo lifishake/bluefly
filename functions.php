@@ -1,6 +1,6 @@
 <?php
 /**
- * bluefly functions and definitions
+ * bluefly 函数和定义
  *
  * @package bluefly
  */
@@ -8,41 +8,31 @@
 
 if ( ! function_exists( 'bluefly_setup' ) ) :
 /**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
+ * 安装
  */
 function bluefly_setup() {
 
 	/*
-	 * Make theme available for translation.
-	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on bluefly, use a find and replace
-	 * to change 'bluefly' to the name of your theme in all the template files
+	 * 取语言包。虽然我没有语言包。
 	 */
-	load_theme_textdomain( 'bluefly', get_template_directory() . '/languages' );
+	//load_theme_textdomain( 'bluefly', get_template_directory() . '/languages' );
 
-	// Add default posts and comments RSS feed links to head.
+	// feed链接
 	add_theme_support( 'automatic-feed-links' );
 
-	// Content width
+	// 屏宽
 	global $content_width;
 	if ( ! isset( $content_width ) ) {
 		$content_width = 1040;
 	}
 
 	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
+	 * 标题优化
 	 */
 	add_theme_support( 'title-tag' );
 
 	/*
-	 * Enable support for Post Thumbnails on posts and pages.
+	 * 缩略图
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
@@ -50,39 +40,37 @@ function bluefly_setup() {
 	add_image_size('bluefly-entry-thumb', 720);
 	add_image_size('bluefly-single-thumb', 1040);
 
-	// This theme uses wp_nav_menu() in one location.
+	// 支持的菜单.主菜单和社会化
 	register_nav_menus( array(
 		'primary' => 'Primary Menu',
 		'social'  => 'Social',
 	) );
 
 	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
+	 * HTML5风格
 	 */
 	add_theme_support( 'html5', array(
 		'search-form', 'comment-form', 'comment-list', 'caption',
 	) );
 
 	/*
-	 * Enable support for Post Formats.
+	 * 文章格式
 	 * See http://codex.wordpress.org/Post_Formats
 	 */
 	add_theme_support( 'post-formats', array(
 		'aside', 'image', 'video', 'quote', 'link',
 	) );
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'bluefly_custom_background_args', array(
+	// 自定义背景
+	add_theme_support( 'custom-background', array(
 		'default-color' => '1c1c1c',
-	) ) );
+	) );
 }
 endif; // bluefly_setup
 add_action( 'after_setup_theme', 'bluefly_setup' );
 
 /**
- * Register widget area.
- *
+ * 作用: 注册小工具
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
 function bluefly_widgets_init() {
@@ -98,7 +86,7 @@ function bluefly_widgets_init() {
 add_action( 'widgets_init', 'bluefly_widgets_init' );
 
 /**
- * Enqueue scripts and styles.
+ * 作用: 加载js和样式表
  */
 function bluefly_scripts() {
 
@@ -110,11 +98,8 @@ function bluefly_scripts() {
 
 	wp_enqueue_script( 'bluefly-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), true );	
 
-	//wp_enqueue_script( 'bluefly-imagesloaded', get_template_directory_uri() . '/js/imagesloaded.pkgd.min.js', array(), true );		
-
 	wp_enqueue_script( 'bluefly-masonry-init', get_template_directory_uri() . '/js/masonry-init.js', array('jquery-masonry'), true );		
 
-	//wp_enqueue_script( 'bluefly-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 	wp_enqueue_script( 'bluefly-infinitescroll', get_template_directory_uri() . '/js/jquery.infinitescroll.min.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'bluefly-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
@@ -133,15 +118,16 @@ function bluefly_scripts() {
 add_action( 'wp_enqueue_scripts', 'bluefly_scripts' );
 
 /**
- * Footer credits
+ * 作用: 版本信息
+ * 来源: Oblique
  */
 function bluefly_footer_credits() {
-	echo 'Theme: <span class="thirdly_color"><a href="https://github.com/lifishake/bluefly" target="_blank" rel="nofollow">bluefly</a></span> &copy'.date('Y').' 破襪子';
+	echo 'Theme: <span class="thirdly_color"><a href="https://github.com/lifishake/bluefly" target="_blank" rel="nofollow">bluefly</a></span> &copy'.date('Y').' 破袜子';
 }
 add_action( 'bluefly_footer', 'bluefly_footer_credits' );
 
 /**
- * Load html5shiv
+ * 菜单用
  */
 function bluefly_html5shiv() {
     echo '<!--[if lt IE 9]>' . "\n";
