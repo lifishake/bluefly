@@ -9,7 +9,7 @@
 //SECOND #B524B5
 //THIRD #B2B223
 //优先级稍微比默认调用晚一点儿，这样就能替换掉原来的英文标题和描述了。
-add_action('customize_register', 'bluefly_customize_register', 11);
+add_action('customize_register', 'bluefly_customize_register', 21);
 
 /**
  * 作用: 主题自定义面板的追加和修改
@@ -216,21 +216,6 @@ function bluefly_customize_register( $wp_customize ) {
             'section' => 'blog_options',
         )
     );
-    //Post images
-    $wp_customize->add_setting(
-        'background_feat_image',
-        array(
-            'sanitize_callback' => 'bluefly_sanitize_checkbox',
-        )       
-    );
-    $wp_customize->add_control(
-        'background_feat_image',
-        array(
-            'type' => 'checkbox',
-            'label' => '使用特色图片作为背景?',
-            'section' => 'blog_options',
-        )
-    );
 
 
     //___Fonts___//
@@ -371,7 +356,7 @@ function bluefly_customize_register( $wp_customize ) {
     ) );
 
     //___Colors___//
-    //Primary color　(1)
+    //主颜色　(1)
 	
     $wp_customize->add_setting('bluefly_options[titles]', array(
             'type' => 'titles_control',
@@ -405,25 +390,7 @@ function bluefly_customize_register( $wp_customize ) {
             )
         )
     );
-	
 	//主背景色(2)
-    /*$wp_customize->add_setting(
-        'bg_color',
-        array(
-            'default'           => '#E5E5E5',
-            'sanitize_callback' => 'sanitize_hex_color',
-        )
-    );
-    $wp_customize->add_control(
-        new WP_Customize_Color_Control(
-            $wp_customize,
-            'bg_color',
-            array(
-                'label' => '网站背景',
-                'section' => 'colors',
-            )
-        )
-    );*/
 	
 	//文章背景色(3)
     $wp_customize->add_setting(

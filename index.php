@@ -21,12 +21,17 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 			<?php /*the_posts_navigation(); */
-			the_posts_pagination( array(
-				'prev_text'          => '&laquo',
-				'next_text'          => '&raquo',
-				'mid_size'			=> 2,
-				'screen_reader_text ' => '文章导航',
-			) );
+					if ( get_theme_mod('infinite_index') == 1 ) {
+						the_posts_navigation();
+					}
+					else {
+						the_posts_pagination( array(
+							'prev_text'          => '&laquo',
+							'next_text'          => '&raquo',
+							'mid_size'			=> 2,
+							'screen_reader_text ' => '文章导航',
+						) );
+					}
 			?>
 			
 			</div>

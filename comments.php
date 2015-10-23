@@ -109,7 +109,7 @@ if ( post_password_required() ) {
 			  'title_reply'       => '',
 			  'title_reply_to'    => '%s',
 			  'cancel_reply_link' => '取消',
-			  'label_submit'      => '发表留言',
+			  'label_submit'      => '留言',
 
 			  'comment_field' =>  '</div><p class="comment-form-comment"><label for="comment">' . '' .
 				'</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true">' .

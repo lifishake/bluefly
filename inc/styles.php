@@ -210,7 +210,7 @@ function bluefly_custom_styles($custom) {
 	
 	//取得各种颜色
 	$primary_color = get_theme_mod( 'primary_color', '#23B6B6' );//(1)
-	$background_color = get_theme_mod( 'background_color', '#E5E5E5' );//(2)
+	$background_color = '#'.get_background_color();//(2)
 	$entry_bg = get_theme_mod( 'entry_bg', '#FFFFFF' );//(3)
 	$opp_text = $entry_bg;
 	$site_title = get_theme_mod( 'site_title_color', '#f9f9f9' );//(3)
@@ -240,6 +240,8 @@ function bluefly_custom_styles($custom) {
 	$custom .= "h1,h2,h3,h4,h5,h6 { color:" . esc_attr($body_text) . ";}\n";
 	$custom .= ".view h2, .view p, .view a.info { color:" . esc_attr($body_text) . ";}\n";
 	
+	$custom .= "blockquote::before { color:" . esc_attr($background_color) . ";}\n";
+	
 	//Site title	
 	$custom .= ".site-title a, .site-title a:hover { color:" . esc_attr($site_title) . ";}\n";	
 	//Site desc	
@@ -250,7 +252,7 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".view-fifth h2 { color:" . esc_attr($entry_titles) . ";}\n";
 	
 	//Entry meta	
-	$custom .= ".entry-meta, .entry-meta a, .entry-footer, .entry-footer a { color:" . esc_attr($entry_meta) . ";}\n";
+	$custom .= ".entry-meta a, .entry-meta a, .entry-footer, .entry-footer a { color:" . esc_attr($entry_meta) . ";}\n";
 	$custom .= "a:hover { color: ". esc_attr($entry_meta). ";}\n";
 	$custom .= ".sticky::before { color: ". esc_attr($entry_meta). ";}\n";
 	$custom .= ".site-footer,.site-footer a { color: ". esc_attr($entry_meta). ";}\n";
@@ -268,6 +270,7 @@ function bluefly_custom_styles($custom) {
 	//带a带hover的直接加不上,只能单写
 	$custom .= ".post-meta, post-meta a { color:" . esc_attr($opp_text) . ";}\n";
 	$custom .= ".wp-caption-text { color:" . esc_attr($opp_text) . ";}\n";
+	$custom .= ".view [class*=\"content-bg-\"]::before { color:" . esc_attr($opp_text) . ";}\n";
 	$custom .= ".slicknav_nav { color:" . esc_attr($opp_text) . ";}\n";
 	$custom .= ".slicknav_brand { color:" . esc_attr($opp_text) . ";}\n";
 	$custom .= ".comment-respond .comment-reply-title { color:" . esc_attr($opp_text) . ";}\n";
@@ -282,7 +285,7 @@ function bluefly_custom_styles($custom) {
 	
 	//主颜色(主要是链接和高亮)	
 	$custom .= "a { color:" . esc_attr($primary_color) . ";}" . "\n";
-	$custom .= ".entry-meta a:hover, .entry-title a:hover, .social-navigation li a:hover, a { color:" . esc_attr($primary_color) . "}\n";
+	$custom .= ".archive-meta a:hover, .entry-meta a:hover, .entry-title a:hover, .social-navigation li a:hover, a { color:" . esc_attr($primary_color) . "}\n";
 	$custom .= ".nav-previous:hover, .nav-next:hover, button, .button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] { background-color:" . esc_attr($primary_color) . "}\n";
 	$custom .= ".page-numbers.current { color: ". esc_attr($opp_text). "; background-color: ".esc_attr($primary_color)."; }\n";
 	
@@ -290,21 +293,27 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".bluefly-entry-thumb:after { background-color:" . esc_attr($rgba) . ";}" . "\n";
 	$custom .= ".assistive-text { color:" . esc_attr($primary_color) . ";}" . "\n";
 	$custom .= ".view-fifth .mask { background-color:" . esc_attr($rgba) . ";}" . "\n";	
+	$custom .= "blockquote { border-left: 5px solid " . esc_attr($primary_color) . ";" . "\n";
+	$custom .= "background-color: " . esc_attr($rgba) . ";}" . "\n";
 	
 	$custom .= ".social-navigation li a::before { color:". $secondary_color. ";}\n" ;
 	$custom .= ".secondary_color { color:". $secondary_color. ";}\n" ;
 	$custom .= ".widget-area a:hover { color:" . esc_attr($secondary_color) . "}\n";
 	$custom .= ".thirdly_color, .thirdly_color a { color:". $thirdly_color. ";}\n" ;
 	$custom .= ".sticky { box-shadow: 1px 1px 2px ". esc_attr($thirdly_color). ";}\n";
-	$custom .= ".comments-title { border-bottom: 1px solid ". esc_attr($thirdly_color). ";}\n";
-	$custom .= ".grasp-list { border-bottom: 1px solid ". esc_attr($thirdly_color). ";}\n";
+	$custom .= ".comments-title { border-bottom: 1px solid ". esc_attr($rgba). ";}\n";
+	$custom .= ".grasp-list { border-bottom: 1px solid ". esc_attr($rgba). ";}\n";
 	$custom .= ".comment-metadata { border-bottom: 1px solid ". $rgba. ";}\n";
 	$custom .= 'button:focus,input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,input[type="grasp"]:focus
 button:active,input[type="button"]:active,input[type="reset"]:active,input[type="submit"]:active,input[type="grasp"]:active  { border-color: '. esc_attr($thirdly_color). ";}\n";
-	$custom .= ".comment-author .avatar { border: 2px solid ". esc_attr($background_color). ";}\n";
+	$custom .= ".comment-author .avatar { border: 5px solid ". esc_attr($background_color). ";\n";
 	$custom .= " box-shadow: inset 1px 1px 2px ". esc_attr($thirdly_color). ";}\n";
-	$custom .= ".byposter { border: 2px solid ". esc_attr($thirdly_color). ";}\n";
-	$custom .= " box-shadow: inset 1px 1px 2px ". esc_attr($background_color). ";}\n";
+	$custom .= ".comment-author .byposter { border-bottom: 5px solid ". esc_attr($primary_color). ";\n";
+	$custom .= " text-shadow: 1px 1px 2px ". esc_attr($primary_color). ";\n";
+	$custom .= " border-top: 5px solid ". esc_attr($second_bg). ";\n";
+	$custom .= " border-left: 5px solid ". esc_attr($secondary_color). ";\n";
+	$custom .= " border-right: 5px solid ". esc_attr($thirdly_color). ";}\n";
+	$custom .= " box-shadow: 1px 1px 2px ". esc_attr($background_color). ";}\n";
 	$custom .= "a.comment-reply-link:hover { color: ". esc_attr($secondary_color). ";}\n";
 	$custom .= ".view:hover {border: 5px solid ".$second_bg.";\n box-shadow: 1px 1px 2px ". esc_attr($primary_color). ";}\n";
 	

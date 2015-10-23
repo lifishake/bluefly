@@ -38,6 +38,7 @@ function bluefly_entry_footer() {
 
 /**
  * 作用: 分类面包屑
+ * 来源: 破袜子原创
  */
 function bluefly_breadcrumb() {
 	if ( !is_single() && !is_category() )
@@ -59,6 +60,10 @@ function bluefly_breadcrumb() {
     return $return;
 }
 
+/**
+ * 作用: 计算时间差
+ * 来源: 破袜子原创
+ */
 function bluefly_timediff( $from, $to, $before, $after) {
 	if ( empty($from) || empty($to) )
 		return '';
@@ -93,21 +98,33 @@ function bluefly_timediff( $from, $to, $before, $after) {
 	return $return;
 }
 
+/**
+ * 作用: post的时间差
+ * 来源: 破袜子原创
+ */
 function bluefly_rel_post_date() {
 	global $post;
 	$post_date_time = mysql2date('j-n-Y H:i:s', $post->post_date, false);
 	$current_time = current_time('timestamp');
 	$date_today_time = gmdate('j-n-Y H:i:s', $current_time);
-	return bluefly_timediff( $post_date_time, $date_today_time ,'于','以前' ) ;
+	return bluefly_timediff( $post_date_time, $date_today_time ,'','前' ) ;
 }
 
+/**
+ * 作用: comment的时间差
+ * 来源: 破袜子原创
+ */
 function bluefly_rel_comment_date() {
 	global $post , $comment;
 	$post_date_time = mysql2date('j-n-Y H:i:s', $post->post_date, false);
 	$comment_date_time = mysql2date('j-n-Y H:i:s', $comment->comment_date, false);
-	return bluefly_timediff( $post_date_time, $comment_date_time ,'于博文发表','以后' ) ;
+	return bluefly_timediff( $post_date_time, $comment_date_time ,'发文','后' ) ;
 }
 
+/**
+ * 作用: 计算时间差
+ * 来源: 破袜子原创
+ */
 function bluefly_time_ago( $desc ) {
 	global $prime_date;
 	global $post;

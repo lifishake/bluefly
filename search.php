@@ -14,16 +14,10 @@ get_header(); ?>
 				<h1 class="page-title opp-text"><?php printf( '【%s】的搜索结果', '<span>' . get_search_query() . '</span>' ); ?></h1>
 			</header><!-- .page-header -->
 
-			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'content', 'search' );
+				<?php /* 使用content-serch */
+					get_template_part( 'content', 'search' );
 				?>
 
 			<?php endwhile; ?>
@@ -31,8 +25,10 @@ get_header(); ?>
 			<?php the_posts_navigation(); ?>
 
 		<?php else : ?>
-
-			<?php get_template_part( 'content', 'none' ); ?>
+			
+			<?php /* 使用content-serch */
+				get_template_part( 'content', 'none' ); 
+			?>
 
 		<?php endif; ?>
 

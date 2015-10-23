@@ -17,7 +17,9 @@ get_header(); ?>
 					the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
-
+			<div class="archive-meta">
+				<?php echo bluefly_breadcrumb();?>
+			</div>
 			<div id="ob-grid" class="grid-layout">
 			<?php while ( have_posts() ) : the_post(); ?>
 
@@ -26,7 +28,19 @@ get_header(); ?>
 				?>
 
 			<?php endwhile; ?>
-			<?php the_posts_navigation(); ?>
+			<?php 
+				if ( get_theme_mod('infinite_archive') == 1 ) {
+					the_posts_navigation();
+				}
+				else {
+					the_posts_pagination( array(
+						'prev_text'          => '&laquo',
+						'next_text'          => '&raquo',
+						'mid_size'			=> 2,
+						'screen_reader_text ' => '文章导航',
+					) );
+				}
+			?>
 			</div>		
 
 		<?php else : ?>

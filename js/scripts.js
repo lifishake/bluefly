@@ -57,8 +57,9 @@ jQuery(function($) {
 	  nextSelector : '.nav-previous a',  // selector for the NEXT link (to page 2)
 	  itemSelector : '.post',     // selector for all items you'll retrieve
 	  loading: {
-		  finishedMsg: 'No more pages to load.',
-		  img: $img_load
+		  finishedMsg: '<em>到底了。</em>',
+		  img: $img_load,
+		  msgText:'<em>拼命加载中…</em>'
 		}
 	  },
 	  //Masonry的回调函数

@@ -202,7 +202,7 @@ function add_senseless_btn( $defaults )
 	if ( is_page() )
 		return $defaults;
 	//type定义成button，因为不提倡有两个submit。通过CSS使两个按钮看起来一致。
-	$notice = '<input id="grasp" class="submit" type="button" value="★路过★" name="grasp">';
+	$notice = '<input id="grasp" class="submit" type="button" value="路过" name="grasp">';
 	$defaults['submit_button'] = $defaults['submit_button'].$notice;
 	return $defaults;
 }
@@ -228,7 +228,7 @@ function bluefly_get_grasp_list()
 					'reverse_top_level'=>false,
 				));
 	?>
-	<span class="assistive-text"><i class="fa fa-arrow-down"></i> 看过但不讲话的人 <i class="fa fa-arrow-down"></i></span>
+	<span class="assistive-text"><i class="fa fa-arrow-up"></i> 看过但不讲话的人 <i class="fa fa-arrow-down"></i></span>
 	</ol>
 	<?php
 }
@@ -276,7 +276,7 @@ function mytheme_comment($comment, $args, $depth) {
 				</time>
 			<?php $parent_comment_id = $comment->comment_parent ;
 				  if ( $parent_comment_id > 0 ) {
-					printf( '<span class="towhom"> /回复 <a href="%1s">%2s</a></span>', esc_url( get_comment_link( $parent_comment_id ) ), get_comment_author($parent_comment_id) );
+					printf( '<span class="towhom"> /@ <a href="%1s">%2s</a></span>', esc_url( get_comment_link( $parent_comment_id ) ), get_comment_author($parent_comment_id) );
 					} ?>
 			<?php edit_comment_link( ' /编辑', '<span class="edit-link">', '</span>' ); ?>
 			<?php
