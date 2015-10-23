@@ -60,12 +60,23 @@ III. 注意事项和使用说明
     Sorry for non-Chinese developers, the author had never supposed to support any foreign languages.
     非中国の開発者のため申し訳ありませんが、著者は、任意の外国語をサポートする予定はありませんでした。
 1. 	无限加载效果与lazyload有冲突。我解决了使用unveil-ui.min.js时的冲突，如果有其它实现方法的需要自行解决。
-2.  不支持文章内翻页。
-3.  不支持原生的gallery风格（media.h）
+2.  不支持文章内翻页（wp_link_pages（）），因为我觉得这是个没用的功能。
+3.  不支持原生的gallery风格（media.h）。
+4.	支持自定义标题字体。包括标题和副标题，上传字体文件到\fonts下，然后在主题选项中加入字体名字即可。自定义字体教程见：
+	http://pewae.com/2015/10/yonginkscapezhizuozidingyizitibingtianjiadaowordpresszhong.html
+5.	无限滚动效果使用Infinite scroll库。想修改loading图片，替换\images\loading.gif，想替换加载文字，替换\script.js中对应的内容。查找的参数利用的是关键字posts-navigation我利用了4.3以后的新函数the_posts_pagination（）与旧函数the_posts_navigation（）的区别，如果要修改请查阅the_posts_navigation（）的相关内容。
 
 
 
 IV. 版本历史
+2015/10/23 0.11
+--------------------------------------
+-支持无限滚动的主题选项
+-导航CSS优化
+-无限滚动CSS和文字优化
+-删除默认图片,去特色图片时改为显示类别选项的图标
+-放弃对图片背景以及动态背景动画的支持
+
 2015/10/19 0.10
 --------------------------------------
 -删除customizer.js

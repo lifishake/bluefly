@@ -4,7 +4,7 @@ Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 0.09
+Version: 0.11
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
@@ -21,17 +21,6 @@ http://codepen.io/chrisgrabinski/details/gpqtc/
 http://codepen.io/davidleininger/details/FuitG
 http://tympanus.net/codrops/2013/05/22/examples-of-pseudo-elements-animations-and-transitions/
 http://thecodeplayer.com/walkthrough/simple-yet-amazing-css3-border-transition-effects
-
-Panaroma的图片背景和缩略图摆放
-annia的缩略图效果
-multiloquent价值很大
-fortunato双背景
-ColorMag主menu
-Kindergarten会动的星星
-Fukasawa menu-close效果
-cubic 固定title
-ceskalipa search bar
-Bunny 背景动画
 */
 
 /*使用FontAwesome字体。该字体存放在本地*/
@@ -54,10 +43,6 @@ body {
 	word-wrap: break-word;
 }
 
-/*.site-title {
-	font-family: pewae,'Microsoft JhengHei';
-}*/
-
 body.not-touch-device:after {
   content: '';
   position: fixed;
@@ -65,30 +50,8 @@ body.not-touch-device:after {
   right: 0;
   left: 0;
   height: 5%;
-  /*background: -moz-linear-gradient(top, rgba(245, 245, 245, 0) 0%, #F5F5F5 100%);*/
-  /* FF3.6+ */
-  /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(245, 245, 245, 0)), color-stop(100%, #F5F5F5));*/
-  /* Chrome,Safari4+ */
-  /*background: -webkit-linear-gradient(top, rgba(245, 245, 245, 0) 0%, #F5F5F5 100%);*/
-  /* Chrome10+,Safari5.1+ */
-  /*background: -o-linear-gradient(top, rgba(245, 245, 245, 0) 0%, #F5F5F5 100%);*/
-  /* Opera 11.10+ */
-  /*background: -ms-linear-gradient(top, rgba(245, 245, 245, 0) 0%, #F5F5F5 100%);*/
-  /* IE10+ */
-  /*background: linear-gradient(to bottom, rgba(245, 245, 245, 0) 0%, #F5F5F5 100%);*/
-  /* W3C */
-  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F5F5F5', endColorstr='#F5F5F5',GradientType=0 );*/
-  /* IE6-9 */
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	/*color: #000;*/
-}
 a,
 a:hover {
 	text-decoration: none;
@@ -270,7 +233,6 @@ textarea {
 .pagination .page-numbers */{
 	float: left;.pagination a, .current, .page-numbers
 	max-width: 50%;
-	/*background-color: #17191B;*//*sec_bg*/
 	padding: 15px;
 	-webkit-transition: background-color 0.3s;
 	transition: background-color 0.3s;
@@ -281,7 +243,6 @@ textarea {
 	float: right;
 	text-align: right;
 	max-width: 50%;
-	/*background-color: #17191B;*//*sec_bg*/
 	padding: 15px;
 	-webkit-transition: background-color 0.3s;
 	transition: background-color 0.3s;
@@ -479,7 +440,6 @@ textarea {
   top: 1px ;
   content: "\f0c6";
   opacity:1;
-  /*color:#000;*/
 }
 
 .hentry {
@@ -1243,7 +1203,6 @@ img[class*="wp-image-"] {
 	transition: all 0.3s ease-in-out; 
 }
 .view-fifth .mask { 
-	background-color: rgba(146,96,91,0.3);
 	transform: translateX(-99%); /*350-8*2，剩4px的小缝*/
 	opacity: 1;
 	transition: all 0.5s ease-in-out; 

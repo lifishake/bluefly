@@ -259,8 +259,8 @@ function bluefly_custom_styles($custom) {
 	
 	//文章背景色	
 	$custom .= ".hentry { background-color:" . esc_attr($entry_bg) . ";}\n";
-	$custom .= ".view { border: 8px solid " . esc_attr($entry_bg) . ";\n";
-	$custom .= "box-shadow: 1px 1px 2px ". esc_attr($background_color). ";}\n";
+	$custom .= ".view { border: 5px solid " . esc_attr($entry_bg) . ";\n";
+	$custom .= "box-shadow: 1px 1px 2px ". esc_attr($entry_bg). ";}\n";
 	$custom .= ".hentry-bg { background-color:" . esc_attr($entry_bg) . ";}\n";
 
 	//反选文字的颜色,与文章背景色相同.	
@@ -292,7 +292,7 @@ function bluefly_custom_styles($custom) {
 	$rgba 	= bluefly_hex2rgba_str($primary_color, 0.3);
 	$custom .= ".bluefly-entry-thumb:after { background-color:" . esc_attr($rgba) . ";}" . "\n";
 	$custom .= ".assistive-text { color:" . esc_attr($primary_color) . ";}" . "\n";
-	$custom .= ".view-fifth .mask { background-color:" . esc_attr($rgba) . ";}" . "\n";	
+	$custom .= ".view-fifth .mask { background-color:" . esc_attr($rgba) . ";}" . "\n";
 	$custom .= "blockquote { border-left: 5px solid " . esc_attr($primary_color) . ";" . "\n";
 	$custom .= "background-color: " . esc_attr($rgba) . ";}" . "\n";
 	
