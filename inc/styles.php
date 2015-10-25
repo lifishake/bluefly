@@ -165,6 +165,7 @@ function bluefly_custom_styles($custom) {
 		$custom .= "url('".$style_path."/fonts/" . $title_family .".svg') format('svg'); \n";
 		$custom .= "font-weight: normal; \n font-style: normal; }\n";
 		$custom .= ".site-title { font-family:" . $title_family ."; }"."\n";
+		$custom .= ".site-description { font-family:" . $title_family ."; }"."\n";
 	}
     //副标题
     $site_desc_size = get_theme_mod( 'site_desc_size', '18' );
@@ -234,8 +235,10 @@ function bluefly_custom_styles($custom) {
 	}
 
 	//正文文字颜色	
+	$rgba 	= bluefly_hex2rgba_str($body_text_color, 0.3);
 	$custom .= "body { color:" . esc_attr($body_text) . ";\n";	
-	$custom .= "background-color:". esc_attr($background_color). ";}\n";
+	$custom .= "background-color:". esc_attr($background_color). ";\n";
+	$custom .= "text-shadow: 1px 1px 2px ". esc_attr($rgba). ";}\n";
 	$custom .= ".towhom a { color:" . esc_attr($body_text) . ";}\n";
 	$custom .= "h1,h2,h3,h4,h5,h6 { color:" . esc_attr($body_text) . ";}\n";
 	$custom .= ".view h2, .view p, .view a.info { color:" . esc_attr($body_text) . ";}\n";
@@ -278,7 +281,7 @@ function bluefly_custom_styles($custom) {
 	
 	//第二背景色	
 	$custom .= ".sec-bg { background-color:" . esc_attr($second_bg) . ";}\n";
-	$custom .= 'button:hover,.button:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,input[type="grasp"]:hover { background-color: '. esc_attr($second_bg) . ";}\n";
+	$custom .= 'button:hover,.button:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,input[id="grasp"]:hover { background-color: '. esc_attr($second_bg) . ";}\n";
 	$custom .= ".comment-navigation .nav-previous,.posts-navigation .nav-previous,.post-navigation .nav-previous,.comment-navigation .nav-next,.posts-navigation .nav-next,.post-navigation .nav-next,.pagination .page-numbers  { background-color:" . esc_attr($second_bg) . ";}\n";
 	$custom .= ".form_row img{ border: 1px solid " . esc_attr($second_bg) . ";}\n";
 	$custom .= ".widget-area, .widget-area a { color:" . esc_attr($sidebar_color) . ";}\n";
@@ -295,6 +298,7 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".view-fifth .mask { background-color:" . esc_attr($rgba) . ";}" . "\n";
 	$custom .= "blockquote { border-left: 5px solid " . esc_attr($primary_color) . ";" . "\n";
 	$custom .= "background-color: " . esc_attr($rgba) . ";}" . "\n";
+	$custom .= ".slicknav_nav li { border-color:" . esc_attr($primary_color) . ";}" . "\n";
 	
 	$custom .= ".social-navigation li a::before { color:". $secondary_color. ";}\n" ;
 	$custom .= ".secondary_color { color:". $secondary_color. ";}\n" ;
@@ -304,8 +308,8 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".comments-title { border-bottom: 1px solid ". esc_attr($rgba). ";}\n";
 	$custom .= ".grasp-list { border-bottom: 1px solid ". esc_attr($rgba). ";}\n";
 	$custom .= ".comment-metadata { border-bottom: 1px solid ". $rgba. ";}\n";
-	$custom .= 'button:focus,input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,input[type="grasp"]:focus
-button:active,input[type="button"]:active,input[type="reset"]:active,input[type="submit"]:active,input[type="grasp"]:active  { border-color: '. esc_attr($thirdly_color). ";}\n";
+	$custom .= 'button:focus,input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,input[id="grasp"]:focus
+button:active,input[type="button"]:active,input[type="reset"]:active,input[type="submit"]:active,input[id="grasp"]:active  { border-color: '. esc_attr($thirdly_color). ";}\n";
 	$custom .= ".comment-author .avatar { border: 5px solid ". esc_attr($background_color). ";\n";
 	$custom .= " box-shadow: inset 1px 1px 2px ". esc_attr($thirdly_color). ";}\n";
 	$custom .= ".comment-author .byposter { border-bottom: 5px solid ". esc_attr($primary_color). ";\n";

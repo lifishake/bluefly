@@ -228,7 +228,7 @@ function bluefly_get_grasp_list()
 					'reverse_top_level'=>false,
 				));
 	?>
-	<span class="assistive-text"><i class="fa fa-arrow-up"></i> 看过但不讲话的人 <i class="fa fa-arrow-down"></i></span>
+	<span class="assistive-text"><i class="fa fa-arrow-up"></i> 看过但不讲话的人 <i class="fa fa-arrow-up"></i></span>
 	</ol>
 	<?php
 }

@@ -25,10 +25,10 @@ jQuery(document).ready(function(jQuery) {
 				post = t.I('comment_post_ID').value,
 				parent = t.I('comment_parent').value;
 				if (parent != '0') {
-					jQuery('#respond').before('<ul class="children">' + data + '</ul>');
+					jQuery('#respond').before('<ol class="children">' + data + '</ol>');
 				} else {
 					if (jQuery('.comment-list').length == 0)
-						jQuery('#respond').before('<ul>' + data + '</ul>');
+						jQuery('#respond').before('<ol>' + data + '</ol>');
 					else
 						jQuery('.comment-list').append(data);// your comments wrapper
 						

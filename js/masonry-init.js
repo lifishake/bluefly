@@ -8,8 +8,7 @@ jQuery(function($) {
 			isOriginLeft: true,
 			isFitWidth: true,
 	        isAnimated: false,
-			columnWidth: '.grid-sizer',
-			percentPosition: true
+			percentPosition: true,
 			animationOptions: {
 				duration: 300,
 				easing: 'linear',
