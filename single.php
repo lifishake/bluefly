@@ -20,9 +20,9 @@ get_header(); ?>
 					comments_template();
 				endif;
 			?>
-
+			<?php do_action('bluefly_after_single_post'); ?>
 		<?php endwhile; // end of the loop. ?>
-
+		<?php do_action('bluefly_after_single_post_loop'); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

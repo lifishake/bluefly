@@ -137,22 +137,22 @@ function bluefly_html5shiv() {
 add_action( 'wp_head', 'bluefly_html5shiv' );
 
 /**
- * Implement the Custom Header feature.
+ * 自定义头部用
  */
 require get_template_directory() . '/inc/custom-header.php';
 
 /**
- * Custom template tags for this theme.
+ * 特色函数
  */
-require get_template_directory() . '/inc/addi.php';
+require get_template_directory() . '/inc/trait.php';
 
 /**
- * Customizer additions.
+ * 追加的面板功能
  */
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Styles
+ * 自定义风格的实现
  */
 require get_template_directory() . '/inc/styles.php';
 
@@ -160,3 +160,10 @@ require get_template_directory() . '/inc/styles.php';
  * AJAX-comment
  */
 require get_template_directory() . '/inc/ajax-comment.php';
+
+/**
+ * 私有功能，不上传。没什么特别的，就是些网站描述什么的。
+ */
+ if (file_exists(get_template_directory() .'/inc/personal.php')) {
+	require get_template_directory() . '/inc/personal.php';
+ }

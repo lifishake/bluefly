@@ -151,7 +151,7 @@ function bluefly_additional_comment_show($email) {
 					<p class="comment-awaiting-moderation"><?php echo '评论审核中。'; ?></p>
 				<?php endif; ?>
             </footer>
-            <div class="comment-content">
+            <div class="comment-content <?php echo $vcard_class;?>">
                 <?php comment_text(); ?>
             </div>
         </article>		
@@ -271,14 +271,14 @@ function mytheme_comment($comment, $args, $depth) {
 		<!-- 名字 /于XXX以后 [/回复XXX] [/编辑] -->
 		<div class="comment-metadata">
 			<span><b class="fn"><?php echo get_comment_author_link(); ?></b>
-				<time datetime="<?php comment_time( 'c' ); ?>">
-					<?php  echo ' /'.bluefly_rel_comment_date(); ?>
+				<time datetime="<?php comment_time( 'c' ); ?>" class="comment-on">
+					<?php  echo bluefly_rel_comment_date(); ?>
 				</time>
 			<?php $parent_comment_id = $comment->comment_parent ;
 				  if ( $parent_comment_id > 0 ) {
-					printf( '<span class="towhom"> /@ <a href="%1s">%2s</a></span>', esc_url( get_comment_link( $parent_comment_id ) ), get_comment_author($parent_comment_id) );
+					printf( '<span class="towhom"> @ <a href="%1s">%2s</a></span>', esc_url( get_comment_link( $parent_comment_id ) ), get_comment_author($parent_comment_id) );
 					} ?>
-			<?php edit_comment_link( ' /编辑', '<span class="edit-link">', '</span>' ); ?>
+			<?php edit_comment_link( ' 编辑', '<span class="edit-link">', '</span>' ); ?>
 			<?php
 			comment_reply_link( array_merge( $args, array(
 				'add_below' => 'div-comment',
@@ -297,7 +297,7 @@ function mytheme_comment($comment, $args, $depth) {
 		<?php endif; ?>
 	</footer><!-- .comment-meta -->
 
-	<div class="comment-content">
+	<div class="comment-content <?php echo $vcard_class;?>">
 		<?php comment_text(); ?>
 	</div><!-- .comment-content -->
 

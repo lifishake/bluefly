@@ -486,13 +486,26 @@ textarea {
 }
 
 .posted-on,
-.author {
+.author{
 	margin-right: 8px;
 }
+
 .posted-on:after,
 .author:after {
 	content: '/';
 	margin-left: 8px;
+}
+
+.comment-on,
+.towhom,
+.edit-link {
+	margin-left: 8px;
+}
+.comment-on:before,
+.towhom:before,
+.edit-link:before {
+	content: '/';
+	margin-right: 8px;
 }
 
 blockquote::before {
@@ -760,7 +773,6 @@ img[class*="wp-image-"] {
 	padding: 10px;
 	background-color: rgba(51, 51, 51, 0.6);
 	font-size: 13px;
-	/*color: #fff;*//*opp-text*/
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
 }
@@ -789,7 +801,6 @@ img[class*="wp-image-"] {
 	text-decoration: none;
 	display: block;
 	padding: 20px 10px;
-	/*color: #fff;		*//*secondary*/
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;	
 }
@@ -798,9 +809,7 @@ img[class*="wp-image-"] {
 	font-size: 20px;
 	display: block;
 }
-.social-navigation li a:hover {
-	/*color: #23B6B6;*/
-}
+
 /*未知的链接*/
 .social-navigation li a::before {
 	content: '\f0c1';
@@ -878,12 +887,8 @@ img[class*="wp-image-"] {
 	font-size: 82px;
 	margin: 0 0 30px;
 }
-.site-title a {
-	/*color: #f9f9f9;*/
-}
 .site-description {
 	font-size: 18px;
-	/*color: #ddd;*/
 }
 .overlay {
 	position: absolute;
@@ -895,14 +900,28 @@ img[class*="wp-image-"] {
 	z-index: -1;
 }
 .site-footer {
-	/*background-color: #17191B; *//*sec_bg*/
 	padding: 30px 0;
 	font-size: 14px;
+	text-shadow:none;
 }
-.site-footer,
-.site-footer a {
-	color: #8B8B8B;
-}
+.floattop{ position:fixed;
+		   right:5%;
+		   bottom:12%;
+		   cursor:pointer;
+		   font-size: 1.2em;
+		   padding:0.5em;
+		   background-color:rgba(0,0,0,0);
+		   border-bottom:2px solid #fff;
+		   }
+.floattop:hover{
+	-webkit-transition:all .8s ease-in-out;
+	-moz-transition:all .8s ease-in-out;
+	-o-transition:all .8s ease-in-out;
+	transition:all .8s ease-in-out;
+	-webkit-transform:rotate(360deg);
+	-moz-transform:rotate(360deg);
+	transform:rotate(360deg);
+	}
 .grid-layout .hentry {
 	width: 350px;
 	margin: 15px;
@@ -956,7 +975,6 @@ img[class*="wp-image-"] {
 	margin-left: 10px;
 }
 .slicknav_nav {
-    /*color:#fff;*//*opp-text*/
     margin:0;
     padding:0;
     font-size:0.875em;
@@ -990,7 +1008,6 @@ img[class*="wp-image-"] {
     margin-left:15px;   
 }
 .slicknav_brand {
-	/*color:#fff;*//*opp-text*/
 	font-size: 18px;
 	line-height:30px;
 	padding:7px 12px;
@@ -1001,7 +1018,6 @@ img[class*="wp-image-"] {
   无限加载相关
 -----------------*/
 #infscr-loading {
-	/*position: absolute !important;*/
 	right:15%;
 	position:fixed !important;
 	text-align:center;
@@ -1022,6 +1038,9 @@ img[class*="wp-image-"] {
 	.grid-layout .hentry {
 		width: 283px;
 	}
+	.grid-sizer{
+		width: 283px;
+	}
 }
 @media only screen and (max-width: 1024px) {
 	.site-header {
@@ -1033,12 +1052,19 @@ img[class*="wp-image-"] {
 	.grid-layout .hentry {
 		width: 330px;
 	}
+	.grid-sizer{
+		width: 330px;
+	}
 	.site-title {
 		font-size: 60px !important;
 	}
 }
 @media only screen and (max-width: 767px) {
 	.grid-layout .hentry {
+		width: 100%;
+		margin: 0 0 30px;
+	}
+	.grid-sizer{
 		width: 100%;
 		margin: 0 0 30px;
 	}
@@ -1134,7 +1160,6 @@ img[class*="wp-image-"] {
 	z-index: -1;
 	content: "\f02d";
 	opacity:1;
-	color:#FF0080;
 	margin:50px auto 5px auto;
 	text-align:center;
 }
@@ -1184,7 +1209,6 @@ img[class*="wp-image-"] {
     display: inline-block;
     text-decoration: none;
     padding: 7px 14px;
-    background: #000;
     box-shadow: 0 0 1px #000
 }
 .view a.info:hover {
@@ -1200,8 +1224,8 @@ img[class*="wp-image-"] {
 	transition: all 0.5s ease-in-out; 
 }
 .view-fifth h2{
-    background: rgba(255, 255, 255, 0.5);
-    color: #000;
+    background: rgba(255, 255, 255, 0.5);/*透明白色50%,这个颜色不换了,百搭*/
+    color: #000;/*百搭黑色*/
     box-shadow: 0px 1px 3px rgba(159, 141, 140, 0.5);
 }
 .view-fifth p{
@@ -1280,7 +1304,7 @@ img[class*="wp-image-"] {
 .fa-times:before {
   content: "\f00d";
 }
-/*箭头*/
+/*箭头s*/
 .fa-arrow-left:before {
   content: "\f060";
 }
@@ -1305,9 +1329,14 @@ img[class*="wp-image-"] {
 .fa-tag:before {
   content: "\f02b";
 }
+/*日历*/
 .fa-calendar:before {
   content: "\f073";
 }
+/*category*/
 .fa-folder-open:before {
   content: "\f07c";
+}
+.fa-hand-o-up:before {
+  content: "\f0a6";
 }

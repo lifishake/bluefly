@@ -13,7 +13,7 @@ get_header(); ?>
 
 			<header class="page-header sec-bg">			
 				<?php
-					the_archive_title( '<h1 class="page-title opp-text">', '</h1>' );
+					bluefly_archive_title();
 					the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
@@ -27,6 +27,7 @@ get_header(); ?>
 				?>
 
 			<?php endwhile; ?>
+			</div>
 			<?php 
 				if ( get_theme_mod('infinite_archive') == 1 ) {
 					the_posts_navigation();
@@ -39,8 +40,7 @@ get_header(); ?>
 						'screen_reader_text ' => '文章导航',
 					) );
 				}
-			?>
-			</div>		
+			?>					
 
 		<?php else : ?>
 

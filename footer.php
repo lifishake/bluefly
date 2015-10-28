@@ -13,7 +13,7 @@
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
-
+<div class="floattop sec-bg opp-text"><i class="fa fa-hand-o-up"></i></div>
 <?php wp_footer(); ?>
 
 </body>

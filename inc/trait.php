@@ -14,7 +14,7 @@ function bluefly_posted_on() {
 		esc_attr( get_the_date( 'c' ) ),
 		bluefly_rel_post_date());
 
-	$posted_on = '<i class="fa fa-calendar thirdly_color"></i> <a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>';
+	$posted_on = '<i class="fa fa-calendar thirdly_color"></i> ' . $time_string ;
 
 	$byline = '<span class="author vcard hidden"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
@@ -34,6 +34,48 @@ function bluefly_entry_footer() {
 			printf( '<span class="tags-links"><i class="fa fa-tag thirdly_color"></i> %s</span>', $tags_list );
 		}
 	}
+}
+
+/**
+ * 作用: archive标题
+ * 来源: 破袜子原创
+ */
+function bluefly_archive_title() {
+	/*为了中文化,放弃wordpress自带的the_archive_title()*/
+	$format = '%1$s%2$s: %3$s%4$s';
+	$before = '<h1 class="page-title opp-text">';
+	$after = '</h1>';
+	$part1='';
+	$part2='';
+	if ( is_category() ) {
+		$part1 = '分类';
+		$part2 = single_cat_title( '', false );
+	}
+	else if ( is_tag() ) {
+		$part1 = '标签';
+		$part2 = single_tag_title( '', false );
+	}
+	else if ( is_author() ) {
+		$part1 = '作者';
+		$part2 = get_the_author();
+	}
+	else if ( is_year() ) {
+		$part1 = '年';
+		$part2 =  get_the_date('Y') ;
+	}
+	else if ( is_month() ) {
+		$part1 = '月';
+		$part2 = get_the_date('F Y');
+	}
+	else if ( is_day() ) {
+		$part1 = '日';
+		$part2 = get_the_date(get_option('date_format'));
+	}
+	else{
+		$part1 = '归档';
+	}
+	$out = sprintf($format, $before, $part1, $part2, $after);
+	echo $out ;
 }
 
 /**
@@ -80,7 +122,7 @@ function bluefly_timediff( $from, $to, $before, $after) {
 	}
 	else if ( $diff_time > 60 * 60 * 24 * 31 ) {//月
 		$num = round($diff_time / (60 * 60 * 24 * 30));
-		$uni = '月';
+		$uni = '个月';
 	}
 	else if ( $diff_time > 60 * 60 * 24 ) {//天
 		$num = round($diff_time / (60 * 60 * 24));
@@ -88,7 +130,7 @@ function bluefly_timediff( $from, $to, $before, $after) {
 	}
 	else if ( $diff_time > 60 * 60 ) { //小时
 		$num = round($diff_time / 3600);
-		$uni = '小时';
+		$uni = '个小时';
 	}
 	else { //分钟
 		$num = round($diff_time / 60);
@@ -142,4 +184,10 @@ function bluefly_time_ago( $desc ) {
 	$days = round(diff/(60*60*24));
 	return $days.$desc;
   
+}
+
+function bluefly_inpage_nav(){
+	
+	if ( is_sigular() && '0' != get_comments_number() ) {
+	}
 }

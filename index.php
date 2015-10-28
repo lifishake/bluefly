@@ -19,6 +19,7 @@ get_header(); ?>
 				?>
 
 			<?php endwhile; ?>
+			</div>
 			<?php /*the_posts_navigation(); */
 					if ( get_theme_mod('infinite_index') == 1 ) {
 						the_posts_navigation();
@@ -32,10 +33,6 @@ get_header(); ?>
 						) );
 					}
 			?>
-			
-			</div>
-
-			
 
 		<?php else : ?>
 

@@ -255,7 +255,7 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".view-fifth h2 { color:" . esc_attr($entry_titles) . ";}\n";
 	
 	//Entry meta	
-	$custom .= ".entry-meta a, .entry-meta a, .entry-footer, .entry-footer a { color:" . esc_attr($entry_meta) . ";}\n";
+	$custom .= ".entry-meta a, .entry-meta a, .entry-footer, .entry-footer a, .comment-metadata a { color:" . esc_attr($entry_meta) . ";}\n";
 	$custom .= "a:hover { color: ". esc_attr($entry_meta). ";}\n";
 	$custom .= ".sticky::before { color: ". esc_attr($entry_meta). ";}\n";
 	$custom .= ".site-footer,.site-footer a { color: ". esc_attr($entry_meta). ";}\n";
@@ -312,12 +312,9 @@ function bluefly_custom_styles($custom) {
 button:active,input[type="button"]:active,input[type="reset"]:active,input[type="submit"]:active,input[id="grasp"]:active  { border-color: '. esc_attr($thirdly_color). ";}\n";
 	$custom .= ".comment-author .avatar { border: 5px solid ". esc_attr($background_color). ";\n";
 	$custom .= " box-shadow: inset 1px 1px 2px ". esc_attr($thirdly_color). ";}\n";
-	$custom .= ".comment-author .byposter { border-bottom: 5px solid ". esc_attr($primary_color). ";\n";
-	$custom .= " text-shadow: 1px 1px 2px ". esc_attr($primary_color). ";\n";
-	$custom .= " border-top: 5px solid ". esc_attr($second_bg). ";\n";
-	$custom .= " border-left: 5px solid ". esc_attr($secondary_color). ";\n";
-	$custom .= " border-right: 5px solid ". esc_attr($thirdly_color). ";}\n";
-	$custom .= " box-shadow: 1px 1px 2px ". esc_attr($background_color). ";}\n";
+	$custom .= ".comment-author .byposter { border: 5px dotted ". esc_attr($second_bg). ";\n";
+	$custom .= " box-shadow: inset 1px 1px 2px ". esc_attr($background_color). ";}\n";
+	$custom .= ".comment-content.byposter p { text-shadow: 1px 1px 2px ". esc_attr($primary_color). ";}\n";
 	$custom .= "a.comment-reply-link:hover { color: ". esc_attr($secondary_color). ";}\n";
 	$custom .= ".view:hover {border: 5px solid ".$second_bg.";\n box-shadow: 1px 1px 2px ". esc_attr($primary_color). ";}\n";
 	
