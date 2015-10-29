@@ -66,10 +66,18 @@ III. 注意事项和使用说明
 	http://pewae.com/2015/10/yonginkscapezhizuozidingyizitibingtianjiadaowordpresszhong.html
 5.	支持首页和归档页面的无限滚动（可自定义）。搜索页面如需要同样效果，可自行参照修改。无限滚动效果使用Infinite scroll库。想修改loading图片，替换\images\loading.gif，想替换加载文字，替换\script.js中对应的内容。查找的参数利用的是关键字posts-navigation我利用了4.3以后的新函数the_posts_pagination（）与旧函数the_posts_navigation（）的区别，如果要修改请查阅the_posts_navigation（）的相关内容。
 6.  我的理念是主题不负责与显示无关的事。所以，gravatar问题、smile问题、自动版本保存问题、google字体问题、中文截断问题、图片延时加载问题统统不提供解决方案，请自行修改添加。
-
+7.  不支持多作者。作者名已隐藏。
+8.  归档页面保留类别、标签和日期，其余归档页面自动跳转到404。
 
 
 IV. 版本历史
+2015/10/29 0.12
+--------------------------------------
+-追加“回到顶部”按钮
+-优化存档页标题
+-把不支持的archive格式重定向到404页
+-增加伪照片日期标识和电子表字体
+
 2015/10/23 0.11
 --------------------------------------
 -支持无限滚动的主题选项

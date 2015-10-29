@@ -11,18 +11,20 @@ get_header(); ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'content', 'single' ); ?>
+			
+			<?php do_action('bluefly_after_single_post'); ?>
 
 			<?php the_post_navigation(array('prev_text'=>'<i class="fa fa-arrow-left"></i> %title','next_text'=>'%title <i class="fa fa-arrow-right"></i>','screen_reader_text'=>'文章导航')); ?>
-
+			
 			<?php
-				// If comments are open or we have at least one comment, load up the comment template
+				//如果允许评论就加载评论
 				if ( comments_open() || get_comments_number() ) :
 					comments_template();
 				endif;
 			?>
-			<?php do_action('bluefly_after_single_post'); ?>
+			<?php do_action('bluefly_after_comment'); ?>
 		<?php endwhile; // end of the loop. ?>
-		<?php do_action('bluefly_after_single_post_loop'); ?>
+	
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

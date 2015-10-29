@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="LED.svg">
+  <defs
+     id="defs4">
+    <font
+       horiz-adv-x="948"
+       id="UniDreamLED">
+      <font-face
+         id="font-face3343"
+         unicode-range="U+0020-F005"
+         underline-position="-142"
+         underline-thickness="150"
+         bbox="-186 -431 2005 1767"
+         cap-height="1434"
+         x-height="1434"
+         descent="-410"
+         ascent="1638"
+         panose-1="2 0 0 0 0 0 0 0 0 0"
+         units-per-em="2048"
+         font-stretch="normal"
+         font-weight="400"
+         font-family="UniDreamLED" />
+      <missing-glyph
+         id="missing-glyph3345"
+         d="M256 0v1280h1024v-1280h-1024zM288 32h960v1216h-960v-1216z"
+         horiz-adv-x="1536" />
+      <glyph
+         id="glyph3347"
+         d="M256 0v1280h1024v-1280h-1024zM288 32h960v1216h-960v-1216z"
+         horiz-adv-x="1536"
+         glyph-name=".notdef" />
+      <glyph
+         id="glyph3349"
+         horiz-adv-x="0"
+         glyph-name=".null" />
+      <glyph
+         id="glyph3351"
+         horiz-adv-x="344"
+         glyph-name="space"
+         unicode=" " />
+      <glyph
+         id="glyph3381"
+         d="M659 836l-174 -226h-456l170 226h460z"
+         horiz-adv-x="686"
+         unicode="-"
+         glyph-name="hyphen" />
+      <glyph
+         id="glyph3385"
+         d="M334 0h-230v358h230v-358z"
+         horiz-adv-x="409"
+         unicode="."
+         glyph-name="period" />
+      <glyph
+         id="glyph3389"
+         d="M760 1333l-129 -129h-314l-131 129l101 101h372zM891 731l-232 143v302l129 129l103 -101v-473zM287 874l-230 -143v473l101 101l129 -129v-302zM891 229l-103 -100l-129 129v330l232 114v-473zM287 258l-129 -129l-101 100v473l230 -114v-330zM760 100l-101 -100h-372 l-101 100l131 129h314z"
+         unicode="0"
+         glyph-name="zero" />
+      <glyph
+         id="glyph3391"
+         d="M308 775l-232 164v348l129 148l103 -116v-544zM312 123l-103 -131l-129 169v432l232 149v-619z"
+         horiz-adv-x="344"
+         unicode="1"
+         glyph-name="one" />
+      <glyph
+         id="glyph3393"
+         d="M760 1333l-129 -129h-314l-131 129l101 101h372zM891 731l-232 143v302l129 129l103 -101v-473zM831 717l-200 -101h-314l-202 101l202 129h314zM287 258l-129 -129l-101 100v473l230 -114v-330zM760 100l-101 -100h-372l-101 100l131 129h314z"
+         unicode="2"
+         glyph-name="two" />
+      <glyph
+         id="glyph3395"
+         d="M760 1333l-129 -129h-314l-131 129l101 101h372zM891 731l-232 143v302l129 129l103 -101v-473zM831 717l-200 -101h-314l-202 101l202 129h314zM891 229l-103 -100l-129 129v330l232 114v-473zM760 100l-101 -100h-372l-101 100l131 129h314z"
+         unicode="3"
+         glyph-name="three" />
+      <glyph
+         id="glyph3397"
+         d="M891 731l-232 143v302l129 129l103 -101v-473zM287 874l-230 -143v473l101 101l129 -129v-302zM831 717l-200 -101h-314l-202 101l202 129h314zM891 229l-103 -100l-129 129v330l232 114v-473z"
+         unicode="4"
+         glyph-name="four" />
+      <glyph
+         id="glyph3399"
+         d="M760 1333l-129 -129h-314l-131 129l101 101h372zM287 874l-230 -143v473l101 101l129 -129v-302zM831 717l-200 -101h-314l-202 101l202 129h314zM891 229l-103 -100l-129 129v330l232 114v-473zM760 100l-101 -100h-372l-101 100l131 129h314z"
+         unicode="5"
+         glyph-name="five" />
+      <glyph
+         id="glyph3401"
+         d="M760 1333l-129 -129h-314l-131 129l101 101h372zM287 874l-230 -143v473l101 101l129 -129v-302zM831 717l-200 -101h-314l-202 101l202 129h314zM891 229l-103 -100l-129 129v330l232 114v-473zM287 258l-129 -129l-101 100v473l230 -114v-330zM760 100l-101 -100h-372 l-101 100l131 129h314z"
+         unicode="6"
+         glyph-name="six" />
+      <glyph
+         id="glyph3403"
+         d="M760 1333l-129 -129h-314l-131 129l101 101h372zM891 731l-232 143v302l129 129l103 -101v-473zM891 229l-103 -100l-129 129v330l232 114v-473z"
+         unicode="7"
+         glyph-name="seven" />
+      <glyph
+         id="glyph3405"
+         d="M760 1333l-129 -129h-314l-131 129l101 101h372zM891 731l-232 143v302l129 129l103 -101v-473zM287 874l-230 -143v473l101 101l129 -129v-302zM831 717l-200 -101h-314l-202 101l202 129h314zM891 229l-103 -100l-129 129v330l232 114v-473zM287 258l-129 -129 l-101 100v473l230 -114v-330zM760 100l-101 -100h-372l-101 100l131 129h314z"
+         unicode="8"
+         glyph-name="eight" />
+      <glyph
+         id="glyph3407"
+         d="M760 1333l-129 -129h-314l-131 129l101 101h372zM891 731l-232 143v302l129 129l103 -101v-473zM287 874l-230 -143v473l101 101l129 -129v-302zM831 717l-200 -101h-314l-202 101l202 129h314zM891 229l-103 -100l-129 129v330l232 114v-473zM760 100l-101 -100h-372 l-101 100l131 129h314z"
+         unicode="9"
+         glyph-name="nine" />
+      <glyph
+         id="glyph3409"
+         d="M305 882h-230v303h230v-303zM309 265h-230v308h230v-308z"
+         horiz-adv-x="344"
+         unicode=":"
+         glyph-name="colon" />
+      <glyph
+         id="glyph3425"
+         d="M860 1434l-229 -230h-314l-231 230h774zM891 731l-232 143v302l232 229v-674zM287 874l-230 -143v674l230 -229v-302zM831 717l-200 -101h-314l-202 101l202 129h314zM891 0l-232 229v359l232 114v-702zM287 229l-230 -229v702l230 -114v-359z"
+         unicode="A"
+         glyph-name="A" />
+      <glyph
+         id="glyph3449"
+         d="M1464 1434l-231 -230h-320l-139 144l-141 -144h-320l-227 230h1378zM287 874l-230 -143v674l230 -229v-302zM1491 731l-229 143v302l229 227v-672zM889 817l-115 -86l-115 86v359l113 116l117 -116v-359zM1491 0l-229 229v359l229 114v-702zM891 229l-117 -229l-115 229 v359l115 114l117 -114v-359zM287 229l-230 -229v702l230 -114v-359z"
+         horiz-adv-x="1548"
+         unicode="M"
+         glyph-name="M" />
+      <glyph
+         id="glyph3455"
+         d="M760 1333l-129 -129h-314l-231 230h573zM287 874l-230 -143v674l230 -229v-302zM891 731l-232 143v302l129 129l103 -101v-473zM831 717l-200 -101h-314l-202 101l202 129h314zM287 229l-230 -229v702l230 -114v-359z"
+         unicode="P"
+         glyph-name="P" />
+      <glyph
+         id="glyph3489"
+         d="M860 1434l-229 -230h-314l-231 230h774zM891 731l-232 143v302l232 229v-674zM287 874l-230 -143v674l230 -229v-302zM831 717l-200 -101h-314l-202 101l202 129h314zM891 0l-232 229v359l232 114v-702zM287 229l-230 -229v702l230 -114v-359z"
+         unicode="a"
+         glyph-name="a" />
+      <glyph
+         id="glyph3513"
+         d="M1464 1434l-231 -230h-320l-139 144l-141 -144h-320l-227 230h1378zM287 874l-230 -143v674l230 -229v-302zM1491 731l-229 143v302l229 227v-672zM889 817l-115 -86l-115 86v359l113 116l117 -116v-359zM1491 0l-229 229v359l229 114v-702zM891 229l-117 -229l-115 229 v359l115 114l117 -114v-359zM287 229l-230 -229v702l230 -114v-359z"
+         horiz-adv-x="1548"
+         unicode="m"
+         glyph-name="m" />
+      <glyph
+         id="glyph3519"
+         d="M760 1333l-129 -129h-314l-231 230h573zM287 874l-230 -143v674l230 -229v-302zM891 731l-232 143v302l129 129l103 -101v-473zM831 717l-200 -101h-314l-202 101l202 129h314zM287 229l-230 -229v702l230 -114v-359z"
+         unicode="p"
+         glyph-name="p" />
+    </font>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="-717.85714"
+     inkscape:cy="674.72441"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="848"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1" />
+</svg>

@@ -83,10 +83,10 @@ if ( post_password_required() ) {
 			$comment_part.= '<div class="form_row">' ;
 			$comment_part.= sprintf('<p> <span class="show-form secondary_color" >%s[编辑]</span>， 欢迎回来 ', $cookie) ;	
 			$comment_part.= get_avatar( $email, $size = '24') ;
-			$comment_part.= '</p></div>' ;			
+			$comment_part.= '</p></div>' ;	
+			$comment_part.= '<div id="author_info">';			
 		}
-		//另一半div标签放在前面的 $comment_field里
-		$comment_part.= '<div id="author_info">';
+		//另一半div标签放在前面的 $comment_field里		
 		$fields =  array(
 			  'author' =>
 				'<p class="comment-form-author"><label for="author">昵称</label> ' .
@@ -105,13 +105,16 @@ if ( post_password_required() ) {
 				'<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
 				'" size="30" /></p>',
 			);//fields
+		if ( $cookie != "" ) {
+				$fields['url'].="</div>";
+			}
 		$args = array(
 			  'title_reply'       => '',
 			  'title_reply_to'    => '%s',
 			  'cancel_reply_link' => '取消',
 			  'label_submit'      => '留言',
 
-			  'comment_field' =>  '</div><p class="comment-form-comment"><label for="comment">' . '' .
+			  'comment_field' =>  '<p class="comment-form-comment"><label for="comment">' . '' .
 				'</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true">' .
 				'</textarea></p>',
 

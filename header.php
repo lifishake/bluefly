@@ -31,16 +31,12 @@
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="site-branding">
-	        <?php if ( get_theme_mod('site_logo') && get_theme_mod('logo_style', 'hide-title') == 'hide-title' ) : //只显示LOGO ?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>"><img class="site-logo" src="<?php echo esc_url(get_theme_mod('site_logo')); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" /></a>
-	        <?php elseif ( get_theme_mod('logo_style', 'hide-title') == 'show-title' ) : //显示LOGO，标题和副标题 ?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>"><img class="site-logo show-title" src="<?php echo esc_url(get_theme_mod('site_logo')); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" /></a>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>	        
-	        <?php else : //显示标题和副标题 ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-	        <?php endif; ?>
+	        <?php if ( is_front_page() && is_home() ):?>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>						
+	        <?php else : ?>
+				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+			<?php endif ?>
+			<p class="site-description"><?php bloginfo( 'description' ); ?></p>
 			</div><!-- .site-branding -->
 		</div>
 

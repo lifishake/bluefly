@@ -32,6 +32,19 @@ http://thecodeplayer.com/walkthrough/simple-yet-amazing-css3-border-transition-e
   font-style: normal;
 }
 
+/*使用仿电子表字体。该字体存放在本地*/
+@font-face {
+  font-family: 'LED';
+  src: url('./fonts/LED.eot'); /* IE9 Compat Modes */
+  src: url('./fonts/LED.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./fonts/LED.woff2') format('woff2'), /* Modern Browsers */
+    url('./fonts/LED.woff') format('woff'), /* Modern Browsers */
+    url('./fonts/LED.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('./fonts/LED.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /*-----------------
   主体
 -----------------*/
@@ -530,6 +543,25 @@ blockquote::before {
 	text-align: center;
 	position: relative;
 }
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.single-thumb-time {
+	position: absolute;
+	right: 42%;
+	bottom: 5px;
+	color:#EE8000;
+	text-shadow:none;
+	font-size:16px;
+	font-family:LED;
+}
 .entry-thumb {
 	position: relative;
 	z-index: 9;
@@ -584,6 +616,7 @@ blockquote::before {
 -----------------*/
 .comments-area {
 	margin-bottom: 60px;
+	display:block;
 }
 .comments-title {
 	margin: 0 0 10px 0;
@@ -649,18 +682,19 @@ a.comment-reply-link {
 	margin-top: 30px;
 }
 
-/*下面是评论区头像边框。原效果出处
-http://tympanus.net/codrops/2013/05/22/examples-of-pseudo-elements-animations-and-transitions/*/
-/*15/10/20删除,以后再研究*/
-
 /*-----------------
 	##无诚意留言列表
 -----------------*/
+.no-order{
+	display:block;
+}
 .comment-grasp{
 	padding: 16px 5px;
 }
 .grasp-list {
 	overflow:hidden;
+	position:relative;
+	top:-2em;
 }
 ol.grasp-list  li {
 	display:inline;
@@ -911,7 +945,6 @@ img[class*="wp-image-"] {
 		   font-size: 1.2em;
 		   padding:0.5em;
 		   background-color:rgba(0,0,0,0);
-		   border-bottom:2px solid #fff;
 		   }
 .floattop:hover{
 	-webkit-transition:all .8s ease-in-out;
@@ -1137,8 +1170,9 @@ img[class*="wp-image-"] {
     opacity: 0.5;
     text-align: center;
 	overflow: hidden;
-	display: inline-block;
 	width:100%;
+	z-index:-1;
+	clear:none;
 }
 /*-----------------
   index画面缩略图表示

@@ -15,6 +15,7 @@ get_header(); ?>
 			<div id="ob-grid" class="grid-layout">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php
+					/*其实只有两种。search的时候不显示缩略图*/
 					get_template_part( 'content', get_post_format() );
 				?>
 
@@ -26,8 +27,8 @@ get_header(); ?>
 					}
 					else {
 						the_posts_pagination( array(
-							'prev_text'          => '&laquo',
-							'next_text'          => '&raquo',
+							'prev_text'          => '&laquo;',
+							'next_text'          => '&raquo;',
 							'mid_size'			=> 2,
 							'screen_reader_text ' => '文章导航',
 						) );

@@ -55,68 +55,7 @@ function bluefly_customize_register( $wp_customize ) {
             'title' => '题头选项',
         )
     );
-    //上传LOGO
-    $wp_customize->add_setting(
-        'site_logo',
-        array(
-            'default-image' => '',
-            'sanitize_callback' => 'esc_url_raw',
-
-        )
-    );
-    $wp_customize->add_control(
-        new WP_Customize_Image_Control(
-            $wp_customize,
-            'site_logo',
-            array(
-               'label'          => '上传LOGO',
-               'type'           => 'image',
-               'section'        => 'bluefly_header',
-               'settings'       => 'site_logo',
-            )
-        )
-    );
-    //LOGO大小
-    $wp_customize->add_setting(
-        'logo_size',
-        array(
-            'sanitize_callback' => 'absint',
-            'default'           => '200',
-        )       
-    );
-    $wp_customize->add_control( 'logo_size', array(
-        'type'        => 'number',
-        'section'     => 'bluefly_header',
-        'label'       => 'LOGO大小',
-        'description' => 'LOGO最大像素，默认200px',
-        'input_attrs' => array(
-            'min'   => 50,
-            'max'   => 600,
-            'step'  => 5,
-            'style' => 'margin-bottom: 15px; padding: 15px;',
-        ),
-    ) );
-    //LOGO风格
-    $wp_customize->add_setting(
-        'logo_style',
-        array(
-            'default'           => 'hide-title',
-            'sanitize_callback' => 'bluefly_sanitize_logo_style',
-        )
-    );
-    $wp_customize->add_control(
-        'logo_style',
-        array(
-            'type'          => 'radio',
-            'label'         => 'LOGO风格',
-            'description'   => '只有设置logo时此选项才有用',
-            'section'       => 'bluefly_header',
-            'choices'       => array(
-                'hide-title'  => '只有LOGO',
-                'show-title'  => 'LOGO和标题同时显示',
-            ),
-        )
-    );
+	
     //填充
     $wp_customize->add_setting(
         'branding_padding',

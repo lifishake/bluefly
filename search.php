@@ -11,7 +11,7 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header sec-bg">
-				<h1 class="page-title opp-text"><?php printf( '【%s】的搜索结果', '<span>' . get_search_query() . '</span>' ); ?></h1>
+				<h1 class="page-title opp-text"><?php printf( '搜索结果:%s', '<span>' . get_search_query() . '</span>' ); ?></h1>
 			</header><!-- .page-header -->
 
 			<?php while ( have_posts() ) : the_post(); ?>
@@ -22,11 +22,16 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php the_posts_navigation(); ?>
+			<?php the_posts_pagination( array(
+						'prev_text'          => '&laquo;',
+						'next_text'          => '&raquo;',
+						'mid_size'			=> 2,
+						'screen_reader_text ' => '文章导航',
+					) ); ?>
 
 		<?php else : ?>
 			
-			<?php /* 使用content-serch */
+			<?php /* 使用content-none */
 				get_template_part( 'content', 'none' ); 
 			?>
 

@@ -4,6 +4,15 @@
  * @package bluefly
  */
 
+ /**
+ * 作用: 版本信息
+ * 来源: Oblique
+ */
+function bluefly_footer_credits() {
+	echo 'Theme: <span class="thirdly_color"><a href="https://github.com/lifishake/bluefly" target="_blank" rel="nofollow">bluefly</a></span> &copy;'.date('Y').' 破袜子';
+}
+add_action( 'bluefly_footer', 'bluefly_footer_credits' );
+ 
 /**
  * 作用: 显示日期(作者隐藏)
  */
@@ -16,7 +25,7 @@ function bluefly_posted_on() {
 
 	$posted_on = '<i class="fa fa-calendar thirdly_color"></i> ' . $time_string ;
 
-	$byline = '<span class="author vcard hidden"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
+	$byline = '<span class="author vcard "><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
 
 	/*个人用户,把作者隐藏掉*/
@@ -54,10 +63,6 @@ function bluefly_archive_title() {
 	else if ( is_tag() ) {
 		$part1 = '标签';
 		$part2 = single_tag_title( '', false );
-	}
-	else if ( is_author() ) {
-		$part1 = '作者';
-		$part2 = get_the_author();
 	}
 	else if ( is_year() ) {
 		$part1 = '年';
@@ -184,10 +189,4 @@ function bluefly_time_ago( $desc ) {
 	$days = round(diff/(60*60*24));
 	return $days.$desc;
   
-}
-
-function bluefly_inpage_nav(){
-	
-	if ( is_sigular() && '0' != get_comments_number() ) {
-	}
 }

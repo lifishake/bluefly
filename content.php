@@ -8,7 +8,9 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class("view view-fifth"); ?>>
  
 	<?php if ( has_post_thumbnail() && ( get_theme_mod( 'hide_index_feat_image' ) != 1 ) ) : ?>
+		<!-- div class="entry-thumb" -->
 			<?php the_post_thumbnail('bluefly-entry-thumb'); ?>
+		<!-- /div -->	
 	<?php else: /*根据不同的format,显示图标*/?>
 			<div class="content-bg-<?php echo get_post_format();?>" ></div>
 	<?php endif; ?>	

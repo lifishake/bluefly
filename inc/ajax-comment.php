@@ -216,6 +216,8 @@ function bluefly_get_grasp_list()
 	if ( !is_single() )
 		return;
 	?>
+	<div class="no-order">
+	<div class="assistive-text noselect"><i class="fa fa-arrow-down"></i> 看过但不讲话的人 <i class="fa fa-arrow-down"></i></div>
 	<ol class="grasp-list">
 	<?php
 		//通过指定回调函数grasp_lists达到只显示头像的目的。
@@ -228,8 +230,8 @@ function bluefly_get_grasp_list()
 					'reverse_top_level'=>false,
 				));
 	?>
-	<span class="assistive-text"><i class="fa fa-arrow-up"></i> 看过但不讲话的人 <i class="fa fa-arrow-up"></i></span>
-	</ol>
+	</ol>	
+	</div><!-- .no-order -->
 	<?php
 }
 
@@ -242,7 +244,7 @@ function grasp_lists($comment, $args, $depth) {
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( 'grasp' ); ?>>
 	<div class="comment-grasp vcard">
-			<?php echo '<a class="x7" href="'.get_comment_author_url().'" alt="'.get_comment_author().'" rel="external nofollow" >'. get_avatar( get_comment_author_email(), $args['avatar_size']).'</a>' ; ?>
+			<?php echo '<a class="x7" href="'.get_comment_author_url().'" rel="external nofollow" >'. get_avatar( get_comment_author_email(), $args['avatar_size']).'</a>' ; ?>
 	</div>
 	<?php
 }
@@ -264,7 +266,7 @@ function mytheme_comment($comment, $args, $depth) {
 				else
 					$vcard_class = "visitor" ;
 				$ava_arg_detail = array('class'=>$vcard_class);
-				echo '<a href="'.get_comment_author_url().'" alt="'.get_comment_author().'" rel="external nofollow" >'.get_avatar( get_comment_author_email(), $args['avatar_size'],'','', $ava_arg_detail).'</a>'; 
+				echo '<a href="'.get_comment_author_url().'" rel="external nofollow" >'.get_avatar( get_comment_author_email(), $args['avatar_size'],'','', $ava_arg_detail).'</a>'; 
 			?>
 		</div><!-- .comment-author -->
 

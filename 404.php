@@ -3,7 +3,6 @@
  * 404 
  * @package bluefly
  */
-
 get_header(); ?>
 
 	<div id="primary" class="content-area">

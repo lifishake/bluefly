@@ -118,15 +118,6 @@ function bluefly_scripts() {
 add_action( 'wp_enqueue_scripts', 'bluefly_scripts' );
 
 /**
- * 作用: 版本信息
- * 来源: Oblique
- */
-function bluefly_footer_credits() {
-	echo 'Theme: <span class="thirdly_color"><a href="https://github.com/lifishake/bluefly" target="_blank" rel="nofollow">bluefly</a></span> &copy'.date('Y').' 破袜子';
-}
-add_action( 'bluefly_footer', 'bluefly_footer_credits' );
-
-/**
  * 菜单用
  */
 function bluefly_html5shiv() {
