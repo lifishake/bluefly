@@ -122,7 +122,7 @@ function bluefly_timediff( $from, $to, $before, $after) {
 	$to_int = strtotime($to) ;
 	$diff_time = abs($to_int - $from_int) ;
 	if ( $diff_time > 60 * 60 * 24 * 365 ){//年
-		$num = round($diff_time / (60 * 60 * 24 * 30* 365));
+		$num = round($diff_time / (60 * 60 * 24 * 365));
 		$uni = '年';
 	}
 	else if ( $diff_time > 60 * 60 * 24 * 31 ) {//月
