@@ -12,11 +12,6 @@ if ( ! function_exists( 'bluefly_setup' ) ) :
  */
 function bluefly_setup() {
 
-	/*
-	 * 取语言包。虽然我没有语言包。
-	 */
-	//load_theme_textdomain( 'bluefly', get_template_directory() . '/languages' );
-
 	// feed链接
 	add_theme_support( 'automatic-feed-links' );
 

@@ -268,6 +268,8 @@ function bluefly_custom_styles($custom) {
 
 	//反选文字的颜色,与文章背景色相同.	
 	$custom .= ".opp-text { color:" . esc_attr($opp_text) . ";}\n";
+	$custom .= ".floattop { border-color:" . esc_attr($opp_text) . ";\n";
+	$custom .= "background-color:".$rgba.";}\n";
 	$custom .= ".site-main .comment-navigation a,.site-main .posts-navigation a,.site-main .post-navigation a,.site-main .pagination a  { color:" . esc_attr($opp_text) . ";}\n";
 	
 	//带a带hover的直接加不上,只能单写
@@ -291,6 +293,7 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".archive-meta a:hover, .entry-meta a:hover, .entry-title a:hover, .social-navigation li a:hover, a { color:" . esc_attr($primary_color) . "}\n";
 	$custom .= ".nav-previous:hover, .nav-next:hover, button, .button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] { background-color:" . esc_attr($primary_color) . "}\n";
 	$custom .= ".page-numbers.current { color: ". esc_attr($opp_text). "; background-color: ".esc_attr($primary_color)."; }\n";
+	$custom .= ".view-fifth h2 { color: ". esc_attr($primary_color). ";\n }\n";
 	
 	$rgba 	= bluefly_hex2rgba_str($primary_color, 0.3);
 	$custom .= ".bluefly-entry-thumb:after { background-color:" . esc_attr($rgba) . ";}" . "\n";

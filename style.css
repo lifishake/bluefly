@@ -4,7 +4,7 @@ Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 0.11
+Version: 0.13
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
@@ -78,7 +78,7 @@ a {
 a:hover {
 	color: #333;
 }
-ol {
+ol ,ul{
 	list-style: none;
 }
 /*-----------------
@@ -269,6 +269,11 @@ textarea {
 .blog .nav-next {
 	margin-right: 15px;
 }
+
+.taxonomy-description{
+	text-align:center;
+}
+
 /*-----------------
   易用性
 -----------------*/
@@ -491,7 +496,7 @@ textarea {
 .entry-footer,
 .archive-meta {
 	font-size: 12px;
-	margin-bottom: 15px;
+	margin: 15px 0;
 }
 .entry-footer {
 	margin-top: 15px;
@@ -943,8 +948,16 @@ img[class*="wp-image-"] {
 		   bottom:12%;
 		   cursor:pointer;
 		   font-size: 1.2em;
-		   padding:0.5em;
+		   width:1.8em;
+		   height:1.8em;
+		   vertical-align:center;
+		   text-align:center;
+		   padding:auto ;
 		   background-color:rgba(0,0,0,0);
+		   border:2px solid #FFF;
+		   border-radius: 100%;
+			-moz-border-radius: 100%;
+			-webkit-border-radius: 100%;
 		   }
 .floattop:hover{
 	-webkit-transition:all .8s ease-in-out;
@@ -1184,8 +1197,8 @@ img[class*="wp-image-"] {
     position: relative;
     text-align: center;
     cursor: default;
-    min-height:140px;
-	max-height:300px;
+    min-height:150px;
+	max-height:450px;
 }
 
 .view [class*="content-bg-"]::before {
