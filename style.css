@@ -1198,7 +1198,7 @@ img[class*="wp-image-"] {
     text-align: center;
     cursor: default;
     min-height:150px;
-	max-height:450px;
+	max-height:320px;
 }
 
 .view [class*="content-bg-"]::before {
