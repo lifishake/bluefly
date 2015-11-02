@@ -193,12 +193,6 @@ function bluefly_custom_styles($custom) {
         $custom .= "h3 { font-size:" . intval($h3_size) . "px; }"."\n";
     }
 
-    //正文字体大小
-    $body_size = get_theme_mod( 'body_size' );
-    if ( get_theme_mod( 'body_size' )) {
-        $custom .= "body { font-size:" . intval($body_size) . "px; }"."\n";
-    }
-
 	//头部图片高度
 	$branding_padding = get_theme_mod( 'branding_padding', '150' );
 	$custom .= ".site-branding { padding:" . intval($branding_padding) . "px 0; }"."\n";

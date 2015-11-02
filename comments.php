@@ -26,7 +26,7 @@ if ( post_password_required() ) {
 			?>
 		</h2>
 		
-		<?php if( function_exists('bluefly_get_grasp_list') ) {
+		<?php if( function_exists('bluefly_get_grasp_list') && $countb>0 ) {
 			//显示非诚意留言墙
 			bluefly_get_grasp_list(); }?>
 		<ol class="comment-list">

@@ -51,7 +51,7 @@ http://thecodeplayer.com/walkthrough/simple-yet-amazing-css3-border-transition-e
 /*定义字体。先英文后中文*/
 body {
 	font-family: Avenir, 'Lucida Grande', Calibri, Helvetica, Arial,'Microsoft JhengHei', 'Microsoft YaHei', 'Hiragino Sans GB', SimHei, STHeiti, sans-serif;
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 1.55;
 	word-wrap: break-word;
 	background: #000 url("images/stardust.png") repeat scroll 0 0;
@@ -80,6 +80,12 @@ a:hover {
 }
 ol ,ul{
 	list-style: none;
+}
+p {
+    font-size: 1em;
+    letter-spacing: 0.03em;
+    line-height: 1.9;
+    margin-bottom: 2em;
 }
 /*-----------------
   表格类
@@ -246,7 +252,7 @@ textarea {
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous/*,
 .pagination .page-numbers */{
-	float: left;.pagination a, .current, .page-numbers
+	float: left;
 	max-width: 50%;
 	padding: 15px;
 	-webkit-transition: background-color 0.3s;
@@ -555,7 +561,6 @@ blockquote::before {
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
 }
 
 .single-thumb-time {
@@ -950,9 +955,8 @@ img[class*="wp-image-"] {
 		   font-size: 1.2em;
 		   width:1.8em;
 		   height:1.8em;
-		   vertical-align:center;
+		   vertical-align:middle;
 		   text-align:center;
-		   padding:auto ;
 		   background-color:rgba(0,0,0,0);
 		   border:2px solid #FFF;
 		   border-radius: 100%;

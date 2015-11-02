@@ -274,26 +274,6 @@ function bluefly_customize_register( $wp_customize ) {
         ),
     ) );
 
-    //Body
-    $wp_customize->add_setting(
-        'body_size',
-        array(
-            'sanitize_callback' => 'absint',
-            'default'           => '16',
-        )       
-    );
-    $wp_customize->add_control( 'body_size', array(
-        'type'        => 'number',
-        'section'     => 'bluefly_fonts',
-        'label'       => '正文',
-        'input_attrs' => array(
-            'min'   => 10,
-            'max'   => 24,
-            'step'  => 1,
-            'style' => 'margin-bottom: 15px; padding: 10px;',
-        ),
-    ) );
-
     //___Colors___//
     //主颜色　(1)
 	

@@ -69,6 +69,12 @@ function bluefly_newcomment( $is_grasp ) {
 	
     /*无诚意留言的判断标志*/
 	if ( $is_grasp ) {
+		$dupe = "SELECT comment_ID FROM $wpdb->comments WHERE comment_post_ID = '$comment_post_ID' AND ( comment_author = '$comment_author' ";
+		if ( $comment_author_email ) $dupe .= "OR comment_author_email = '$comment_author_email' ";
+		$dupe .= ") LIMIT 1";
+		if ( $wpdb->get_var($dupe) ) {
+			ajax_comment_err('说过话不能点路过哦！');
+		}
 		$comment_content      = "私は異議を唱えるできません".' 【'.$comment_author.'】';
 		//自定义了一个type.
 		$comment_type = 'senseless';
