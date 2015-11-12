@@ -1085,21 +1085,14 @@ img[class*="wp-image-"] {
     .grid-layout .hentry {
         width: 330px;
     }
-    .grid-sizer{
-        width: 330px;
-    }
     .site-title {
         font-size: 60px !important;
     }
 }
 @media only screen and (max-width: 767px) {
     .grid-layout .hentry {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    .grid-sizer{
-        width: 100%;
-        margin: 0 0 30px;
+        width: 96%;
+        margin: 0 5px 30px 5px;
     }
     .site-title {
         font-size: 42px !important;
@@ -1179,15 +1172,13 @@ img[class*="wp-image-"] {
 -----------------*/
 .view {
     margin: 10px;
-    float: left;
-    overflow: hidden;
-    position: relative;
+	display:inline-block;
     text-align: center;
     cursor: default;
     height:320px;
+	width:100%;
 	background-repeat: no-repeat;
 	background-size: cover;
-	width:100%;
 }
 
 .view::after{
