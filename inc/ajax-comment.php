@@ -209,7 +209,7 @@ function add_senseless_btn( $defaults )
 		return $defaults;
 	//type定义成button，因为不提倡有两个submit。通过CSS使两个按钮看起来一致。
 	$notice = '<input id="grasp" class="submit" type="button" value="路过" name="grasp">';
-	$defaults['submit_button'] = $defaults['submit_button'].$notice;
+	$defaults['submit_button'] = $notice.$defaults['submit_button'];
 	return $defaults;
 }
 

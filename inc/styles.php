@@ -230,12 +230,15 @@ function bluefly_custom_styles($custom) {
 
 	//正文文字颜色	
 	$rgba 	= bluefly_hex2rgba_str($body_text_color, 0.3);
+	$shadow = bluefly_hex2rgba_str($body_text, 0.3);
+	$overlay = bluefly_hex2rgba_str($entry_bg, 0.6);
 	$custom .= "body { color:" . esc_attr($body_text) . ";\n";	
 	$custom .= "background-color:". esc_attr($background_color). ";\n";
-	$custom .= "text-shadow: 1px 1px 2px ". esc_attr($rgba). ";}\n";
+	$custom .= "text-shadow: 1px 0px 1px ". esc_attr($shadow). ";}\n";
 	$custom .= ".towhom a { color:" . esc_attr($body_text) . ";}\n";
 	$custom .= "h1,h2,h3,h4,h5,h6 { color:" . esc_attr($body_text) . ";}\n";
 	$custom .= ".view h2, .view p, .view a.info { color:" . esc_attr($body_text) . ";}\n";
+	$custom .= ".view::after {background-color:".$overlay."; }\n";
 	
 	$custom .= "blockquote::before { color:" . esc_attr($background_color) . ";}\n";
 	
@@ -246,18 +249,16 @@ function bluefly_custom_styles($custom) {
 	
 	//Entry titles	
 	$custom .= ".entry-title, .entry-title a { color:" . esc_attr($entry_titles) . ";}\n";
-	$custom .= ".view-fifth h2 { color:" . esc_attr($entry_titles) . ";}\n";
 	
 	//Entry meta	
 	$custom .= ".entry-meta a, .entry-meta a, .entry-footer, .entry-footer a, .comment-metadata a { color:" . esc_attr($entry_meta) . ";}\n";
 	$custom .= "a:hover { color: ". esc_attr($entry_meta). ";}\n";
-	$custom .= ".sticky::before { color: ". esc_attr($entry_meta). ";}\n";
 	$custom .= ".site-footer,.site-footer a { color: ". esc_attr($entry_meta). ";}\n";
 	
 	//文章背景色	
 	$custom .= ".hentry { background-color:" . esc_attr($entry_bg) . ";}\n";
 	$custom .= ".view { border: 5px solid " . esc_attr($entry_bg) . ";\n";
-	$custom .= "box-shadow: 1px 1px 2px ". esc_attr($entry_bg). ";}\n";
+	$custom .= "box-shadow: 1px 0px 1px ". esc_attr($entry_bg). ";}\n";
 	$custom .= ".hentry-bg { background-color:" . esc_attr($entry_bg) . ";}\n";
 
 	//反选文字的颜色,与文章背景色相同.	
@@ -269,7 +270,6 @@ function bluefly_custom_styles($custom) {
 	//带a带hover的直接加不上,只能单写
 	$custom .= ".post-meta, post-meta a { color:" . esc_attr($opp_text) . ";}\n";
 	$custom .= ".wp-caption-text { color:" . esc_attr($opp_text) . ";}\n";
-	$custom .= ".view [class*=\"content-bg-\"]::before { color:" . esc_attr($opp_text) . ";}\n";
 	$custom .= ".slicknav_nav { color:" . esc_attr($opp_text) . ";}\n";
 	$custom .= ".slicknav_brand { color:" . esc_attr($opp_text) . ";}\n";
 	$custom .= ".comment-respond .comment-reply-title { color:" . esc_attr($opp_text) . ";}\n";
@@ -281,18 +281,17 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".comment-navigation .nav-previous,.posts-navigation .nav-previous,.post-navigation .nav-previous,.comment-navigation .nav-next,.posts-navigation .nav-next,.post-navigation .nav-next,.pagination .page-numbers  { background-color:" . esc_attr($second_bg) . ";}\n";
 	$custom .= ".form_row img{ border: 1px solid " . esc_attr($second_bg) . ";}\n";
 	$custom .= ".widget-area, .widget-area a { color:" . esc_attr($sidebar_color) . ";}\n";
+	$custom .= ".view [class*=\"content-bg-\"]::before { color:" . esc_attr($second_bg) . ";}\n";
 	
 	//主颜色(主要是链接和高亮)	
 	$custom .= "a { color:" . esc_attr($primary_color) . ";}" . "\n";
 	$custom .= ".archive-meta a:hover, .entry-meta a:hover, .entry-title a:hover, .social-navigation li a:hover, a { color:" . esc_attr($primary_color) . "}\n";
 	$custom .= ".nav-previous:hover, .nav-next:hover, button, .button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] { background-color:" . esc_attr($primary_color) . "}\n";
 	$custom .= ".page-numbers.current { color: ". esc_attr($opp_text). "; background-color: ".esc_attr($primary_color)."; }\n";
-	$custom .= ".view-fifth h2 { color: ". esc_attr($primary_color). ";\n }\n";
-	
 	$rgba 	= bluefly_hex2rgba_str($primary_color, 0.3);
 	$custom .= ".bluefly-entry-thumb:after { background-color:" . esc_attr($rgba) . ";}" . "\n";
+	$custom .= ".view h2 { background-color:" . esc_attr($rgba) . ";}" . "\n";
 	$custom .= ".assistive-text { color:" . esc_attr($primary_color) . ";}" . "\n";
-	$custom .= ".view-fifth .mask { background-color:" . esc_attr($rgba) . ";}" . "\n";
 	$custom .= "blockquote { border-left: 5px solid " . esc_attr($primary_color) . ";" . "\n";
 	$custom .= "background-color: " . esc_attr($rgba) . ";}" . "\n";
 	$custom .= ".slicknav_nav li { border-color:" . esc_attr($primary_color) . ";}" . "\n";
@@ -301,7 +300,7 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".secondary_color { color:". $secondary_color. ";}\n" ;
 	$custom .= ".widget-area a:hover { color:" . esc_attr($secondary_color) . "}\n";
 	$custom .= ".thirdly_color, .thirdly_color a { color:". $thirdly_color. ";}\n" ;
-	$custom .= ".sticky { box-shadow: 1px 1px 2px ". esc_attr($thirdly_color). ";}\n";
+	$custom .= ".sticky::before { color: ". esc_attr($thirdly_color). ";}\n";
 	$custom .= ".comments-title { border-bottom: 1px solid ". esc_attr($rgba). ";}\n";
 	$custom .= ".grasp-list { border-bottom: 1px solid ". esc_attr($rgba). ";}\n";
 	$custom .= ".comment-metadata { border-bottom: 1px solid ". $rgba. ";}\n";
@@ -313,7 +312,7 @@ button:active,input[type="button"]:active,input[type="reset"]:active,input[type=
 	$custom .= " box-shadow: inset 1px 1px 2px ". esc_attr($background_color). ";}\n";
 	$custom .= ".comment-content.byposter p { text-shadow: 1px 1px 2px ". esc_attr($primary_color). ";}\n";
 	$custom .= "a.comment-reply-link:hover { color: ". esc_attr($secondary_color). ";}\n";
-	$custom .= ".view:hover {border: 5px solid ".$second_bg.";\n box-shadow: 1px 1px 2px ". esc_attr($primary_color). ";}\n";
+	$custom .= ".view:hover {border: 5px solid ".$primary_color.";\n box-shadow: 1px 1px 2px ". esc_attr($primary_color). ";}\n";
 	
 	//底部烟雾效果
 	$rgba 	= bluefly_hex2rgba_str($background_color, 0);
