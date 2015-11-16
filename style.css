@@ -4,7 +4,7 @@ Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 0.15
+Version: 0.16
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
@@ -97,8 +97,7 @@ button,
 .button,
 input[type="button"],
 input[type="reset"],
-input[type="submit"],
-input[id="grasp"] {
+input[type="submit"]{
     padding: 15px;
     border: 0;
     font-weight: 700;
@@ -107,8 +106,7 @@ input[id="grasp"] {
     cursor: pointer; 
     -webkit-appearance: button; 
 }
-input[type="submit"],
-input[id="grasp"] {
+input[type="submit"] {
     margin: 5px 5px 0 0;
     text-align: center;
     width: 6em;
@@ -125,13 +123,11 @@ input[id="grasp"]:hover {
 button:focus,
 input[type="button"]:focus,
 input[type="reset"]:focus,
-input[type="submit"]:focus,
-input[id="grasp"]:focus
+input[type="submit"]:focus
 button:active,
 input[type="button"]:active,
 input[type="reset"]:active,
-input[type="submit"]:active,
-input[id="grasp"]:active {
+input[type="submit"]:active{
     box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
@@ -718,12 +714,24 @@ ol.grasp-list  li {
 /*-----------------
     ##已存在信息
 -----------------*/
+input[id="grasp"] {
+    padding: 0 5px;
+    border: 0;
+    font-weight: 700;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer; 
+    -webkit-appearance: button; 
+    text-align: center;
+	background-color:rgba(0,0,0,0);
+}
+
 .form_row{
     position: relative;
 }
 
 .form_row img{
-    margin-left:5px;
+    margin-left:15px;
 }
 
 
@@ -1184,9 +1192,9 @@ img[class*="wp-image-"] {
 
 .view::after{
   content: "";
-  top: 10px;
+  top: 15px;
   left: 5px;
-  bottom: 10px;
+  bottom: 20px;
   right: 5px;
   position: absolute;
   z-index: 0;
@@ -1217,34 +1225,31 @@ img[class*="wp-image-"] {
     content: "\f0c1";
 }
 
-.view h2 {
-    text-align: center;
-    position: absolute;
+.view h2, .view p {
+	position: absolute;
 	display:inline;
 	top:5px;
 	left:10px;
+	width:95%;
+	overflow:hidden;
+	text-align: center;
+}
+
+.view h2 {
 	height:2em;
 	line-height:1.8em;
-	overflow:hidden;
     font-size: 17px;
     padding: 5px;
     margin: 20px 0 0 0;
 	z-index:2;
-	width:95%;
 }
 .view p {
     font-style: italic;
     font-size: 12px;
-    position: absolute;
-	display:inline;
-	top:5px;
-	height:100%;
-	width:95%;
-	left:5px;
-	bottom:5px;
+	height:95%;
+	bottom:20px;
 	right:10px;
     padding: 100px 20px 20px;
-    text-align: center;
 	z-index:1;
 }
 

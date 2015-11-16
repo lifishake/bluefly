@@ -304,13 +304,15 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".comments-title { border-bottom: 1px solid ". esc_attr($rgba). ";}\n";
 	$custom .= ".grasp-list { border-bottom: 1px solid ". esc_attr($rgba). ";}\n";
 	$custom .= ".comment-metadata { border-bottom: 1px solid ". $rgba. ";}\n";
+	$custom .= 'input[id="grasp"]{background-color:'.$shadow.'}\n;';
 	$custom .= 'button:focus,input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,input[id="grasp"]:focus
 button:active,input[type="button"]:active,input[type="reset"]:active,input[type="submit"]:active,input[id="grasp"]:active  { border-color: '. esc_attr($thirdly_color). ";}\n";
 	$custom .= ".comment-author .avatar { border: 5px solid ". esc_attr($background_color). ";\n";
 	$custom .= " box-shadow: inset 1px 1px 2px ". esc_attr($thirdly_color). ";}\n";
 	$custom .= ".comment-author .byposter { border: 5px dotted ". esc_attr($second_bg). ";\n";
 	$custom .= " box-shadow: inset 1px 1px 2px ". esc_attr($background_color). ";}\n";
-	$custom .= ".comment-content.byposter p { text-shadow: 1px 1px 2px ". esc_attr($primary_color). ";}\n";
+	$shadow = bluefly_hex2rgba_str($primary_color, 0.3);
+	$custom .= ".comment-content.byposter p { text-shadow: 1px 0px 1px ". $shadow. ";}\n";
 	$custom .= "a.comment-reply-link:hover { color: ". esc_attr($secondary_color). ";}\n";
 	$custom .= ".view:hover {border: 5px solid ".$primary_color.";\n box-shadow: 1px 1px 2px ". esc_attr($primary_color). ";}\n";
 	

@@ -202,7 +202,7 @@ function ajax_comment_err($a) {
  
  //把按钮通过WP自带的钩子追加到默认的留言模板上。
  //【comment_form_defaults】是“提交留言”按钮，类型是submit。默认加到它的后面。
- add_filter('comment_form_defaults' , 'add_senseless_btn', 40);
+ //add_filter('comment_form_defaults' , 'add_senseless_btn', 40);
 function add_senseless_btn( $defaults )
 {
 	if ( is_page() )

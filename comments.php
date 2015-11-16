@@ -81,12 +81,13 @@ if ( post_password_required() ) {
 
 		if ( $cookie != "" ) {
 			$comment_part.= '<div class="form_row">' ;
-			$comment_part.= sprintf('<p> <span class="show-form secondary_color" >%s[编辑]</span>， 欢迎回来 ', $cookie) ;	
+			$comment_part.= sprintf('<p> %s<span class="show-form secondary_color" >[编辑]</span>， 欢迎回来 不想留言可以', $cookie) ;
+			$comment_part.= '<input id="grasp" class="submit" type="button" value="圈阅" name="grasp">';
 			$comment_part.= get_avatar( $email, $size = '24') ;
 			$comment_part.= '</p></div>' ;	
-			$comment_part.= '<div id="author_info">';			
+			$comment_part.= '<div id="author_info">';
 		}
-		//另一半div标签放在前面的 $comment_field里		
+		//另一半div标签放在前面的 $comment_field里
 		$fields =  array(
 			  'author' =>
 				'<p class="comment-form-author"><label for="author">昵称</label> ' .
@@ -131,7 +132,7 @@ if ( post_password_required() ) {
 				
 			  'comment_notes_before' => $comment_part ,				
 
-			  'comment_notes_after' => '<p class="form-allowed-tags">不知该说什么就点【路过】吧！</p>',
+			  'comment_notes_after' => '<p class="form-allowed-tags">无言以对就退散吧！</p>',
 
 			  'fields' => apply_filters( 'comment_form_default_fields', $fields ),
 			);
