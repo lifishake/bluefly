@@ -102,6 +102,7 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".towhom a { color:" . esc_attr($body_text) . ";}\n";
 	$custom .= "h1,h2,h3,h4,h5,h6 { color:" . esc_attr($body_text) . ";}\n";
 	$custom .= ".view h2, .view p, .view a.info { color:" . esc_attr($body_text) . ";}\n";
+	$custom .= ".search-field { color:" . esc_attr($body_text) . ";}\n";
 	$custom .= ".view::after {background-color:".$overlay."; }\n";
 	
 	$custom .= "blockquote::before { color:" . esc_attr($background_color) . ";}\n";
@@ -149,7 +150,7 @@ function bluefly_custom_styles($custom) {
 	
 	//主颜色(主要是链接和高亮)	
 	$custom .= "a { color:" . esc_attr($primary_color) . ";}" . "\n";
-	$custom .= ".archive-meta a:hover, .entry-meta a:hover, .entry-title a:hover, .social-navigation li a:hover, a { color:" . esc_attr($primary_color) . "}\n";
+	$custom .= ".archive-meta a:hover, .entry-meta a:hover, .view p:hover, .entry-title a:hover, .social-navigation li a:hover, a { color:" . esc_attr($primary_color) . "}\n";
 	$custom .= ".nav-previous:hover, .nav-next:hover, button, .button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] { background-color:" . esc_attr($primary_color) . "}\n";
 	$custom .= ".page-numbers.current { color: ". esc_attr($opp_text). "; background-color: ".esc_attr($primary_color)."; }\n";
 	$rgba 	= bluefly_hex2rgba_str($primary_color, 0.3);

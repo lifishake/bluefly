@@ -7,7 +7,7 @@
 
 <section class="no-results not-found">
 	<header class="page-header sec-bg">
-		<h1 class="page-title opp-text"><?php '没找到'; ?></h1>
+		<h1 class="page-title opp-text"><?php echo '没找到'; ?></h1>
 	</header><!-- .page-header -->
 
 	<div class="page-content opp-text">
@@ -18,7 +18,7 @@
 
 		<?php else : ?>
 
-			<<p><?php '没找到，换个关键词试试。'; ?></p>
+			<p><?php '没找到，换个关键词试试。'; ?></p>
 			<?php get_search_form(); ?>
 
 		<?php endif; ?>
