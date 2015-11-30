@@ -190,3 +190,139 @@ function bluefly_time_ago( $desc ) {
 	return $days.$desc;
   
 }
+
+/**
+ * 作用: HEX描述的颜色值转成RGBA描述(A作为另外的参数)
+ * 来源: Oblique原版
+ */
+function bluefly_hex2rgba_str($color, $opacity = 1.0) {
+
+        if ($color[0] == '#' ) {
+        	$color = substr( $color, 1 );
+        }
+        $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+        $rgb =  array_map('hexdec', $hex);
+        $output = 'rgba('.implode(",",$rgb).','.$opacity.')';
+
+        return $output;
+}
+
+/**
+ * 作用: HEX描述的颜色值转成RGB
+ * 来源: Oblique原版
+ */
+function hex2rgb($color) {
+	if ($color[0] == '#' ) {
+		$color = substr( $color, 1 );
+	}
+	$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+    $rgb =  array_map('hexdec', $hex);
+	return $rgb;
+}
+
+/**
+ * 作用: RGB颜色值转成HSV描述
+ * 来源: http://stackoverflow.com/questions/1773698/rgb-to-hsv-in-php
+ * 输出的范围0-360, 0-100, 0-100!!
+ */
+function rgb2hsv(array $rgb)   
+{                             
+	list($R,$G,$B) = $rgb;
+    $R = ($R / 255);
+    $G = ($G / 255);
+    $B = ($B / 255);
+
+    $maxRGB = max($R, $G, $B);
+    $minRGB = min($R, $G, $B);
+    $chroma = $maxRGB - $minRGB;
+
+    $computedV = floor(100 * $maxRGB);
+
+    if ($chroma == 0)
+        return array(0, 0, $computedV);
+
+    $computedS = floor(100 * ($chroma / $maxRGB));
+
+    if ($R == $minRGB)
+        $h = 3 - (($G - $B) / $chroma);
+    elseif ($B == $minRGB)
+        $h = 1 - (($R - $G) / $chroma);
+    else // $G == $minRGB
+        $h = 5 - (($B - $R) / $chroma);
+
+    $computedH = floor(60 * $h);
+
+    return array($computedH, $computedS, $computedV);
+}
+
+/**
+ * 作用: RGB颜色值转成HSV描述
+ * 来源: 破袜子由C代码修改
+ * 输入的范围0-360, 0-100, 0-100!!
+ */
+function hsv2rgb(array $hsv) {
+	list($H,$S,$V) = $hsv;
+	//1
+	$H /= 60;
+	//2
+	$I = floor($H);
+	$F = $H - $I;
+	$S /= 100;
+	$V /= 100;
+	//3
+	$M = round( $V * (1 - $S) * 255);
+	$N = round( $V * (1 - $S * $F) * 255 );
+	$K = round( $V * (1 - $S * (1 - $F)) * 255 );
+	$V = round( $V * 255) ;
+	//4
+	switch ($I) {
+		case 0:
+			list($R,$G,$B) = array($V,$K,$M);
+			break;
+		case 1:
+			list($R,$G,$B) = array($N,$V,$M);
+			break;
+		case 2:
+			list($R,$G,$B) = array($M,$V,$K);
+			break;
+		case 3:
+			list($R,$G,$B) = array($M,$N,$V);
+			break;
+		case 4:
+			list($R,$G,$B) = array($K,$M,$V);
+			break;
+		case 5:
+		case 6: //for when $H=1 is given
+			list($R,$G,$B) = array($V,$M,$N);
+			break;
+	}
+	return array($R, $G, $B);
+}
+
+/**
+ * 作用: 根据HSV取相位角度差为$degree度的颜色
+ * 来源: 破袜子原创
+ * $degree的范围-360~360
+ */
+function get_semi_color( $hsv, $degree) {
+	$temp = $hsv ;
+	$temp[0] = $temp[0] + $degree + 360;
+	$temp[0] = $temp[0] % 360 ;
+	$rgb = hsv2rgb($temp) ;
+	$str = sprintf("#%1$02X%2$02X%3$02X",$rgb[0],$rgb[1],$rgb[2]) ;
+	return $str;
+}
+
+/**
+ * 作用: 取角度差为$degree度的颜色
+ * 来源: 破袜子原创
+ * $degree的范围 0~359
+ */
+function get_assistant_color( $primary, $degree ) {
+	 $rgb = hex2rgb($primary) ;
+	 $hsv = rgb2hsv($rgb) ;
+	 $ret = array() ;
+	 $ret[0] = get_semi_color( $hsv, $degree) ;
+	 $ret[1] = get_semi_color( $hsv,  0 - $degree) ;
+	 return $ret;
+ }

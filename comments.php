@@ -84,7 +84,7 @@ if ( post_password_required() ) {
 			$comment_part.= sprintf('<p> %s<span class="show-form secondary_color" >[编辑]</span>， 欢迎回来 不想留言可以', $cookie) ;
 			$comment_part.= '<input id="grasp" class="submit" type="button" value="圈阅" name="grasp">';
 			$comment_part.= get_avatar( $email, $size = '24') ;
-			$comment_part.= '</p></div>' ;	
+			$comment_part.= '</p></div>' ;
 			$comment_part.= '<div id="author_info">';
 		}
 		//另一半div标签放在前面的 $comment_field里
@@ -92,18 +92,18 @@ if ( post_password_required() ) {
 			  'author' =>
 				'<p class="comment-form-author"><label for="author">昵称</label> ' .
 				( $req ? '<span class="required">（必填）</span>' : '' ) .
-				'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+				'<input id="author" name="author" class="hentry-bg" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
 				'" size="30"' . $aria_req . ' /></p>',
 
 			  'email' =>
 				'<p class="comment-form-email"><label for="email">邮箱</label> ' .
 				( $req ? '<span class="required">（必填，不会泄漏）</span>' : '' ) .
-				'<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+				'<input id="email" name="email" class="hentry-bg" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
 				'" size="30"' . $aria_req . ' /></p>',
 
 			  'url' =>
 				'<p class="comment-form-url"><label for="url">网址</label>' .
-				'<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
+				'<input id="url" name="url" class="hentry-bg" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
 				'" size="30" /></p>',
 			);//fields
 		if ( $cookie != "" ) {
@@ -116,7 +116,7 @@ if ( post_password_required() ) {
 			  'label_submit'      => '留言',
 
 			  'comment_field' =>  '<p class="comment-form-comment"><label for="comment">' . '' .
-				'</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true">' .
+				'</label><textarea id="comment" name="comment" cols="45" rows="8" class="hentry-bg" aria-required="true">' .
 				'</textarea></p>',
 
 			  'must_log_in' => '<p class="must-log-in">' .
@@ -130,7 +130,7 @@ if ( post_password_required() ) {
 				  wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) )
 				) . '</p>',
 				
-			  'comment_notes_before' => $comment_part ,				
+			  'comment_notes_before' => $comment_part ,
 
 			  'comment_notes_after' => '<p class="form-allowed-tags">无言以对就退散吧！</p>',
 

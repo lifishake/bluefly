@@ -5,7 +5,6 @@
  * @package bluefly
  */
 
-
 if ( ! function_exists( 'bluefly_setup' ) ) :
 /**
  * 安装
@@ -62,7 +61,31 @@ function bluefly_setup() {
 	) );
 }
 endif; // bluefly_setup
+
 add_action( 'after_setup_theme', 'bluefly_setup' );
+
+/**
+ * 作用: 替换content中的图片链接,为lazyload做准备
+ */
+function bluefly_lazyload_filter( $content )
+{
+    $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+    $dom = new DOMDocument();
+    @$dom->loadHTML($content);
+
+    foreach ($dom->getElementsByTagName('img') as $node) {  
+        $oldsrc = $node->getAttribute('src');
+        $node->setAttribute("data-original", $oldsrc );
+		$node->setAttribute("class","lazy");
+        $newsrc = get_template_directory_uri().'/images/blank.gif';
+        $node->setAttribute("src", $newsrc);
+    }
+    $newHtml = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $dom->saveHTML()));
+    return $newHtml;
+}
+add_filter( 'the_content', 'bluefly_lazyload_filter',200 );
+add_filter( 'post_thumbnail_html', 'bluefly_lazyload_filter',200 );
+
 
 /**
  * 作用: 注册小工具
@@ -91,12 +114,10 @@ function bluefly_scripts() {
 
 	wp_enqueue_script( 'bluefly-slicknav', get_template_directory_uri() . '/js/jquery.slicknav.min.js', array('jquery'), true );	
 
-	wp_enqueue_script( 'bluefly-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), true );	
-
 	wp_enqueue_script( 'bluefly-masonry-init', get_template_directory_uri() . '/js/masonry-init.js', array('jquery-masonry'), true );		
-
 	wp_enqueue_script( 'bluefly-infinitescroll', get_template_directory_uri() . '/js/jquery.infinitescroll.min.js', array(), '20120206', true );
-
+	wp_enqueue_script( 'bluefly-lazyload', get_template_directory_uri() . '/js/jquery.lazyload.min.js', array(), '1.9.7', true );
+	wp_enqueue_script( 'bluefly-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), true );
 	wp_enqueue_script( 'bluefly-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() ) {

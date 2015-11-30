@@ -4,7 +4,7 @@ Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 0.16
+Version: 0.18
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
@@ -159,19 +159,9 @@ input[type="url"],
 input[type="password"],
 input[type="search"],
 textarea {
-    color: #666;
     border: 1px solid #ebebeb;
     border-radius: 3px;
     width: 100%;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-textarea:focus {
-    color: #111;
 }
 
 input[type="text"],
@@ -1285,6 +1275,36 @@ img[class*="wp-image-"] {
 .show-form  {
     cursor: pointer;
 }
+/*-----------------
+  仿instgram的过曝光效果
+-----------------*/
+.reyes:before, .reyes:after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  pointer-events: none; }
+
+.reyes {
+  position: relative; }
+  .reyes img {
+    width: 100%;
+    z-index: 1; }
+  .reyes:before {
+    z-index: 2; }
+  .reyes:after {
+    z-index: 3; }
+
+.reyes {
+  -webkit-filter: sepia(.22) brightness(1.1) contrast(.85) saturate(0.75);
+          filter: sepia(.22) brightness(1.1) contrast(.85) saturate(0.75); }
+  .reyes::after {
+    background: #efcdad;
+    mix-blend-mode: soft-light;
+    opacity: .5; }
 
 /*-----------------
   FontAwesome相关

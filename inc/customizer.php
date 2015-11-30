@@ -156,7 +156,6 @@ function bluefly_customize_register( $wp_customize ) {
         )
     );
 
-
     //___Fonts___//
     $wp_customize->add_section(
         'bluefly_fonts',

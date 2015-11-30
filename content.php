@@ -15,7 +15,9 @@
 					if ($thumbnail) (string)$thumbnail = $thumbnail[0];
 			} ?>
 	<?php endif; ?>
-	<div class="view" <?php if($thumbnail){echo 'style= "background-image:url('.$thumbnail.')" ';} ?>>
+	<div class="view lazy" <?php if($thumbnail){
+			echo 'data-original="'.$thumbnail.'" style= "background-image:url('.get_template_directory_uri().'/images/blank.gif)" ';
+		} ?>>
 	<?php if(!$thumbnail): ?>
 	<div class="content-bg-<?php echo get_post_format();?>" ></div>
 	<?php endif; ?>

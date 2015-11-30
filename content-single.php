@@ -19,7 +19,7 @@
 	
 	<?php if ( has_post_thumbnail() ) : ?>
 	
-		<div class="single-thumb">
+		<div class="single-thumb reyes">
 			<?php the_post_thumbnail('bluefly-single-thumb'); ?>
 			<?php //日期格式参考: https://codex.wordpress.org/Formatting_Date_and_Time ?>
 			<span class="single-thumb-time noselect"><?php the_date('y-m-d h:i a'); /*特色图片上的伪照片日期*/ ?></span>

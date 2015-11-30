@@ -22,9 +22,9 @@ c) html5shiv
 协议源: http://opensource.org/licenses/MIT
 协议源: http://www.gnu.org/licenses/gpl-2.0.html
 
-d) imagesLoaded
-Copyright: 2014 David DeSandro
-来源: http://imagesloaded.desandro.com/
+d) lazyload
+Copyright: 2015 Mika Tuupola
+来源: http://www.appelsiini.net/projects/lazyload
 协议: MIT
 协议源: http://opensource.org/licenses/MIT
 
@@ -55,6 +55,10 @@ h)ajax-comment
 来源: https://fatesinger.com/59
 协议: 未知
 
+i)CSSgram
+来源: https://github.com/una/CSSgram
+协议: MIT
+
 III. 注意事项和使用说明
 0.  如果不是以为GPL的要求，本人其实根本不想把这个主题公开。为了省事，所有的注释以及可配置的字符串都设成了中文UTF8编码。所有的歪果仁朋友，对不起了。
     Sorry for non-Chinese developers, the author had never supposed to support any foreign languages.
@@ -69,9 +73,20 @@ III. 注意事项和使用说明
 7.  不支持多作者。作者名已隐藏。
 8.  归档页面保留类别、标签和日期，其余归档页面自动跳转到404。
 9.  请自行添加一个社会化导航menu，设置好之后右上角就可以显示。
+10. 自带lazyload功能，如果与安装的插件有冲突请自行调整。
 
 
 IV. 版本历史
+2015/11/30 0.18
+--------------------------------------
+-单张照片追加仿Instagram褪色效果(reyes)
+-修改部分配色
+-调整颜色计算函数的位置style.php->trait.php
+
+2015/11/17 0.17
+--------------------------------------
+-追加图片延时加载功能
+
 2015/11/16 0.16
 --------------------------------------
 -调整“路过”为“圈阅”

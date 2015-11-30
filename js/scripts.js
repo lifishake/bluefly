@@ -1,10 +1,11 @@
-//Open social links in a new tab
-jQuery(function($) {
-     $( '.social-navigation li a' ).attr( 'target','_blank' );
-});
 
-//Toggle sidebar
+
 jQuery(function($) {
+	
+	//Open social links in a new tab
+	$( '.social-navigation li a' ).attr( 'target','_blank' );
+	
+	//Toggle sidebar
 	$('.sidebar-toggle').click(function() {
 		$('.widget-area').toggleClass('widget-area-visible');
 		$('.sidebar-toggle').toggleClass('sidebar-toggled');
@@ -13,10 +14,8 @@ jQuery(function($) {
 	$('.sidebar-toggle-inside').click(function() {
 		$('.widget-area').toggleClass('widget-area-visible');
 	});	
-});
 
-//Menu
-jQuery(function($) {
+	//Menu
 	$('.main-navigation .menu').slicknav({
 		label: '',
 		duration: 500,
@@ -25,9 +24,7 @@ jQuery(function($) {
 		openedSymbol: '&#45;',
 		allowParentLinks: true	
 	});
-});
-
-jQuery(function($) {
+	
 	/**
 	* 无限滚动
 	*/
@@ -47,9 +44,10 @@ jQuery(function($) {
 	  //Masonry的回调函数
 	  function( newElements ) {
 		var $newElems = $( newElements );
+		$('div.lazy').lazyload({
+		  effect : "fadeIn"
+		});
 		$container.masonry( 'appended', $newElems );
-		//下面这段是延时加载(lazyload)的代码。我不会优化只能全粘上来。不使用unveil-ui.min.js的完全应该注释掉!!
-		(function(e){e.fn.unveil=function(t,n){function f(){var t=u.filter(function(){var t=e(this),n=r.scrollTop(),s=n+r.height(),o=t.offset().top,u=o+t.height();return u>=n-i&&o<=s+i});a=t.trigger("unveil");u=u.not(a)}var r=e(window),i=t||0,s=window.devicePixelRatio>1,o=s?"data-src-retina":"data-src",u=this,a;this.one("unveil",function(){var e=this.getAttribute(o);e=e||this.getAttribute("data-src");if(e){this.setAttribute("src",e);if(typeof n==="function")n.call(this)}});r.scroll(f);r.resize(f);f();return this}})(window.jQuery||window.Zepto);jQuery(document).ready(function(e){if(typeof t==="undefined"){var t=0}e('img[data-unveil="true"]').unveil(t,function(){e(this).load(function(){this.style.opacity=1})})})
 	  }
 	);
 	
@@ -73,6 +71,13 @@ jQuery(function($) {
 	
 jQuery(document).ready(function($) { 
 
+	$('div.lazy').lazyload({
+      effect : "fadeIn"
+	});
+	$('#ob-grid').masonry();
+	$("img.lazy").lazyload({
+      effect : "fadeIn"
+	});
 	/**
 	* 判断是否是触屏设备
 	*/
@@ -122,4 +127,3 @@ function get_js_URL() {
 	}
 	return result.substr( 0, result.lastIndexOf('/'));
 };
-	
