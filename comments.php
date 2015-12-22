@@ -85,7 +85,6 @@ if ( post_password_required() ) {
 			$comment_part.= '<input id="grasp" class="submit" type="button" value="圈阅" name="grasp">';
 			$comment_part.= get_avatar( $email, $size = '24') ;
 			$comment_part.= '</p></div>' ;
-			$comment_part.= '<div id="author_info">';
 		}
 		//另一半div标签放在前面的 $comment_field里
 		$fields =  array(
@@ -107,6 +106,7 @@ if ( post_password_required() ) {
 				'" size="30" /></p>',
 			);//fields
 		if ( $cookie != "" ) {
+			    $fields['author']='<div id="author_info">'.$fields['author'];
 				$fields['url'].="</div>";
 			}
 		$args = array(

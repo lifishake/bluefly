@@ -164,6 +164,7 @@ function bluefly_custom_styles($custom) {
 	$custom .= ".social-navigation li a::before { color:". $secondary_color. ";}\n" ;
 	$custom .= ".secondary_color { color:". $secondary_color. ";}\n" ;
 	$custom .= ".widget-area a:hover { color:" . esc_attr($secondary_color) . "}\n";
+	$custom .= "del::after { background-color:" . esc_attr($thirdly_color) . "}\n";
 	$custom .= ".thirdly_color, .thirdly_color a { color:". $thirdly_color. ";}\n" ;
 	$custom .= ".sticky::before { color: ". esc_attr($thirdly_color). ";}\n";
 	$custom .= ".comments-title { border-bottom: 1px solid ". esc_attr($rgba). ";}\n";
