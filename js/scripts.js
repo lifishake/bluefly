@@ -57,14 +57,24 @@ jQuery(function($) {
     }
     //Stop the viewport animation if user interaction is detected
     var f = $("html, body");
+    var pos = $("#comments").offset().top;
 	$(".floattop").on("click touchstart touchend", function ($) {
-            f.on("scroll mousedown DOMMouseScroll mousewheel keyup", g);
-            f.animate({
-                scrollTop: 0
-            }, 1e3, function () {
-                f.stop().off("scroll mousedown DOMMouseScroll mousewheel keyup", g);
-            });
-            $.preventDefault();
+        f.on("scroll mousedown DOMMouseScroll mousewheel keyup", g);
+        f.animate({
+            scrollTop: 0
+        }, 1e3, function () {
+            f.stop().off("scroll mousedown DOMMouseScroll mousewheel keyup", g);
+        });
+        $.preventDefault();
+    });
+    $(".floatcomment").on("click touchstart touchend", function ($) {
+        f.on("scroll mousedown DOMMouseScroll mousewheel keyup", g);
+        f.animate({
+            scrollTop: pos
+        }, 1e3, function () {
+            f.stop().off("scroll mousedown DOMMouseScroll mousewheel keyup", g);
+        });
+        $.preventDefault();
     });
 
 });
