@@ -4,7 +4,7 @@ Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 0.22
+Version: 0.23
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
@@ -44,7 +44,7 @@ Tags: 动态部局, 响应式部局, 自定义颜色, 自定义菜单, 自定义
 -----------------*/
 /*定义字体。先英文后中文*/
 body {
-    font-family: Avenir, 'Lucida Grande', Calibri, Helvetica, Arial,'Microsoft JhengHei', 'Microsoft YaHei', 'Hiragino Sans GB', SimHei, STHeiti, sans-serif;
+    font-family: Avenir, 'Lucida Grande', Calibri, Helvetica, Arial,'Microsoft JhengHei', 'Microsoft YaHei', 'Hiragino Sans GB', NSimSun, SimSun, SimHei, STHeiti, sans-serif;
     font-size: 16px;
     line-height: 1.55;
     word-wrap: break-word;

@@ -57,7 +57,11 @@ jQuery(function($) {
     }
     //Stop the viewport animation if user interaction is detected
     var f = $("html, body");
-    var pos = $("#comments").offset().top;
+	var resobj = document.getElementById("respond"); 
+    var pos = 0;
+	if (resobj){ 
+		pos = $("#respond").offset().top; 
+		}
 	$(".floattop").on("click touchstart touchend", function ($) {
         f.on("scroll mousedown DOMMouseScroll mousewheel keyup", g);
         f.animate({

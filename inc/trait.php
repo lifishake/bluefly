@@ -25,11 +25,11 @@ function bluefly_posted_on() {
 
 	$posted_on = '<i class="fa fa-calendar thirdly_color"></i> ' . $time_string ;
 
-	$byline = '<span class="author vcard hidden "><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
+	/*$byline = '<span class="author vcard hidden "><a class="url fn n" rel="nofollow" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';*/
 
 
 	/*个人用户,把作者隐藏掉*/
-	echo '<span class="posted-on">' . $posted_on . '</span>'. $byline ;
+	echo '<span class="posted-on">' . $posted_on . '</span>'/*. $byline */;
 
 }
 
@@ -117,7 +117,7 @@ function bluefly_timediff( $from, $to, $before, $after) {
 	if( empty($before) )
 		$before = '于';
 	if( empty($after) )
-		$after = '以前';
+		$after = '前';
 	$from_int = strtotime($from) ;
 	$to_int = strtotime($to) ;
 	$diff_time = abs($to_int - $from_int) ;
@@ -135,7 +135,7 @@ function bluefly_timediff( $from, $to, $before, $after) {
 	}
 	else if ( $diff_time > 60 * 60 ) { //小时
 		$num = round($diff_time / 3600);
-		$uni = '个小时';
+		$uni = '小时';
 	}
 	else { //分钟
 		$num = round($diff_time / 60);
