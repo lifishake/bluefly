@@ -18,9 +18,6 @@
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content"><?php echo '跳至内容'; ?></a>
 
-
-	<div class="sidebar-toggle secondary_color"><i class="fa fa-bars"></i></div>
-
 	<?php if ( has_nav_menu( 'social' ) ) : /*社会化菜单导航*/?>
 		<nav class="social-navigation container clearfix">
 			<?php wp_nav_menu( array( 'theme_location' => 'social', 'link_before' => '<span class="screen-reader-text">', 'link_after' => '</span>', 'menu_class' => 'menu clearfix', 'fallback_cb' => false ) ); ?>

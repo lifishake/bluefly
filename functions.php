@@ -135,6 +135,15 @@ function bluefly_scripts() {
 add_action( 'wp_enqueue_scripts', 'bluefly_scripts' );
 
 /**
+ * 语言声明优化
+ */
+ function bluefly_chinese( $output, $doctype ) {
+	  $output = "lang=\"zh-CN\"";
+	  return $output;
+ }
+add_filter('language_attributes', 'bluefly_chinese', 11); 
+
+/**
  * 菜单用
  */
 function bluefly_html5shiv() {

@@ -5,9 +5,27 @@ jQuery(function($) {
 	//Open social links in a new tab
 	$( '.social-navigation li a' ).attr( 'target','_blank' );
 	
+    //home
+    $('.floathome').click(function() {
+        var my_host = "http://"+window.location.host+"/";
+        window.location.replace(my_host);
+    });
 	//Toggle sidebar
 	$('.sidebar-toggle').click(function() {
 		$('.widget-area').toggleClass('widget-area-visible');
+        $comm = jQuery('.floatcomment');
+        if ( $('.widget-area').hasClass('widget-area-visible') ) {
+            jQuery('.floattop').css('display', 'none');
+            jQuery('.floathome').css('display', 'none');
+            if ( $comm )
+                $comm.css('display', 'none');
+        }
+        else {
+            jQuery('.floattop').css('display', '');
+            jQuery('.floathome').css('display', '');
+            if ( $comm )
+                $comm.css('display', '');
+        }
 		$('.sidebar-toggle').toggleClass('sidebar-toggled');
 		$('.sidebar-toggle').find('i').toggleClass('fa-bars fa-times');
 	});

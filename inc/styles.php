@@ -128,8 +128,6 @@ function bluefly_custom_styles($custom) {
 
     //反选文字的颜色,与文章背景色相同. 
     $custom .= ".opp-text { color:" . esc_attr($opp_text) . ";}\n";
-    $custom .= ".floattop, .floatcomment { border-color:" . esc_attr($opp_text) . ";\n";
-    $custom .= "background-color:".$rgba.";}\n";
     $custom .= ".site-main .comment-navigation a,.site-main .posts-navigation a,.site-main .post-navigation a,.site-main .pagination a  { color:" . esc_attr($opp_text) . ";}\n";
     
     //带a带hover的直接加不上,只能单写
@@ -164,7 +162,7 @@ function bluefly_custom_styles($custom) {
     $custom .= ".social-navigation li a::before { color:". $secondary_color. ";}\n" ;
     $custom .= ".secondary_color { color:". $secondary_color. ";}\n" ;
     $custom .= ".widget-area a:hover { color:" . esc_attr($secondary_color) . "}\n";
-    $custom .= "del::after { background-color:" . esc_attr($thirdly_color) . "}\n";
+    $custom .= "del { color:" . esc_attr($thirdly_color) . "}\n";
     $custom .= ".thirdly_color, .thirdly_color a { color:". $thirdly_color. ";}\n" ;
     $custom .= ".sticky::before { color: ". esc_attr($thirdly_color). ";}\n";
     $custom .= ".comments-title { border-bottom: 1px solid ". esc_attr($rgba). ";}\n";

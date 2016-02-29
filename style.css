@@ -4,7 +4,7 @@ Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 0.23
+Version: 0.24
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
@@ -80,20 +80,6 @@ p {
     letter-spacing: 0.03em;
     line-height: 1.9;
     margin-bottom: 2em;
-}
-del {
-    position:relative;
-    text-decoration:none;
-    opacity: 0.8;
-}
-del::after {
-    content:"";
-    position:absolute;
-    top:50%; left:0; width:100%; height:2px; 
-    background:black ;
-    -webkit-transform:rotate(-7deg);
-    -moz-transform:rotate(-7deg);
-    transform:rotate(-7deg);
 }
 /*-----------------
   表格类
@@ -330,7 +316,7 @@ textarea {
     height: 100%;
     padding: 30px;
     top: 0;
-    left: -360px;
+    right: -360px;
     -webkit-transition: all 0.8s;
     transition: all 0.8s;
     overflow-y: auto;
@@ -342,30 +328,10 @@ textarea {
     margin: 0 0 20px;
 }
 
-.admin-bar .widget-area {
-    top: 32px;
-}
 .widget-area-visible {
-    left: 0;
+    right: 0;
 }
-.sidebar-toggle {
-    font-size: 28px;
-    position: fixed;
-    left: 75px;
-    top: 20px;
-    z-index: 101;
-    -webkit-transition: all 0.8s;
-    transition: all 0.8s;
-    cursor: pointer;
-    line-height: 1;
-    text-shadow: 0 0 1px #000;
-}
-.admin-bar .sidebar-toggle {
-    top: 52px;
-}
-.sidebar-toggled {
-    left: 380px;
-}
+
 .sidebar-nav {
     margin-bottom: 30px;
 }
@@ -383,7 +349,7 @@ textarea {
 }
 
 .widget .children {
-    padding-left: 30px;
+    padding-right: 30px;
 }
 .widget li {
     padding: 3px 0;
@@ -944,31 +910,42 @@ img[class*="wp-image-"] {
     text-shadow:none;
 }
 
-.floattop{ position:fixed;
-           right:5%;
-           bottom:12%;
+.floattop{ 
+   right:5%;
+   bottom:12%;
 }
-.floatcomment{ position:fixed;
-           right:5%;
-           bottom:18%;
-           bottom:    -moz-calc(12% + 2em);
-           bottom: -webkit-calc(12% + 2em);
-           bottom:         calc(12% + 2em);
+.floathome{ 
+   right:5%;
+   bottom:17%;
+   bottom:    -moz-calc(12% + 1.5em);
+   bottom: -webkit-calc(12% + 1.5em);
+   bottom:         calc(12% + 1.5em);
 }
-.floattop, .floatcomment{ position:fixed;
+
+.sidebar-toggle {
+    right:5%;
+    bottom:22%;
+    bottom:    -moz-calc(12% + 3em);
+    bottom: -webkit-calc(12% + 3em);
+    bottom:         calc(12% + 3em);
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
+.floatcomment{ 
+   right:5%;
+   bottom:27%;
+   bottom:    -moz-calc(12% + 4.5em);
+   bottom: -webkit-calc(12% + 4.5em);
+   bottom:         calc(12% + 4.5em);
+}
+
+.floattop, .floathome, .floatcomment, .sidebar-toggle{ position:fixed;
            cursor:pointer;
-           font-size: 1.2em;
-           width:1.8em;
-           height:1.8em;
-           vertical-align:middle;
-           text-align:center;
+           z-index: 101;
            background-color:rgba(0,0,0,0);
-           border:2px solid #FFF;
-           border-radius: 100%;
-            -moz-border-radius: 100%;
-            -webkit-border-radius: 100%;
            }
-.floattop:hover, .floatcomment:hover{
+.floattop:hover, .floathome:hover, .floatcomment:hover, .sidebar-toggle:hover{
     -webkit-transition:all .8s ease-in-out;
     -moz-transition:all .8s ease-in-out;
     -o-transition:all .8s ease-in-out;
@@ -1122,11 +1099,6 @@ img[class*="wp-image-"] {
     .site-description {
         font-size: 16px;
     }
-    .sidebar-toggle {
-        position: relative;
-        display: table;
-        left: 25px;
-    }
 }
 @media only screen and (max-width: 460px) {
     .post-inner {
@@ -1143,14 +1115,6 @@ img[class*="wp-image-"] {
     }
     .widget-area-visible {
         width: 100%;
-    }
-    .sidebar-toggle {
-        left: 0;
-        position: relative;
-    }
-    .admin-bar .sidebar-toggle {
-        top: 0;
-        margin: 0 auto 15px;
     }
     .social-navigation ul {
         text-align: center;
@@ -1388,6 +1352,9 @@ img[class*="wp-image-"] {
 .fa-folder-open:before {
   content: "\f07c";
 }
-.fa-hand-o-up:before {
-  content: "\f0a6";
+.fa-chevron-up:before {
+  content: "\f077";
+}
+.fa-home:before {
+  content: "\f015";
 }
