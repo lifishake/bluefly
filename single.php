@@ -14,7 +14,7 @@ get_header(); ?>
 			
 			<?php do_action('bluefly_after_single_post'); ?>
 
-			<?php the_post_navigation(array('prev_text'=>'<i class="fa fa-arrow-left"></i> %title','next_text'=>'%title <i class="fa fa-arrow-right"></i>','screen_reader_text'=>'文章导航')); ?>
+			<?php apip_get_post_navagation(array('prev_text'=>'<i class="fa fa-arrow-left"></i> %title','next_text'=>'%title <i class="fa fa-arrow-right"></i>','screen_reader_text'=>'文章导航')); ?>
 			
 			<?php
 				//如果允许评论就加载评论

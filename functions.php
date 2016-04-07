@@ -110,7 +110,7 @@ function bluefly_scripts() {
 
 	wp_enqueue_style( 'bluefly-bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), true );	
 
-	wp_enqueue_style( 'bluefly-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'bluefly-style', get_stylesheet_uri(), array(), '1.00' );
 
 	wp_enqueue_script( 'bluefly-slicknav', get_template_directory_uri() . '/js/jquery.slicknav.min.js', array('jquery'), true );
 	
@@ -137,7 +137,7 @@ add_action( 'wp_enqueue_scripts', 'bluefly_scripts' );
 /**
  * 语言声明优化
  */
- function bluefly_chinese( $output, $doctype ) {
+ function bluefly_chinese( $output ) {
 	  $output = "lang=\"zh-CN\"";
 	  return $output;
  }

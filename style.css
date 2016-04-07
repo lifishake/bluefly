@@ -4,7 +4,7 @@ Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 0.24
+Version: 1.00
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
@@ -482,17 +482,6 @@ blockquote::before {
     font-size: 1.5em;
 }
 
-.single-breadcrumb{
-    margin:-1px 0 0 0;
-    padding:7px 11px 0 32px;
-    position:relative;
-    z-index:9;
-    background-color: rgba(255,128,80,0.7);
-    height:30px;
-    color:#EEE;
-    float:left;
-}
-
 .single-thumb {
     margin-bottom: 30px;
     text-align: center;
@@ -911,39 +900,40 @@ img[class*="wp-image-"] {
 }
 
 .floattop{ 
-   right:5%;
-   bottom:12%;
+   right:4%;
+   bottom:10%;
 }
 .floathome{ 
-   right:5%;
-   bottom:17%;
-   bottom:    -moz-calc(12% + 1.5em);
-   bottom: -webkit-calc(12% + 1.5em);
-   bottom:         calc(12% + 1.5em);
+   right:4%;
+   bottom:15%;
+   bottom:    -moz-calc(12% + 24px);
+   bottom: -webkit-calc(12% + 24px);
+   bottom:         calc(12% + 24px);
 }
 
 .sidebar-toggle {
-    right:5%;
-    bottom:22%;
-    bottom:    -moz-calc(12% + 3em);
-    bottom: -webkit-calc(12% + 3em);
-    bottom:         calc(12% + 3em);
+    right:4%;
+    bottom:20%;
+    bottom:    -moz-calc(12% + 48px);
+    bottom: -webkit-calc(12% + 48px);
+    bottom:         calc(12% + 48px);
     -webkit-transition: all 0.8s;
     transition: all 0.8s;
 }
 
 .floatcomment{ 
-   right:5%;
-   bottom:27%;
-   bottom:    -moz-calc(12% + 4.5em);
-   bottom: -webkit-calc(12% + 4.5em);
-   bottom:         calc(12% + 4.5em);
+   right:4%;
+   bottom:25%;
+   bottom:    -moz-calc(12% + 72px);
+   bottom: -webkit-calc(12% + 72px);
+   bottom:         calc(12% + 72px);
 }
 
 .floattop, .floathome, .floatcomment, .sidebar-toggle{ position:fixed;
            cursor:pointer;
            z-index: 101;
            background-color:rgba(0,0,0,0);
+           font-size:20px;
            }
 .floattop:hover, .floathome:hover, .floatcomment:hover, .sidebar-toggle:hover{
     -webkit-transition:all .8s ease-in-out;
