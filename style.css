@@ -1,10 +1,11 @@
 /*
 Theme Name: bluefly
 Theme URI: https://github.com/lifishake/bluefly
+GitHub Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 1.00
+Version: 1.01
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
@@ -906,17 +907,17 @@ img[class*="wp-image-"] {
 .floathome{ 
    right:4%;
    bottom:15%;
-   bottom:    -moz-calc(12% + 24px);
-   bottom: -webkit-calc(12% + 24px);
-   bottom:         calc(12% + 24px);
+   bottom:    -moz-calc(10% + 24px);
+   bottom: -webkit-calc(10% + 24px);
+   bottom:         calc(10% + 24px);
 }
 
 .sidebar-toggle {
     right:4%;
     bottom:20%;
-    bottom:    -moz-calc(12% + 48px);
-    bottom: -webkit-calc(12% + 48px);
-    bottom:         calc(12% + 48px);
+    bottom:    -moz-calc(10% + 48px);
+    bottom: -webkit-calc(10% + 48px);
+    bottom:         calc(10% + 48px);
     -webkit-transition: all 0.8s;
     transition: all 0.8s;
 }
@@ -924,16 +925,16 @@ img[class*="wp-image-"] {
 .floatcomment{ 
    right:4%;
    bottom:25%;
-   bottom:    -moz-calc(12% + 72px);
-   bottom: -webkit-calc(12% + 72px);
-   bottom:         calc(12% + 72px);
+   bottom:    -moz-calc(10% + 72px);
+   bottom: -webkit-calc(10% + 72px);
+   bottom:         calc(10% + 72px);
 }
 
 .floattop, .floathome, .floatcomment, .sidebar-toggle{ position:fixed;
            cursor:pointer;
            z-index: 101;
            background-color:rgba(0,0,0,0);
-           font-size:20px;
+           font-size:1.33em !important;
            }
 .floattop:hover, .floathome:hover, .floatcomment:hover, .sidebar-toggle:hover{
     -webkit-transition:all .8s ease-in-out;

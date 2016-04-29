@@ -110,7 +110,7 @@ function bluefly_scripts() {
 
 	wp_enqueue_style( 'bluefly-bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), true );	
 
-	wp_enqueue_style( 'bluefly-style', get_stylesheet_uri(), array(), '1.00' );
+	wp_enqueue_style( 'bluefly-style', get_stylesheet_uri(), array(), '1.01' );
 
 	wp_enqueue_script( 'bluefly-slicknav', get_template_directory_uri() . '/js/jquery.slicknav.min.js', array('jquery'), true );
 	
@@ -119,7 +119,6 @@ function bluefly_scripts() {
 	wp_enqueue_script( 'bluefly-infinitescroll', get_template_directory_uri() . '/js/jquery.infinitescroll.min.js', array(), '20120206', true );
 	wp_enqueue_script( 'bluefly-lazyload', get_template_directory_uri() . '/js/jquery.lazyload.min.js', array(), '1.9.7', true );
 	wp_enqueue_script( 'bluefly-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), true );
-	wp_enqueue_script( 'bluefly-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() ) {
 		if (get_option( 'thread_comments' )) {
