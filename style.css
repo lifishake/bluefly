@@ -5,7 +5,7 @@ GitHub Theme URI: https://github.com/lifishake/bluefly
 Author: 大致
 Author URI: http://pewae.com
 Description: 响应式，表格化，自定义颜色主题。菜单栏随按键弹出。
-Version: 1.01
+Version: 1.02
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: bluefly
@@ -13,6 +13,9 @@ Tags: 动态部局, 响应式部局, 自定义颜色, 自定义菜单, 自定义
 
 欢迎所有人修改这款主题并向他人分享你的修改经验。
 再次发布请遵循GPL。
+
+建议安装GitHub Updater插件，为本主题增加自动更新功能。
+https://github.com/afragen/github-updater
 
 基于Oblique修改。
 [http://flyfreemedia.com/themes/oblique][GPL]
@@ -82,6 +85,19 @@ p {
     line-height: 1.9;
     margin-bottom: 2em;
 }
+
+del {
+    position:relative;
+    text-decoration:none;
+    opacity: 0.8;
+}
+
+del::after {
+    content:"";
+    position:absolute;
+    top:49%; left:0; width:100%; height:4px; 
+}
+
 /*-----------------
   表格类
 -----------------*/

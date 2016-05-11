@@ -90,20 +90,18 @@ if ( post_password_required() ) {
         $fields =  array(
               'author' =>
                 '<p class="comment-form-author"><label for="author">昵称</label> ' .
-                ( $req ? '<span class="required">（必填）</span>' : '' ) .
                 '<input id="author" name="author" class="hentry-bg" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
-                '" size="30"' . $aria_req . ' /></p>',
+                '" size="30"' . $aria_req . ($req?' placeholder="必填" ':''). ' /></p>',
 
               'email' =>
                 '<p class="comment-form-email"><label for="email">邮箱</label> ' .
-                ( $req ? '<span class="required">（必填，不会泄漏）</span>' : '' ) .
                 '<input id="email" name="email" class="hentry-bg" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-                '" size="30"' . $aria_req . ' /></p>',
+                '" size="30"' . $aria_req . ($req?' placeholder="必填，绝不外泄"':''). ' /></p>',
 
               'url' =>
                 '<p class="comment-form-url"><label for="url">网址</label>' .
                 '<input id="url" name="url" class="hentry-bg" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
-                '" size="30" /></p>',
+                '" size="30" placeholder="选填，有nofollow属性" /></p>',
             );//fields
         if ( $cookie != "" ) {
                 $fields['author']='<div id="author_info">'.$fields['author'];
@@ -116,7 +114,7 @@ if ( post_password_required() ) {
               'label_submit'      => '留言',
 
               'comment_field' =>  '<p class="comment-form-comment"><label for="comment">' . '' .
-                '</label><textarea id="comment" name="comment" cols="45" rows="8" class="hentry-bg" aria-required="true">' .
+                '</label><textarea id="comment" name="comment" cols="45" rows="8" placeholder="请不要留下无趣的东西浪费大家时间。" class="hentry-bg" aria-required="true">' .
                 '</textarea></p>',
 
               'must_log_in' => '<p class="must-log-in">' .
@@ -131,8 +129,6 @@ if ( post_password_required() ) {
                 ) . '</p>',
                 
               'comment_notes_before' => $comment_part ,
-
-              'comment_notes_after' => '<p class="form-allowed-tags">无言以对就退散吧！</p>',
 
               'fields' => apply_filters( 'comment_form_default_fields', $fields ),
             );

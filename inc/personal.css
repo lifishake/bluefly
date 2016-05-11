@@ -1,0 +1,57 @@
+.sidebar-inline {
+    background-color: rgba(189, 197, 222, 0.6);
+    border-bottom: 1px solid rgba(65,131,238,0.3);
+    border-top: 4px double rgba(65,131,238,0.3);
+    display: table;
+    padding: 10px 25px;
+    width: 100%;
+}
+
+.license::before {
+    content: 'uvxy';
+    font-family: 'LED';
+    font-size: 3em;
+    font-variant: normal;
+	font-weight:400;
+    line-height: 1;
+    text-transform: none;
+	padding: 0 15px;
+}
+.license {
+	background-color:inherit;
+    background-repeat: no-repeat;
+    font-weight: 400;
+	line-height:3em;
+}
+
+#sharebar {
+    background: rgba(131,156,180,0.5) none repeat scroll 0 0;
+    clear: both;
+    line-height: 2em;
+}
+
+#sharebar span {
+    margin: 4px 0;
+    padding: 0 15px;
+}
+
+#belt1, #belt2, #belt3 {
+    display: inline;
+	float:left;
+}
+#belt1 ul li{
+	overflow:hidden;
+}
+
+@media only screen and (min-width: 768px) {
+	#belt1, #belt2, #belt3 {
+		width:40%;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	#belt1, #belt2, #belt3 {
+		width:99%;
+	}
+}
+	

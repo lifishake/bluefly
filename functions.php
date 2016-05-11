@@ -110,7 +110,7 @@ function bluefly_scripts() {
 
 	wp_enqueue_style( 'bluefly-bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), true );	
 
-	wp_enqueue_style( 'bluefly-style', get_stylesheet_uri(), array(), '1.01' );
+	wp_enqueue_style( 'bluefly-style', get_stylesheet_uri(), array(), '1.02' );
 
 	wp_enqueue_script( 'bluefly-slicknav', get_template_directory_uri() . '/js/jquery.slicknav.min.js', array('jquery'), true );
 	
