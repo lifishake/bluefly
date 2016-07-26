@@ -78,6 +78,8 @@ a:hover {
 }
 ol ,ul{
     list-style: none;
+}
+.entry-content ol , .entry-content ul{
     font-size: 1.2em;
 	line-height: 1.8em;
     padding-left: 0.8em;
