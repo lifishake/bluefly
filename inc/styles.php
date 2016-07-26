@@ -125,6 +125,7 @@ function bluefly_custom_styles($custom) {
     $custom .= ".view { border: 5px solid " . esc_attr($entry_bg) . ";\n";
     $custom .= "box-shadow: 1px 0px 1px ". esc_attr($entry_bg). ";}\n";
     $custom .= ".hentry-bg { background-color:" . esc_attr($entry_bg) . ";}\n";
+	$custom .= "ul, ol { background-image: radial-gradient( to right," . esc_attr($background_color) . "," . esc_attr($entry_bg) .");}\n";
 
     //反选文字的颜色,与文章背景色相同. 
     $custom .= ".opp-text { color:" . esc_attr($opp_text) . ";}\n";
@@ -135,6 +136,7 @@ function bluefly_custom_styles($custom) {
     $custom .= ".wp-caption-text { color:" . esc_attr($opp_text) . ";}\n";
     $custom .= ".slicknav_nav { color:" . esc_attr($opp_text) . ";}\n";
     $custom .= ".slicknav_brand { color:" . esc_attr($opp_text) . ";}\n";
+	$custom .= "ul, ol { color:" . esc_attr($opp_text) . ";}\n";
     $custom .= ".comment-respond .comment-reply-title { color:" . esc_attr($opp_text) . ";}\n";
     $custom .= "button, .button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"]{color: " . esc_attr($opp_text) . "}\n";
     
@@ -158,6 +160,7 @@ function bluefly_custom_styles($custom) {
     $custom .= "blockquote { border-left: 5px solid " . esc_attr($primary_color) . ";" . "\n";
     $custom .= "background-color: " . esc_attr($rgba) . ";}" . "\n";
     $custom .= ".slicknav_nav li { border-color:" . esc_attr($primary_color) . ";}" . "\n";
+	$custom .= "ul, ol { border-left: 5px solid " . esc_attr($primary_color) . ";}\n";
     
     $custom .= ".social-navigation li a::before { color:". $secondary_color. ";}\n" ;
     $custom .= ".secondary_color { color:". $secondary_color. ";}\n" ;
@@ -177,6 +180,8 @@ button:active,input[type="button"]:active,input[type="reset"]:active,input[type=
     $custom .= " box-shadow: inset 1px 1px 2px ". esc_attr($background_color). ";}\n";
     $shadow = bluefly_hex2rgba_str($primary_color, 0.3);
     $custom .= ".comment-content.byposter p { text-shadow: 1px 0px 1px ". $shadow. ";}\n";
+	$shadow = bluefly_hex2rgba_str($primary_color, 0.8);
+	$custom .= "ul, ol { text-shadow: 2px 0px 3px ". $shadow. ";}\n";
     $custom .= "a.comment-reply-link:hover { color: ". esc_attr($secondary_color). ";}\n";
     $custom .= ".view:hover {border: 5px solid ".$primary_color.";\n box-shadow: 1px 1px 2px ". esc_attr($primary_color). ";}\n";
     
